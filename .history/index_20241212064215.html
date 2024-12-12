@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奢华旅游体验 | Luxury Travel Experience</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="particles"></div>
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="letter" style="--delay: 0s;">W</span>
+                <span class="letter" style="--delay: 0.1s;">E</span>
+                <span class="letter" style="--delay: 0.2s;">L</span>
+                <span class="letter" style="--delay: 0.3s;">C</span>
+                <span class="letter" style="--delay: 0.4s;">O</span>
+                <span class="letter" style="--delay: 0.5s;">M</span>
+                <span class="letter" style="--delay: 0.6s;">E</span>
+            </div>
+            <div class="loading-subtitle">
+                <span class="subtitle-text">To The World of Adventure</span>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="loading-decoration">
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+                <div class="circle circle-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <ul class="nav-links">
+            <li><a href="/" class="active">首页</a></li>
+            <li class="dropdown">
+                <a href="/tour">Tour</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/asia">Asia</a></li>
+                    <li><a href="/africa">Africa</a></li>
+                    <li><a href="/europe">Europe</a></li>
+                    <li class="nested-dropdown">
+                        <a href="/america">America</a>
+                        <ul class="nested-dropdown-menu">
+                            <li class="usa-dropdown">
+                                <a href="/usa">The USA</a>
+                                <ul class="usa-dropdown-menu">
+                                    <li><a href="/wall-street">Wall Street</a></li>
+                                    <li><a href="/new-york">New York</a></li>
+                                    <li><a href="/san-francisco">San Francisco</a></li>
+                                    <li><a href="/broadway">Broadway</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="/others">Others</a></li>
+                </ul>
+            </li>
+            <li><a href="/camera">Camera</a></li>
+            <li><a href="/print">Print</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>"Journey Through Life's Greatest Adventures"</h1>
+                <a href="/explore" class="cta-button">开启您的奢华之旅</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 创建粒子效果
+        function createParticles() {
+            const particles = document.querySelector('.particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.setProperty('--x', `${Math.random() * 100}%`);
+                particle.style.setProperty('--y', `${Math.random() * 100}%`);
+                particle.style.setProperty('--delay', `${Math.random() * 2}s`);
+                particles.appendChild(particle);
+            }
+        }
+
+        // 进度条动画
+        function animateProgress() {
+            const progressBar = document.querySelector('.progress-bar');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 1;
+                progressBar.style.width = `${progress}%`;
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    document.body.classList.add('loaded');
+                    setTimeout(() => {
+                        document.querySelector('.loading-screen').style.opacity = '0';
+                        setTimeout(() => {
+                            document.querySelector('.loading-screen').style.display = 'none';
+                        }, 1000);
+                    }, 500);
+                }
+            }, 30);
+        }
+
+        window.addEventListener('load', () => {
+            createParticles();
+            animateProgress();
+        });
+    </script>
+</body>
+</html> 

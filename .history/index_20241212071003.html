@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奢华旅游体验 | Luxury Travel Experience</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="text.css">
+</head>
+
+<body>
+  <nav class="main-nav">
+    <ul class="nav-links">
+      <li>
+        <a href="/" class="active">
+          <i class="fas fa-home"></i>
+          首页
+        </a>
+      </li>
+      <li class="dropdown">
+        <a href="/tour">
+          <i class="fas fa-globe-americas"></i>
+          Tour
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="/asia">
+              <i class="fas fa-torii-gate"></i>
+              Asia
+            </a>
+          </li>
+          <li>
+            <a href="/africa">
+              <i class="fas fa-sun"></i>
+              Africa
+            </a>
+          </li>
+          <li>
+            <a href="/europe">
+              <i class="fas fa-landmark"></i>
+              Europe
+            </a>
+          </li>
+          <li class="nested-dropdown">
+            <a href="/america">
+              <i class="fas fa-flag-usa"></i>
+              America
+            </a>
+            <ul class="nested-dropdown-menu">
+              <li class="usa-dropdown">
+                <a href="/usa">
+                  <i class="fas fa-star"></i>
+                  The USA
+                </a>
+                <ul class="usa-dropdown-menu">
+                  <li>
+                    <a href="/wall-street">
+                      <i class="fas fa-chart-line"></i>
+                      Wall Street
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/new-york">
+                      <i class="fas fa-city"></i>
+                      New York
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/san-francisco">
+                      <i class="fas fa-bridge"></i>
+                      San Francisco
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/broadway">
+                      <i class="fas fa-theater-masks"></i>
+                      Broadway
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/others">
+              <i class="fas fa-ellipsis-h"></i>
+              Others
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="/camera">
+          <i class="fas fa-camera"></i>
+          Camera
+        </a>
+      </li>
+      <li>
+        <a href="/print">
+          <i class="fas fa-print"></i>
+          Print
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+
+        <div class="demo--dancing-shadows">
+          <h1 class="demo--dancing-shadows__title">
+            <span class="text-wrapper">
+              <span class="text-items">
+
+                <span class="text-item text-item--1">Journey </span>
+                <span class="text-item text-item--2">Through Life's</span>
+                <span class="text-item text-item--3">Greatest Adventures</span>
+              </span>
+            </span>
+          </h1>
+        </div>
+    </section>
+  </main>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.main-nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+
+</html>

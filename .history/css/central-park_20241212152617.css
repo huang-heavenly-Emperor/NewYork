@@ -1,0 +1,174 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: #000000;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Banner区域 */
+.banner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    animation: zoomIn 1.5s ease-out forwards;
+}
+
+.banner h1 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 
+        0 0 10px rgba(76, 175, 80, 0.5),
+        0 0 20px rgba(139, 195, 74, 0.5);
+    opacity: 0;
+    animation: titleReveal 1.2s ease-out 0.8s forwards;
+}
+
+/* 文章内容 */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 800px;
+    width: 90%;
+    padding: 2rem;
+    z-index: 2;
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out 1.5s forwards;
+}
+
+.article-text {
+    font-size: 35px;
+    line-height: 1.8;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(76, 175, 80, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+/* 动画定义 */
+@keyframes zoomIn {
+    0% {
+        transform: scale(1.2);
+        filter: brightness(0);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(0.7);
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -20%);
+        letter-spacing: 15px;
+        text-shadow: 
+            0 0 20px rgba(76, 175, 80, 0.8),
+            0 0 40px rgba(139, 195, 74, 0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        letter-spacing: normal;
+        text-shadow: 
+            0 0 10px rgba(76, 175, 80, 0.5),
+            0 0 20px rgba(139, 195, 74, 0.5);
+    }
+}
+
+@keyframes contentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* 返回按钮样式 */
+.back-button {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    padding: 20px 30px;
+    font-size: 32px;
+    color: #ffffff;
+    background: linear-gradient(
+        270deg,
+        #4CAF50,
+        #8BC34A,
+        #CDDC39,
+        #7CB342,
+        #4CAF50
+    );
+    background-size: 300% 100%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(76, 175, 80, 0.4);
+    animation: gradientMove 4s linear infinite;
+}
+
+.back-button:hover {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(76, 175, 80, 0.6),
+                0 0 50px rgba(139, 195, 74, 0.4);
+    animation: gradientMove 2s linear infinite;
+}
+
+.back-button i {
+    font-size: 24px;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}

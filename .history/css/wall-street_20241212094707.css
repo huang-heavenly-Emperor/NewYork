@@ -1,0 +1,97 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: #ffffff;
+}
+
+/* Banner区域 */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.banner:hover img {
+    transform: scale(1.05);
+}
+
+.banner h1 {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 文章内容 */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.article-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+}
+
+.article-image {
+    margin: 2rem 0;
+}
+
+.article-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+    margin-top: 1rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .banner {
+        height: 50vh;
+        min-height: 300px;
+    }
+
+    .banner h1 {
+        font-size: 2.5rem;
+        bottom: 1.5rem;
+    }
+
+    .article-text {
+        font-size: 1.2rem;
+    }
+
+    .content {
+        padding: 2rem 1.5rem;
+    }
+} 

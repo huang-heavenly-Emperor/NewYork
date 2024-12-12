@@ -1,0 +1,400 @@
+/* Hero banner - Enhanced design */
+.hero-banner {
+  position: relative;
+  height: 100vh;
+
+  background-image: url('../images/newyork-skyline.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(82, 109, 249, 0.08)
+  );
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(20px);
+  animation: floatIn 1.5s ease forwards;
+}
+
+.intro-quote {
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards 0.5s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+  color: #ffd700;
+}
+
+.city-title {
+  font-size: 5rem;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.welcome-text {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  background: linear-gradient(45deg, #fff, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.city-name {
+  display: block;
+  font-size: 8rem;
+  font-weight: 800;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  background: linear-gradient(45deg, #ffd700, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.city-nickname {
+  display: block;
+  font-size: 3rem;
+  font-style: italic;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+}
+
+/* Main container */
+.landmarks {
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #f6f8ff 0%, #fff9f5 100%);
+}
+
+.landmark-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  padding: 2.5rem;
+  perspective: 1000px;
+}
+
+/* Card styles */
+.landmark-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Flowing gradient background */
+.landmark-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent-1),
+    var(--accent-2),
+    var(--accent-3)
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+/* Glowing border effect */
+.landmark-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    45deg,
+    var(--accent-3),
+    var(--accent-1),
+    var(--primary),
+    var(--accent-2)
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  filter: blur(14px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+/* Hover effects */
+.landmark-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 0 30px rgba(255, 30, 108, 0.2),
+    0 0 60px rgba(157, 63, 255, 0.15),
+    0 0 90px rgba(46, 143, 255, 0.1);
+}
+
+.landmark-card:hover::before {
+  opacity: 0.1;
+}
+
+.landmark-card:hover::after {
+  opacity: 0.5;
+}
+
+/* Enhanced image container styles */
+.landmark-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.landmark-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.landmark-card:hover .landmark-image img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Image overlay effect */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.3)
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.landmark-card:hover .image-overlay {
+  opacity: 1;
+}
+
+/* Optimized content area styles */
+.landmark-content {
+  position: relative;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.content-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Location tag styles */
+.location-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.landmark-card:hover .location-tag {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styles */
+.content-inner h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Feature icon styles */
+.landmark-features {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.landmark-features span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.landmark-features i {
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.landmark-card:hover .landmark-features i {
+  transform: scale(1.2);
+}
+
+/* Animation keyframes */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .landmark-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+  
+  .landmark-image {
+    height: 200px;
+  }
+  
+  .content-inner h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation effects */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 描述文本样式增强 */
+.description {
+  background: linear-gradient(
+    45deg,
+    var(--accent-1),
+    var(--secondary) 30%,
+    var(--accent-2) 70%,
+    var(--accent-3)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 1.2rem 0;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+/* 悬停时的效果 */
+.landmark-card:hover .description {
+  opacity: 1;
+  transform: translateY(-2px);
+  background-position: right center;
+}
+
+/* 添加文字阴影效果 */
+.description::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: inherit;
+  filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.landmark-card:hover .description::after {
+  opacity: 0.2;
+}

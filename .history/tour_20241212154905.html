@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New York Tour</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="lib/font-awesome.css">
+  <link rel="stylesheet" href="css/text.css">
+  <link rel="stylesheet" href="css/tour.css">
+  <link rel="stylesheet" href="lib/font-Playfair.css">
+
+</head>
+
+<nav class="main-nav">
+  <ul class="nav-links">
+    <li>
+      <a href="index.html">
+        <i class="fas fa-home"></i>
+        Home
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="tour.html" class="active">
+        <i class="fas fa-globe-americas"></i>
+        Tour
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#">
+            <i class="fas fa-torii-gate"></i>
+            Asia
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-sun"></i>
+            Africa
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-landmark"></i>
+            Europe
+          </a>
+        </li>
+        <li class="nested-dropdown">
+          <a href="tour.html">
+            <i class="fas fa-flag-usa"></i>
+            America
+          </a>
+          <ul class="nested-dropdown-menu">
+            <li class="usa-dropdown">
+              <a href="tour.html">
+                <i class="fas fa-star"></i>
+                The USA
+              </a>
+              <ul class="usa-dropdown-menu">
+                <li>
+                  <a href="wall-street.html">
+                    <i class="fas fa-chart-line"></i>
+                    Wall Street
+                  </a>
+                </li>
+                <li>
+                  <a href="times-square.html">
+                    <i class="fas fa-city"></i>
+                    Times Square
+                  </a>
+                </li>
+                <li>
+                  <a href="central-park.html">
+                    <i class="fas fa-tree"></i>
+                    Central Park
+                  </a>
+                </li>
+                <li>
+                  <a href="broadway.html">
+                    <i class="fas fa-theater-masks"></i>
+                    Broadway
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-ellipsis-h"></i>
+            Others
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fas fa-camera"></i>
+        Camera
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fas fa-print"></i>
+        Print
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<main class="main-content">
+  <div class="scroll-container">
+    <!-- 纽约主题横幅 -->
+    <section class="hero-banner page-section">
+      <div class="overlay"></div>
+      <div class="banner-content">
+        <p class="intro-quote">
+          "Here we are in 'the Big Apple' -- New York, the biggest city in the USA."
+        </p>
+        <h1 class="city-title">
+          <span class="welcome-text">Welcome to</span>
+          <span class="city-name">New York</span>
+          <span class="city-nickname">The Big Apple</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- 地标介绍 -->
+    <section id="america" class="continent-section page-section">
+
+      <div id="usa" class="country-section">
+
+        <div class="landmark-grid">
+          <!-- Wall Street -->
+          <a href="wall-street.html" class="landmark-card">
+            <div class="landmark-image">
+              <img src="images/5.jpg" alt="Wall Street" loading="lazy">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="landmark-content">
+              <div class="content-inner">
+                <span class="location-tag">Financial District</span>
+                <h2>Wall Street</h2>
+                <p class="description">The world's leading financial center, home to the New York Stock Exchange and the
+                  iconic Charging Bull sculpture. Experience the heartbeat of global finance in this historic district.
+                </p>
+                <div class="landmark-features">
+                  <span><i class="fas fa-building"></i> NYSE</span>
+                  <span><i class="fas fa-landmark"></i> Federal Hall</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Times Square -->
+          <a href="times-square.html" class="landmark-card">
+            <div class="landmark-image">
+              <img src="images/2.jpg" alt="Times Square" loading="lazy">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="landmark-content">
+              <div class="content-inner">
+                <span class="location-tag">Midtown Manhattan</span>
+                <h2>Times Square</h2>
+                <p class="description">The dazzling heart of NYC, where massive LED screens and neon lights create a unique
+                  urban landscape. The world's most famous intersection comes alive with energy 24/7.</p>
+                <div class="landmark-features">
+                  <span><i class="fas fa-tv"></i> LED Displays</span>
+                  <span><i class="fas fa-star"></i> Entertainment</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Central Park -->
+          <a href="central-park.html" class="landmark-card">
+            <div class="landmark-image">
+              <img src="images/3.png" alt="Central Park" loading="lazy">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="landmark-content">
+              <div class="content-inner">
+                <span class="location-tag">Upper Manhattan</span>
+                <h2>Central Park</h2>
+                <p class="description">An 843-acre urban oasis in the heart of Manhattan. Featuring beautiful lakes,
+                  classical architecture, and recreational facilities for all seasons.</p>
+                <div class="landmark-features">
+                  <span><i class="fas fa-tree"></i> Nature</span>
+                  <span><i class="fas fa-skating"></i> Recreation</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Broadway -->
+          <a href="broadway.html" class="landmark-card">
+            <div class="landmark-image">
+              <img src="images/4.jpg" alt="Broadway" loading="lazy">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="landmark-content">
+              <div class="content-inner">
+                <span class="location-tag">Theater District</span>
+                <h2>Broadway</h2>
+                <p class="description">The pinnacle of theatrical arts with 41 professional theaters. Experience world-class
+                  musicals and plays in this legendary entertainment district.</p>
+                <div class="landmark-features">
+                  <span><i class="fas fa-theater-masks"></i> Shows</span>
+                  <span><i class="fas fa-music"></i> Musicals</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 添加滚动控制脚本 -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.scroll-container');
+    let isScrolling = false;
+    let startY;
+    let currentSection = 0;
+    const sections = document.querySelectorAll('.page-section');
+    
+    // 初始化section状态
+    function updateSectionsState() {
+      sections.forEach((section, index) => {
+        if (index < currentSection) {
+          section.classList.add('prev');
+          section.classList.remove('active', 'next');
+        } else if (index === currentSection) {
+          section.classList.add('active');
+          section.classList.remove('prev', 'next');
+        } else {
+          section.classList.add('next');
+          section.classList.remove('active', 'prev');
+        }
+      });
+    }
+
+    // 平滑滚动函数
+    function smoothScroll(target, duration) {
+      const start = container.scrollTop;
+      const distance = target - start;
+      const startTime = performance.now();
+
+      function animation(currentTime) {
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        
+        // easeInOutCubic 缓动函数
+        const ease = progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        
+        container.scrollTop = start + distance * ease;
+
+        if (progress < 1) {
+          requestAnimationFrame(animation);
+        } else {
+          isScrolling = false;
+          updateSectionsState();
+        }
+      }
+
+      requestAnimationFrame(animation);
+    }
+
+    // 滚动到指定section
+    function scrollToSection(index) {
+      if (index >= 0 && index < sections.length && !isScrolling) {
+        isScrolling = true;
+        const targetSection = sections[index];
+        const targetPosition = targetSection.offsetTop;
+        
+        currentSection = index;
+        smoothScroll(targetPosition, 800); // 800ms 的滚动时间
+      }
+    }
+
+    // 处理滚轮事件
+    const handleWheel = debounce(function(e) {
+      e.preventDefault(); // 阻止默认滚动
+      
+      if (isScrolling) return;
+      
+      const delta = e.deltaY;
+      const threshold = 50; // 滚动阈值
+      
+      if (Math.abs(delta) < threshold) return;
+      
+      if (delta > 0) {
+        scrollToSection(currentSection + 1);
+      } else {
+        scrollToSection(currentSection - 1);
+      }
+    }, 50);
+
+    // 防抖函数
+    function debounce(func, wait) {
+      let timeout;
+      return function(e) {
+        e.preventDefault();
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => func.call(this, e), wait);
+      };
+    }
+
+    // 处理触摸事件
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 50;
+
+    function handleTouchStart(e) {
+      touchStartY = e.touches[0].clientY;
+    }
+
+    function handleTouchMove(e) {
+      if (isScrolling) return;
+      touchEndY = e.touches[0].clientY;
+      
+      const swipeDistance = touchStartY - touchEndY;
+      
+      if (Math.abs(swipeDistance) > minSwipeDistance) {
+        if (swipeDistance > 0) {
+          scrollToSection(currentSection + 1);
+        } else {
+          scrollToSection(currentSection - 1);
+        }
+        touchStartY = touchEndY;
+      }
+    }
+
+    // 添加事件监听
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    container.addEventListener('touchstart', handleTouchStart);
+    container.addEventListener('touchmove', handleTouchMove);
+
+    // 处理键盘事件
+    document.addEventListener('keydown', function(e) {
+      if (isScrolling) return;
+
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        scrollToSection(currentSection + 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        scrollToSection(currentSection - 1);
+      }
+    });
+
+    // 初始化
+    updateSectionsState();
+  });
+  </script>
+</main>
+
+</body>
+
+</html>

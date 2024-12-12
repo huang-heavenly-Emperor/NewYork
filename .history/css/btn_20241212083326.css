@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "bw";
+  src: url("https://robindelaporte.fr/codepen/play/BwModelicaSS01-ExtraBold.woff") format("woff");
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.home {
+  position: fixed;
+  width: 800px;
+  height: 400px;
+  left: 0;
+  bottom: 50px;
+  transform: translateX(-50%);
+}
+
+.home canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.home span {
+  position: relative;
+  z-index: 6;
+  font-family: "bw";
+  text-decoration: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  font-size: 2.4rem;
+  color: #fff;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.home a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 60px;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 22px;
+  border-radius: 40px;
+  background: linear-gradient(135deg,
+    rgba(255, 127, 127, 0.95),
+    rgba(255, 127, 167, 0.95)
+  );
+  box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+  transition: all 0.3s ease;
+  z-index: 5;
+  min-width: 200px;
+  text-align: center;
+}
+
+.home a span {
+  position: relative;
+  opacity: 1;
+  font-size: 22px;
+}
+
+.home a:after {
+  content: "";
+  background: linear-gradient(56deg, #61dafb 0%, #d6cbf6 46%, #f2056f 100%);
+  width: 80%;
+  height: 20%;
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  opacity: 0;
+  filter: blur(20px);
+  border-radius: 40px;
+  transform: translateZ(-1px);
+  transition: opacity 0.6s ease;
+}
+
+.home a:before {
+  content: "";
+  background: linear-gradient(56deg, #61dafb 0%, #d6cbf6 46%, #f2056f 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  border-radius: 40px;
+  transition: opacity 0.4s ease;
+}
+
+.home a:hover {
+  transform: translate(-50%, -58px);
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+  background: linear-gradient(135deg,
+    rgba(255, 147, 147, 0.95),
+    rgba(255, 147, 187, 0.95)
+  );
+}
+
+.home a:active {
+  transform: translate(-50%, -54px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+}
+
+.home a:hover:after {
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.home a:hover:before {
+  opacity: 1;
+  transition: opacity 0.6s linear;
+}
+
+.home .ok {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 60px;
+  color: white;
+  letter-spacing: 2px;
+  font-size: 22px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 4;
+  white-space: nowrap;
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>纽约之旅 | New York Tour</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/text.css">
+  <link rel="stylesheet" href="css/tour.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<nav class="main-nav">
+  <ul class="nav-links">
+    <li>
+      <a href="index.html">
+        <i class="fas fa-home"></i>
+        Home
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="tour.html" class="active">
+        <i class="fas fa-globe-americas"></i>
+        Tour
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#">
+            <i class="fas fa-torii-gate"></i>
+            Asia
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-sun"></i>
+            Africa
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-landmark"></i>
+            Europe
+          </a>
+        </li>
+        <li class="nested-dropdown">
+          <a href="tour.html">
+            <i class="fas fa-flag-usa"></i>
+            America
+          </a>
+          <ul class="nested-dropdown-menu">
+            <li class="usa-dropdown">
+              <a href="tour.html">
+                <i class="fas fa-star"></i>
+                The USA
+              </a>
+              <ul class="usa-dropdown-menu">
+                <li>
+                  <a href="wall-street.html">
+                    <i class="fas fa-chart-line"></i>
+                    Wall Street
+                  </a>
+                </li>
+                <li>
+                  <a href="times-square.html">
+                    <i class="fas fa-city"></i>
+                    Times Square
+                  </a>
+                </li>
+                <li>
+                  <a href="central-park.html">
+                    <i class="fas fa-tree"></i>
+                    Central Park
+                  </a>
+                </li>
+                <li>
+                  <a href="broadway.html">
+                    <i class="fas fa-theater-masks"></i>
+                    Broadway
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="others.html">
+            <i class="fas fa-ellipsis-h"></i>
+            Others
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="camera.html">
+        <i class="fas fa-camera"></i>
+        Camera
+      </a>
+    </li>
+    <li>
+      <a href="print.html">
+        <i class="fas fa-print"></i>
+        Print
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<main class="main-content">
+  <!-- 纽约主题横幅 -->
+  <section class="hero-banner">
+    <div class="overlay"></div>
+    <div class="banner-content">
+      <p class="intro-quote">
+        "Here we are in 'the Big Apple' -- New York, the biggest city in the USA."
+      </p>
+      <h1 class="city-title">
+        <span class="welcome-text">Welcome to</span>
+        <span class="city-name">New York</span>
+        <span class="city-nickname">The Big Apple</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- 地标介绍 -->
+  <section id="america" class="continent-section">
+    <h2>America</h2>
+    <div id="usa" class="country-section">
+      <h3>The USA</h3>
+      <div class="landmark-grid">
+        <!-- Wall Street -->
+        <a href="wall-street.html" class="landmark-card">
+          <div class="landmark-image">
+            <img src="images/5.jpg" alt="Wall Street" loading="lazy">
+            <div class="image-overlay"></div>
+          </div>
+          <div class="landmark-content">
+            <div class="content-inner">
+              <span class="location-tag">Financial District</span>
+              <h2>Wall Street</h2>
+              <p class="description">The world's leading financial center, home to the New York Stock Exchange and the
+                iconic Charging Bull sculpture. Experience the heartbeat of global finance in this historic district.
+              </p>
+              <div class="landmark-features">
+                <span><i class="fas fa-building"></i> NYSE</span>
+                <span><i class="fas fa-landmark"></i> Federal Hall</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Times Square -->
+        <a href="times-square.html" class="landmark-card">
+          <div class="landmark-image">
+            <img src="images/2.jpg" alt="Times Square" loading="lazy">
+            <div class="image-overlay"></div>
+          </div>
+          <div class="landmark-content">
+            <div class="content-inner">
+              <span class="location-tag">Midtown Manhattan</span>
+              <h2>Times Square</h2>
+              <p class="description">The dazzling heart of NYC, where massive LED screens and neon lights create a unique
+                urban landscape. The world's most famous intersection comes alive with energy 24/7.</p>
+              <div class="landmark-features">
+                <span><i class="fas fa-tv"></i> LED Displays</span>
+                <span><i class="fas fa-star"></i> Entertainment</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Central Park -->
+        <a href="central-park.html" class="landmark-card">
+          <div class="landmark-image">
+            <img src="images/3.png" alt="Central Park" loading="lazy">
+            <div class="image-overlay"></div>
+          </div>
+          <div class="landmark-content">
+            <div class="content-inner">
+              <span class="location-tag">Upper Manhattan</span>
+              <h2>Central Park</h2>
+              <p class="description">An 843-acre urban oasis in the heart of Manhattan. Featuring beautiful lakes,
+                classical architecture, and recreational facilities for all seasons.</p>
+              <div class="landmark-features">
+                <span><i class="fas fa-tree"></i> Nature</span>
+                <span><i class="fas fa-skating"></i> Recreation</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Broadway -->
+        <a href="broadway.html" class="landmark-card">
+          <div class="landmark-image">
+            <img src="images/4.jpg" alt="Broadway" loading="lazy">
+            <div class="image-overlay"></div>
+          </div>
+          <div class="landmark-content">
+            <div class="content-inner">
+              <span class="location-tag">Theater District</span>
+              <h2>Broadway</h2>
+              <p class="description">The pinnacle of theatrical arts with 41 professional theaters. Experience world-class
+                musicals and plays in this legendary entertainment district.</p>
+              <div class="landmark-features">
+                <span><i class="fas fa-theater-masks"></i> Shows</span>
+                <span><i class="fas fa-music"></i> Musicals</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+</section>
+</main>
+</body>
+
+</html>

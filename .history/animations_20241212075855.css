@@ -1,0 +1,74 @@
+/* 开屏动画 */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* 标题动画 */
+.demo--dancing-shadows__title {
+  animation: fadeInScale 1.2s ease-out;
+}
+
+.text-wrapper {
+  animation: fadeInScale 1.5s ease-out;
+}
+
+/* CTA按钮动画 */
+.cta-wrapper {
+  animation: slideInFromBottom 1s ease-out 0.5s both;
+}
+
+.cta-button {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cta-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(135deg,
+    rgba(255, 127, 127, 0.98),
+    rgba(255, 127, 167, 0.98)
+  );
+  letter-spacing: 0.5px;
+}
+
+.cta-button:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* 文字悬停效果 */
+.text-item {
+  transition: all 0.3s ease;
+}
+
+.text-item:hover {
+  transform: translateY(-2px) scale(1.05);
+  text-shadow: 0 0.15rem black, 0 0.25rem black, 0 0.35rem black, 0 0.45rem black, 0 0.65rem black, 0 0.75rem white, 0 0.85rem white;
+}
+
+/* 背景动画效果 */
+.demo--dancing-shadows__title:before {
+  transition: all 0.5s ease;
+}
+
+.demo--dancing-shadows__title:hover:before {
+  filter: hue-rotate(15deg) brightness(1.1);
+} 

@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    src: url('webfonts/fa-solid-900.woff2') format('woff2');
+}
+
+.fas {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+.fa-home:before {
+    content: "\f015";
+}
+
+.fa-globe-americas:before {
+    content: "\f57d";
+}
+
+.fa-torii-gate:before {
+    content: "\f6a1";
+}
+
+.fa-sun:before {
+    content: "\f185";
+}
+
+.fa-landmark:before {
+    content: "\f66f";
+}
+
+.fa-flag-usa:before {
+    content: "\f74d";
+}
+
+.fa-star:before {
+    content: "\f005";
+}
+
+.fa-chart-line:before {
+    content: "\f201";
+}
+
+.fa-city:before {
+    content: "\f64f";
+}
+
+.fa-tree:before {
+    content: "\f1bb";
+}
+
+.fa-theater-masks:before {
+    content: "\f630";
+}
+
+.fa-ellipsis-h:before {
+    content: "\f141";
+}
+
+.fa-camera:before {
+    content: "\f030";
+}
+
+.fa-print:before {
+    content: "\f02f";
+}
+
+.fa-arrow-left:before {
+    content: "\f060";
+}

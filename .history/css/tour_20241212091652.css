@@ -1,0 +1,270 @@
+/* 主题横幅 - 增强视觉效果 */
+.hero-banner {
+  position: relative;
+  height: 100vh;
+  background-image: url('../images/nyc-skyline.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* 视差滚动效果 */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.4)
+  );
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(20px);
+  animation: floatIn 1.5s ease forwards;
+}
+
+.intro-quote {
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards 0.5s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+  color: #ffd700;
+}
+
+.city-title {
+  font-size: 5.5rem;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-text {
+  display: block;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 3px;
+  background: linear-gradient(45deg, #fff, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.city-name {
+  display: block;
+  font-size: 8rem;
+  font-weight: 800;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  background: linear-gradient(45deg, #ffd700, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.city-nickname {
+  display: block;
+  font-size: 3rem;
+  font-style: italic;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+}
+
+/* 地标卡片样式增强 */
+.landmarks {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f6f9fc, #edf2f7);
+}
+
+.landmark-card {
+  display: flex;
+  height: 100vh;
+  background: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin-bottom: 6rem;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.landmark-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+}
+
+.landmark-image {
+  flex: 1.2;
+  position: relative;
+  overflow: hidden;
+}
+
+.landmark-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.4),
+    transparent
+  );
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.landmark-card:hover .landmark-image::before {
+  opacity: 1;
+}
+
+.landmark-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: transform 0.7s ease;
+}
+
+.landmark-card:hover .landmark-image img {
+  transform: scale(1);
+}
+
+.landmark-content {
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  position: relative;
+  overflow: hidden;
+}
+
+.landmark-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #ffd700, #ff6b6b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.landmark-card:hover .landmark-content::before {
+  transform: scaleX(1);
+}
+
+.landmark-content h2 {
+  font-size: 3.5rem;
+  background: linear-gradient(45deg, #1668B2, #003366);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.landmark-content p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #555;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 4px solid #ffd700;
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.landmark-card:hover .landmark-content p {
+  transform: translateX(10px);
+  border-left-color: #ff6b6b;
+}
+
+/* 动画关键帧 */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+  .city-title {
+    font-size: 3.5rem;
+  }
+  
+  .city-name {
+    font-size: 5rem;
+  }
+  
+  .intro-quote {
+    font-size: 1.5rem;
+  }
+
+  .landmark-card {
+    flex-direction: column !important;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .landmark-image {
+    height: 50vh;
+  }
+
+  .landmark-content {
+    padding: 2rem;
+  }
+
+  .landmark-content h2 {
+    font-size: 2.5rem;
+  }
+}
