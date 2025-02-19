@@ -21,18 +21,14 @@
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
-    background: linear-gradient(
-        135deg,
-        rgba(28, 28, 58, 0.85),    /* 深红色 */
-        rgba(255, 107, 107, 0.15)  /* 中国红 */
-    );
-    background-size: 400% 400%;
+    background: rgba(28, 28, 58, 0.75);
     animation: gradientMove 6s ease infinite;
-    padding: 4rem;
-    border-radius: 12px;
-    max-width: 1000px;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 800px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .banner-text::before {
@@ -52,6 +48,7 @@
 .banner-text h1 {
     margin-bottom: 1.5rem;
     position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .banner-text h1 .chinese {
@@ -122,10 +119,10 @@
 }
 
 .banner-text p {
-    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.8;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     max-width: 900px;
     margin: 0 auto;
 }

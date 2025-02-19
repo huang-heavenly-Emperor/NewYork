@@ -366,26 +366,6 @@ body{
     transform: translateX(5px);
 }
 
-.country-item ul li a {
-    color: var(--text-dim);
-    text-decoration: none;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.country-item ul li a:hover {
-    color: var(--text-light);
-    transform: translateX(5px);
-}
-
-.country-item ul li a i {
-    width: 20px;
-    text-align: center;
-    color: var(--primary);
-}
-
 .feature-tags {
     display: flex;
     flex-wrap: wrap;

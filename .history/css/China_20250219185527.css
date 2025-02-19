@@ -297,7 +297,7 @@ body{
         rgba(46, 46, 90, 0.95));
     opacity: 0;
     z-index: -1;
-    animation: bgFadeIn 1.5s ease forwards 3s;
+    animation: bgFadeIn 1.5s ease forwards s;
 }
 
 .continent-section.visible {

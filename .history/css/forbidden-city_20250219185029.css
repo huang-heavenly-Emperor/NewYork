@@ -21,18 +21,29 @@
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
+    background: rgba(28, 28, 58, 0.75);
+    animation: gradientMove 6s ease infinite;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 800px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     background: linear-gradient(
         135deg,
-        rgba(28, 28, 58, 0.85),    /* 深红色 */
-        rgba(255, 107, 107, 0.15)  /* 中国红 */
+        rgba(128, 0, 32, 0.65) 0%,    /* 深红色 */
+        rgba(168, 0, 32, 0.65) 25%,    /* 中国红 */
+        rgba(218, 165, 32, 0.65) 50%,  /* 金黄色 */
+        rgba(168, 0, 32, 0.65) 75%,
+        rgba(128, 0, 32, 0.65) 100%
     );
     background-size: 400% 400%;
     animation: gradientMove 6s ease infinite;
     padding: 4rem;
     border-radius: 12px;
     max-width: 1000px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    border: 3px solid rgba(218, 165, 32, 0.7);  /* 更明显的金色边框 */
+    box-shadow: 0 0 40px rgba(218, 165, 32, 0.3),
+                0 0 80px rgba(128, 0, 32, 0.2);
+    backdrop-filter: blur(8px);
 }
 
 .banner-text::before {
