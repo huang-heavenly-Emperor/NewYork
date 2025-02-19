@@ -1,0 +1,500 @@
+/* 埃及主题颜色变量 */
+:root {
+  --sand: #D4B483;
+  /* 沙漠色 */
+  --gold: #FFD700;
+  /* 金色 */
+  --bronze: #CD7F32;
+  /* 青铜色 */
+  --papyrus: #FFF8DC;
+  /* 莎草纸色 */
+  --nile-blue: #1B4B6F;
+  /* 尼罗河蓝 */
+  --desert-red: #A94442;
+  /* 沙漠红 */
+  --hieroglyph: #8B4513;
+  /* 象形文字色 */
+  --limestone: #E8DCC4;
+  /* 石灰岩色 */
+  --night-sky: #1A237E;
+  /* 夜空色 */
+  --desert-sand: #D4B483;
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(255, 255, 255, 0.1);
+}
+
+/* 基础样式 */
+body {
+
+  color: var(--hieroglyph);
+  font-family: "Playfair Display", serif;
+  background: url('../images/egypt-banner2.jpg') center/cover no-repeat ;
+  
+}
+
+/* 主内容区 */
+.main-content {
+  position: relative;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('../images/egypt-banner.jpg') center/cover no-repeat;
+  color: var(--papyrus);
+}
+
+/* 英文文本 */
+.english {
+  font-family: "Cinzel", serif;
+  letter-spacing: 0.1em;
+}
+
+/* 阿拉伯文本 */
+.arabic {
+  font-family: "Noto Naskh Arabic", serif;
+  letter-spacing: 0.05em;
+}
+
+/* 英雄横幅 */
+.hero-banner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url('../images/pyramids.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 遮罩层 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(27, 75, 111, 0.7),
+      rgba(169, 68, 66, 0.7));
+  mix-blend-mode: overlay;
+}
+
+/* 埃及装饰图案 */
+.egyptian-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background: url('../images/egyptian-pattern.png') repeat-x;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+.egyptian-pattern.top {
+  top: 0;
+  transform: rotate(180deg);
+}
+
+.egyptian-pattern.bottom {
+  bottom: 0;
+}
+
+/* 横幅内容 */
+.banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--limestone);
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 滚动容器 */
+.scroll-container {
+  position: relative;
+  width: 800px;
+  min-height: 600px;
+  margin: 0 auto;
+  padding: 60px 80px;
+  background: linear-gradient(135deg,
+      rgba(212, 180, 131, 0.85),
+      rgba(245, 222, 179, 0.85));
+  border: 3px solid var(--gold);
+  border-radius: 20px;
+  box-shadow:
+    0 0 40px rgba(255, 215, 0, 0.3),
+    inset 0 0 30px rgba(139, 69, 19, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+/* 卷轴装饰 */
+.scroll-decoration {
+  position: absolute;
+  width: 70px;
+  height: calc(100% + 80px);
+  top: -40px;
+  background: linear-gradient(to right,
+      rgba(205, 127, 50, 0.9),
+      rgba(169, 68, 66, 0.9));
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.scroll-decoration.left {
+  left: -35px;
+}
+
+.scroll-decoration.right {
+  right: -35px;
+}
+
+.scroll-decoration::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: url('../images/ankh-symbol.png') center/contain no-repeat;
+  opacity: 0.8;
+}
+
+/* 卷轴内容 */
+.scroll-inner {
+  font-size: 1.6rem;
+  line-height: 2;
+  color: var(--hieroglyph);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* 城市标题 */
+.city-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.city-title .arabic {
+  display: block;
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.city-title .english {
+  display: block;
+  font-size: 3.2rem;
+  color: var(--desert-red);
+  text-shadow: 0 0 15px rgba(169, 68, 66, 0.4);
+}
+
+/* 印章标记 */
+.seal-mark {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  background: url('../images/egyptian-seal.png') center/contain no-repeat;
+  opacity: 0.8;
+  animation: sealRotate 20s linear infinite;
+}
+
+/* 动画效果 */
+@keyframes sealRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 景点部分 */
+.landmarks-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px var(--shadow-dark);
+}
+
+.section-title p {
+  font-size: 1.2rem;
+  color: var(--desert-sand);
+}
+
+.landmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.landmark-card {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px var(--shadow-dark);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.landmark-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px var(--shadow-dark);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.landmark-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.landmark-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.5));
+}
+
+.landmark-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.landmark-card:hover .landmark-image img {
+  transform: scale(1.1);
+}
+
+.landmark-content {
+  padding: 25px;
+  position: relative;
+}
+
+.landmark-content h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px var(--shadow-dark);
+}
+
+.arabic-name {
+  display: block;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 1.2rem;
+  color: var(--desert-sand);
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.landmark-content p {
+  color: var(--papyrus);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.landmark-info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--desert-sand);
+  font-size: 0.9rem;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-item i {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .landmarks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .landmarks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .landmark-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .landmark-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
+  .landmark-content {
+    padding: 20px;
+  }
+
+  .landmark-image {
+    height: 180px;
+  }
+}
+
+.typing-container {
+  position: relative;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.typing-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--papyrus);
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  white-space: pre-wrap;
+  letter-spacing: 0.02em;
+}
+
+.typing-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInWord 0.3s ease forwards;
+}
+
+.typing-text span.space {
+  display: inline-block;
+  width: 0.25em;
+}
+
+.typing-text span.punctuation {
+  margin-left: -0.05em;
+  animation: fadeInPunctuation 0.2s ease forwards;
+}
+
+.typing-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: var(--gold);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: cursorBlink 0.7s infinite;
+}
+
+@keyframes cursorBlink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInWord {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInPunctuation {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .typing-text {
+    font-size: 1.2rem;
+  }
+
+  .typing-container {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .typing-text {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+  .typing-container {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tower Bridge - London</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tower-bridge.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <div class="bridge-animation">
+        <div class="tower left"></div>
+        <div class="bridge-span">
+          <div class="road"></div>
+          <div class="bascule left"></div>
+          <div class="bascule right"></div>
+        </div>
+        <div class="tower right"></div>
+      </div>
+      <h1 class="entrance-title">
+        <span class="english">Tower Bridge</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">London's Iconic Gateway</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="#" class="active">
+                Europe
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li class="nested-dropdown">
+                  <a href="uk.html" class="active">
+                    United Kingdom
+                  </a>
+                  <ul class="nested-dropdown-menu">
+                    <li>
+                      <a href="big-ben.html">
+                        <span>Big Ben</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="tower-bridge.html" class="active">
+                        <span>Tower Bridge</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/tower-bridge.jpg" alt="Tower Bridge">
+      <div class="banner-text">
+        <h1>
+          <span class="english">Tower Bridge</span>
+        </h1>
+        <div class="bridge-status">
+          <span class="status-text">Bridge Status: Closed</span>
+          <div class="status-indicator"></div>
+        </div>
+        <p>
+          Tower Bridge, completed in 1894, is a combined bascule and suspension bridge that has become one of London's most iconic landmarks. This masterpiece of Victorian engineering allows tall ships to pass through its lifting central spans while maintaining a vital river crossing. Its distinctive blue and white color scheme, Gothic towers, and high-level walkways with glass floors offer visitors a unique perspective of London, the Thames, and the bridge's fascinating mechanical heart.
+        </p>
+      </div>
+    </div>
+
+    <a href="uk.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 页面入场动画
+      const pageEntrance = document.querySelector('.page-entrance');
+      const contentDelay = document.querySelector('.content-delay');
+      
+      // 入场动画：桥梁开合
+      const leftBascule = document.querySelector('.bascule.left');
+      const rightBascule = document.querySelector('.bascule.right');
+      
+      // 模拟桥梁开合动画
+      setTimeout(() => {
+        leftBascule.style.transform = 'rotate(-45deg)';
+        rightBascule.style.transform = 'rotate(45deg)';
+      }, 1000);
+      
+      setTimeout(() => {
+        leftBascule.style.transform = 'rotate(0deg)';
+        rightBascule.style.transform = 'rotate(0deg)';
+      }, 3000);
+      
+      setTimeout(() => {
+        pageEntrance.style.opacity = '0';
+        pageEntrance.style.visibility = 'hidden';
+        contentDelay.style.opacity = '1';
+      }, 4000);
+
+      // 随机更新桥梁状态
+      function updateBridgeStatus() {
+        const statusText = document.querySelector('.status-text');
+        const statusIndicator = document.querySelector('.status-indicator');
+        const isOpen = Math.random() < 0.3; // 30%概率开启
+
+        statusText.textContent = `Bridge Status: ${isOpen ? 'Open' : 'Closed'}`;
+        statusIndicator.className = `status-indicator ${isOpen ? 'open' : 'closed'}`;
+      }
+
+      // 初始更新状态
+      updateBridgeStatus();
+      
+      // 每30秒随机更新一次状态
+      setInterval(updateBridgeStatus, 30000);
+    });
+  </script>
+</body>
+
+</html> 

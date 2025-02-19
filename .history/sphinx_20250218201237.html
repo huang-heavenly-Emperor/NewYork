@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Sphinx - Ancient Egypt</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sphinx.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+<body>
+    <!-- 开场动画 -->
+    <div class="page-entrance">
+        <div class="entrance-content">
+            <h1 class="entrance-title">
+                <span class="arabic">أبو الهول</span>
+                <span class="english">The Great Sphinx</span>
+            </h1>
+            <div class="entrance-line"></div>
+            <p class="entrance-subtitle">Guardian of Ancient Mysteries</p>
+        </div>
+    </div>
+
+    <!-- 页面主要内容 -->
+    <div class="content-delay">
+        <!-- 导航栏 -->
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="tour.html">
+                        <i class="fas fa-globe-americas"></i>
+                        Tour
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="egypt.html" class="active">
+                                Egypt
+                            </a>
+                        </li>
+                        <li>
+                            <a href="japan.html">
+                                Japan
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="camera.html">
+                        <i class="fas fa-camera"></i>
+                        Camera
+                    </a>
+                </li>
+                <li>
+                    <a href="print.html">
+                        <i class="fas fa-print"></i>
+                        Print
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 主横幅 -->
+        <div class="banner">
+            <img src="images/sphinx-detail.jpg" alt="The Great Sphinx">
+            <div class="banner-text">
+                <h1>
+                    <span class="arabic">أبو الهول</span>
+                    <span class="english">The Great Sphinx</span>
+                </h1>
+                <p>
+                    The Great Sphinx of Giza, an ancient marvel carved from a single limestone ridge, has stood guard over the Giza plateau for over 4,500 years, embodying the wisdom and mystery of ancient Egyptian civilization.
+                </p>
+            </div>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <main class="sphinx-content">
+            <!-- 历史概述部分 -->
+            <section class="history-section">
+                <div class="section-header">
+                    <h2>Ancient Guardian</h2>
+                    <p>A Monument of Mystery and Power</p>
+                </div>
+                <div class="content-grid">
+                    <div class="text-content">
+                        <p class="highlight-text">
+                            Carved from the bedrock of the Giza plateau, the Great Sphinx is one of the most enigmatic monuments of ancient Egypt. With the head of a human and the body of a lion, it embodies the strength and wisdom of the pharaohs.
+                        </p>
+                        <div class="quick-facts">
+                            <div class="fact">
+                                <i class="fas fa-ruler-vertical"></i>
+                                <span>Height: 20 meters</span>
+                            </div>
+                            <div class="fact">
+                                <i class="fas fa-ruler-horizontal"></i>
+                                <span>Length: 73 meters</span>
+                            </div>
+                            <div class="fact">
+                                <i class="fas fa-clock"></i>
+                                <span>Age: ~4,500 years</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/sphinx-side.jpg" alt="Side view of the Sphinx">
+                        <div class="image-caption">
+                            The profile of the Sphinx reveals its majestic proportions
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 特色亮点部分 -->
+            <section class="features-section">
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <i class="fas fa-landmark"></i>
+                        <h3>Architectural Marvel</h3>
+                        <p>Carved from a single limestone ridge, the Sphinx demonstrates the incredible architectural capabilities of ancient Egyptians.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Historical Significance</h3>
+                        <p>Believed to represent Pharaoh Khafre, the Sphinx served as both a guardian of the pyramids and a symbol of royal power.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-moon"></i>
+                        <h3>Mythological Symbol</h3>
+                        <p>The Sphinx combines human intelligence with leonine strength, embodying the perfect union of mind and power.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 360度全景体验 -->
+            <section class="panorama-section">
+                <div class="section-header">
+                    <h2>360° Experience</h2>
+                    <p>Explore the Sphinx from Every Angle</p>
+                </div>
+                <div class="panorama-container">
+                    <div class="panorama-placeholder">
+                        <i class="fas fa-vr-cardboard"></i>
+                        <p>360° Virtual Tour Coming Soon</p>
+                        <button class="panorama-button">
+                            <i class="fas fa-play"></i>
+                            Launch Preview
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 返回按钮 -->
+        <a href="egypt.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面入场动画
+            const pageEntrance = document.querySelector('.page-entrance');
+            const contentDelay = document.querySelector('.content-delay');
+            
+            setTimeout(() => {
+                pageEntrance.style.opacity = '0';
+                pageEntrance.style.visibility = 'hidden';
+                contentDelay.style.opacity = '1';
+            }, 2000);
+
+            // 滚动动画
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            // 观察需要动画的元素
+            document.querySelectorAll('.history-section, .feature-card, .panorama-container').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html> 

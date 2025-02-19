@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vatican City - Italy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/vatican.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <h1 class="entrance-title">
+        <span class="italian">Città del Vaticano</span>
+        <span class="english">Vatican City</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">Heart of the Catholic Church</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="#" class="active">
+                Europe
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li class="nested-dropdown">
+                  <a href="italy.html" class="active">
+                    Italy
+                  </a>
+                  <ul class="nested-dropdown-menu">
+                    <li>
+                      <a href="colosseum.html">
+                        <span>Colosseum</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="vatican.html" class="active">
+                        <span>Vatican City</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/vatican.jpg" alt="Vatican City">
+      <div class="banner-text">
+        <h1>
+          <span class="italian">Città del Vaticano</span>
+          <span class="english">Vatican City</span>
+        </h1>
+        <p>
+          Vatican City, the world's smallest sovereign state and the spiritual center of the Roman Catholic Church, is a treasure trove of art and history. Home to St. Peter's Basilica, the Sistine Chapel, and the Vatican Museums, it houses some of humanity's greatest artistic achievements, including Michelangelo's frescoes and countless masterpieces collected by popes through the centuries. This independent city-state, established in 1929, continues to be a powerful symbol of faith, art, and cultural heritage.
+        </p>
+      </div>
+    </div>
+
+    <a href="italy.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 页面入场动画
+      const pageEntrance = document.querySelector('.page-entrance');
+      const contentDelay = document.querySelector('.content-delay');
+      
+      setTimeout(() => {
+        pageEntrance.style.opacity = '0';
+        pageEntrance.style.visibility = 'hidden';
+        contentDelay.style.opacity = '1';
+      }, 2000);
+    });
+  </script>
+</body>
+
+</html> 

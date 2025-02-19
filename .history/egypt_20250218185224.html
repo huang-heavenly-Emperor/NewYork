@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt - Land of Pharaohs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/egypt.css">
+    <link rel="stylesheet" href="lib/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <!-- 导航栏 -->
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="tour.html" class="active"><i class="fas fa-globe"></i> Tour</a></li>
+                <li><a href="gallery.html"><i class="fas fa-camera"></i> Gallery</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </nav>
+
+        <!-- 英雄横幅 -->
+        <section class="hero-banner">
+            <div class="overlay"></div>
+            <div class="egyptian-pattern top"></div>
+            <div class="egyptian-pattern bottom"></div>
+            
+            <!-- 卷轴容器 -->
+            <div class="scroll-container">
+                <div class="scroll-decoration left"></div>
+                <div class="scroll-decoration right"></div>
+                <div class="scroll-inner">
+                    <div class="city-title">
+                        <span class="arabic">مصر</span>
+                        <span class="english">Egypt</span>
+                    </div>
+                    <div class="typing-container">
+                        <div class="typing-text">
+                            Egypt, located in North Africa, is renowned for its ancient civilization and iconic landmarks. 
+                            As one of the world's oldest cultures, it has a rich history of pharaohs, hieroglyphics, and monumental architecture. 
+                            Modern Egypt blends its historic heritage with vibrant cities, offering diverse landscapes and cultural experiences.
+                        </div>
+                        <span class="typing-cursor"></span>
+                    </div>
+                </div>
+                <div class="seal-mark"></div>
+            </div>
+        </section>
+
+        <!-- 景点部分 -->
+        <section class="landmarks-section">
+            <div class="section-title">
+                <h2>Ancient Wonders</h2>
+                <p>Discover the Treasures of Egypt</p>
+            </div>
+            
+            <div class="landmarks-grid">
+                <!-- 金字塔 -->
+                <div class="landmark-card">
+                    <div class="landmark-image">
+                        <img src="images/pyramids-detail.jpg" alt="The Great Pyramids">
+                    </div>
+                    <div class="landmark-content">
+                        <h3>The Great Pyramids</h3>
+                        <span class="arabic-name">الأهرامات</span>
+                        <p>The iconic Pyramids of Giza stand as the last surviving wonder of the ancient world, showcasing the incredible architectural achievements of ancient Egyptian civilization.</p>
+                        <div class="landmark-info">
+                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> Giza</span>
+                            <span class="info-item"><i class="fas fa-clock"></i> 2560 BC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 尼罗河 -->
+                <div class="landmark-card">
+                    <div class="landmark-image">
+                        <img src="images/nile-river.jpg" alt="The Nile River">
+                    </div>
+                    <div class="landmark-content">
+                        <h3>The Nile River</h3>
+                        <span class="arabic-name">نهر النيل</span>
+                        <p>The lifeline of Egypt, the Nile River has nurtured civilization for millennia, offering fertile lands and serving as a crucial transportation route.</p>
+                        <div class="landmark-info">
+                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> Cairo to Aswan</span>
+                            <span class="info-item"><i class="fas fa-route"></i> 6,650 km</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 开罗市场 -->
+                <div class="landmark-card">
+                    <div class="landmark-image">
+                        <img src="images/khan-el-khalili.jpg" alt="Khan el-Khalili">
+                    </div>
+                    <div class="landmark-content">
+                        <h3>Khan el-Khalili</h3>
+                        <span class="arabic-name">خان الخليلي</span>
+                        <p>A major souk in Cairo's historic center, featuring traditional Egyptian crafts, spices, and Islamic architecture, embodying the vibrant culture of modern Egypt.</p>
+                        <div class="landmark-info">
+                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> Cairo</span>
+                            <span class="info-item"><i class="fas fa-store"></i> Since 1382</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 原有的动画效果
+            const scrollContainer = document.querySelector('.scroll-container');
+            scrollContainer.style.opacity = '0';
+            scrollContainer.style.transform = 'translateY(-50px)';
+            
+            setTimeout(() => {
+                scrollContainer.style.transition = 'all 1.5s ease-out';
+                scrollContainer.style.opacity = '1';
+                scrollContainer.style.transform = 'translateY(0)';
+            }, 500);
+
+            // 添加流式文字效果
+            const typingText = document.querySelector('.typing-text');
+            const text = typingText.textContent.trim();
+            // 保留标点符号的分割
+            const words = text.match(/[\w\u0600-\u06FF]+[.,!?]?|\s+|[.,!?]/g);
+            typingText.textContent = '';
+            
+            let wordIndex = 0;
+            const typingDelay = 100; // 每个单词的延迟时间
+
+            function typeWord() {
+                if (wordIndex < words.length) {
+                    const word = words[wordIndex];
+                    const span = document.createElement('span');
+                    
+                    // 处理空格
+                    if (/^\s+$/.test(word)) {
+                        span.innerHTML = '&nbsp;';
+                        span.style.marginRight = '0.3em';
+                        span.className = 'space';
+                    } else {
+                        // 处理标点符号
+                        if (/^[.,!?]$/.test(word)) {
+                            span.textContent = word;
+                            span.className = 'punctuation';
+                        } else {
+                            span.textContent = word;
+                        }
+                    }
+                    
+                    span.style.animationDelay = `${wordIndex * 0.1}s`;
+                    typingText.appendChild(span);
+                    
+                    wordIndex++;
+                    setTimeout(typeWord, typingDelay);
+                } else {
+                    typingText.classList.add('visible');
+                    // 添加打字光标
+                    const cursor = document.createElement('span');
+                    cursor.className = 'typing-cursor';
+                    typingText.appendChild(cursor);
+                }
+            }
+
+            // 开始打字效果
+            setTimeout(() => {
+                typingText.style.opacity = '1';
+                typeWord();
+            }, 1500);
+
+            // 景点卡片动画
+            const cards = document.querySelectorAll('.landmark-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.8s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

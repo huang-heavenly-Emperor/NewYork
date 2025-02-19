@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eiffel Tower - France</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/eiffel.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <h1 class="entrance-title">
+        <span class="french">Tour Eiffel</span>
+        <span class="english">Eiffel Tower</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">Symbol of Paris</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="france.html" class="active">
+                Europe
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li>
+                  <a href="eiffel.html" class="active">
+                    <span>Eiffel Tower</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="louvre.html">
+                    <span>Louvre Museum</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/eiffel2.jpg" alt="Eiffel Tower">
+      <div class="banner-text">
+        <h1>
+          <span class="french">La Tour Eiffel</span>
+          <span class="english">Eiffel Tower</span>
+        </h1>
+        <p>
+          The Eiffel Tower, an iconic symbol of Paris and France, stands proudly at 324 meters tall. Built in 1889, this iron lattice masterpiece welcomes millions of visitors each year to experience breathtaking views of the City of Light.
+        </p>
+      </div>
+    </div>
+
+    <a href="france.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 页面入场动画
+      const pageEntrance = document.querySelector('.page-entrance');
+      const contentDelay = document.querySelector('.content-delay');
+      
+      setTimeout(() => {
+        pageEntrance.style.opacity = '0';
+        pageEntrance.style.visibility = 'hidden';
+        contentDelay.style.opacity = '1';
+      }, 2000);
+    });
+  </script>
+</body>
+
+</html> 

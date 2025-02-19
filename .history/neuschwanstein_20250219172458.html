@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuschwanstein Castle - Bavaria</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/neuschwanstein.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <div class="castle-animation">
+        <div class="mountain"></div>
+        <div class="castle">
+          <div class="main-tower">
+            <div class="spire"></div>
+            <div class="tower-body"></div>
+          </div>
+          <div class="side-tower left">
+            <div class="spire"></div>
+            <div class="tower-body"></div>
+          </div>
+          <div class="side-tower right">
+            <div class="spire"></div>
+            <div class="tower-body"></div>
+          </div>
+          <div class="castle-base"></div>
+        </div>
+      </div>
+      <h1 class="entrance-title">
+        <span class="german">Schloss Neuschwanstein</span>
+        <span class="english">Neuschwanstein Castle</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">The Fairy Tale Castle</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="#" class="active">
+                Europe
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li class="nested-dropdown">
+                  <a href="germany.html" class="active">
+                    Germany
+                  </a>
+                  <ul class="nested-dropdown-menu">
+                    <li>
+                      <a href="brandenburg.html">
+                        <span>Brandenburg Gate</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="neuschwanstein.html" class="active">
+                        <span>Neuschwanstein</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/neuschwanstein.jpg" alt="Neuschwanstein Castle">
+      <div class="banner-text">
+        <h1>
+          <span class="german">Schloss Neuschwanstein</span>
+          <span class="english">Neuschwanstein Castle</span>
+        </h1>
+        <p>
+          Perched atop a rugged hill in Bavaria, Neuschwanstein Castle is the epitome of Romantic architecture and a testament to King Ludwig II's artistic vision. Built in the 19th century, this fairy-tale castle, with its soaring towers and dramatic setting, inspired Walt Disney's Sleeping Beauty Castle and continues to enchant millions of visitors with its magical blend of fantasy and architectural brilliance.
+        </p>
+      </div>
+    </div>
+
+    <a href="germany.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 页面入场动画
+      const pageEntrance = document.querySelector('.page-entrance');
+      const contentDelay = document.querySelector('.content-delay');
+      
+      // 入场动画：山体和城堡依次出现
+      const mountain = document.querySelector('.mountain');
+      const castleBase = document.querySelector('.castle-base');
+      const towers = document.querySelectorAll('.tower-body');
+      const spires = document.querySelectorAll('.spire');
+      
+      setTimeout(() => {
+        mountain.style.transform = 'translateY(0)';
+      }, 500);
+      
+      setTimeout(() => {
+        castleBase.style.transform = 'translateY(0)';
+      }, 1000);
+      
+      towers.forEach((tower, index) => {
+        setTimeout(() => {
+          tower.style.transform = 'translateY(0)';
+        }, 1500 + index * 300);
+      });
+      
+      spires.forEach((spire, index) => {
+        setTimeout(() => {
+          spire.style.transform = 'translateY(0) scale(1)';
+        }, 2500 + index * 300);
+      });
+      
+      setTimeout(() => {
+        pageEntrance.style.opacity = '0';
+        pageEntrance.style.visibility = 'hidden';
+        contentDelay.style.opacity = '1';
+      }, 4000);
+
+      // 塔楼动画
+      const statusTowers = document.querySelectorAll('.castle-status .tower');
+      function animateTowers() {
+        statusTowers.forEach((tower, index) => {
+          setTimeout(() => {
+            tower.classList.add('glow');
+            setTimeout(() => {
+              tower.classList.remove('glow');
+            }, 1000);
+          }, index * 300);
+        });
+      }
+
+      // 初始动画
+      animateTowers();
+      
+      // 每5秒重复一次动画
+      setInterval(animateTowers, 5000);
+    });
+  </script>
+</body>
+
+</html> 

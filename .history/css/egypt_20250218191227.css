@@ -1,0 +1,454 @@
+/* 埃及传统色彩变量 */
+:root {
+  --desert-sand: #dcc7a1;    /* 沙漠金 */
+  --nile-blue: #1b4b6f;      /* 尼罗蓝 */
+  --pyramid-stone: #baa892;  /* 金字塔石 */
+  --pharaoh-gold: #c5a572;   /* 法老金 */
+  --papyrus: #f4e4bc;        /* 莎草纸 */
+  --hieroglyph: #2c1810;     /* 象形文字 */
+  --oasis-green: #567d46;    /* 绿洲绿 */
+  --desert-night: #1a1a2e;   /* 沙漠夜空 */
+  --scarab-blue: #0f4c81;    /* 圣甲虫蓝 */
+  --red-sea: #b43b3b;        /* 红海红 */
+}
+
+/* 基础样式 */
+body {
+  background-image: url('../images/egypt-banner2.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--hieroglyph);
+  font-family: "Playfair Display", serif;
+  text-decoration: none;
+}
+
+/* 英文字体 */
+.english {
+  font-family: "Cinzel", serif;
+}
+
+/* 阿拉伯字体 */
+.arabic {
+  font-family: "Noto Kufi Arabic", serif;
+  direction: rtl;
+}
+
+/* 主要内容区域 */
+.main-content {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+/* 英雄横幅区域 */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: url('../images/egypt-banner.webp') no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(220, 199, 161, 0.1),
+    rgba(220, 199, 161, 0.05)
+  );
+  z-index: 1;
+}
+
+/* 埃及图案装饰 */
+.egyptian-pattern {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  background-image: url('../images/egyptian-pattern.png');
+  background-size: 100px;
+  opacity: 0.08;
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+.egyptian-pattern.top {
+  top: 0;
+  transform: rotate(180deg);
+}
+
+.egyptian-pattern.bottom {
+  bottom: 0;
+}
+
+/* 横幅内容 */
+.banner-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 卷轴容器 */
+.scroll-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 40px rgba(197, 165, 114, 0.15),
+    0 0 100px rgba(197, 165, 114, 0.1);
+  transform: translateY(0);
+  opacity: 0;
+  animation: scrollReveal 1.5s ease forwards;
+  border: 1px solid rgba(197, 165, 114, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+/* 卷轴装饰 */
+.scroll-decoration {
+  position: absolute;
+  width: 60px;
+  height: calc(100% + 40px);
+  top: -20px;
+  background: linear-gradient(
+    to right,
+    var(--desert-sand) 0%,
+    var(--pharaoh-gold) 50%,
+    var(--desert-sand) 100%
+  );
+  opacity: 0.9;
+  box-shadow: 
+    0 0 20px rgba(44, 24, 16, 0.3),
+    inset 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  transform-origin: center center;
+  animation: scrollDecoration 1s ease forwards;
+}
+
+.scroll-decoration.left {
+  left: -10px;
+  transform: rotate(-2deg);
+  border-right: 3px solid rgba(44, 24, 16, 0.3);
+}
+
+.scroll-decoration.right {
+  right: -10px;
+  transform: rotate(2deg);
+  border-left: 3px solid rgba(44, 24, 16, 0.3);
+}
+
+.scroll-decoration::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.1) 2px,
+    rgba(255, 255, 255, 0.1) 4px
+  );
+  border-radius: 30px;
+  opacity: 0.3;
+}
+
+.scroll-inner {
+  position: relative;
+  padding: 0 3rem;
+}
+
+/* 标题样式 */
+.city-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.city-title .arabic {
+  display: block;
+  font-size: 8rem;
+  background: linear-gradient(135deg, var(--nile-blue) 0%, var(--scarab-blue) 50%, var(--nile-blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.35em;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleReveal 0.8s ease forwards 0.5s;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.1),
+    -1px -1px 0 rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+.city-title .english {
+  display: block;
+  font-size: 3.8rem;
+  background: linear-gradient(
+    135deg,
+    var(--pharaoh-gold) 0%,
+    var(--desert-sand) 50%,
+    var(--pharaoh-gold) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.3em;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleReveal 0.8s ease forwards 1s;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* 印章标记 */
+.seal-mark {
+  width: 150px;
+  height: 150px;
+  margin: 4rem auto;
+  background-image: url('../images/egyptian-seal.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transform: scale(0.8) rotate(-15deg);
+  animation: sealAppear 1s ease forwards 1.5s;
+  filter: contrast(1.2) brightness(0.95);
+}
+
+/* 打字机效果容器 */
+.typing-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: rgba(244, 228, 188, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+/* 打字机文本 */
+.typing-text {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--hieroglyph);
+  white-space: pre-line;
+  overflow: hidden;
+}
+
+.typing-text span {
+  display: inline;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeInWord 0.3s ease forwards;
+}
+
+.typing-text span.space {
+  width: 0.25em;
+  display: inline-block;
+}
+
+.typing-text span.punctuation {
+  margin-left: -0.05em;
+  animation: fadeInPunctuation 0.2s ease forwards;
+}
+
+/* 打字机光标 */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: var(--hieroglyph);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: cursorBlink 0.8s infinite;
+}
+
+/* 动画关键帧 */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeInWord {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInPunctuation {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scrollReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sealAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-15deg);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 1400px) {
+  .scroll-container {
+    padding: 4rem 3rem;
+  }
+  
+  .city-title .arabic {
+    font-size: 7rem;
+  }
+  
+  .city-title .english {
+    font-size: 3.4rem;
+  }
+  
+  .typing-container {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .scroll-container {
+    padding: 3.5rem 2.5rem;
+  }
+  
+  .city-title .arabic {
+    font-size: 6rem;
+  }
+  
+  .city-title .english {
+    font-size: 3rem;
+  }
+  
+  .typing-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-container {
+    padding: 3rem 2rem;
+  }
+  
+  .scroll-decoration {
+    width: 40px;
+  }
+  
+  .scroll-inner {
+    padding: 0 2rem;
+  }
+  
+  .city-title .arabic {
+    font-size: 5rem;
+  }
+  
+  .city-title .english {
+    font-size: 2.6rem;
+  }
+  
+  .seal-mark {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .typing-container {
+    padding: 0.8rem;
+  }
+  
+  .typing-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-container {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .scroll-decoration {
+    width: 30px;
+  }
+  
+  .scroll-inner {
+    padding: 0 1.5rem;
+  }
+  
+  .city-title .arabic {
+    font-size: 4rem;
+  }
+  
+  .city-title .english {
+    font-size: 2.2rem;
+  }
+  
+  .seal-mark {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .typing-text {
+    font-size: 1.1rem;
+  }
+} 

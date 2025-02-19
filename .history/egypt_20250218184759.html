@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt - Land of Pharaohs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/egypt.css">
+    <link rel="stylesheet" href="lib/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <!-- 导航栏 -->
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="tour.html" class="active"><i class="fas fa-globe"></i> Tour</a></li>
+                <li><a href="gallery.html"><i class="fas fa-camera"></i> Gallery</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </nav>
+
+        <!-- 英雄横幅 -->
+        <section class="hero-banner">
+            <div class="overlay"></div>
+            <div class="egyptian-pattern top"></div>
+            <div class="egyptian-pattern bottom"></div>
+            
+            <!-- 卷轴容器 -->
+            <div class="scroll-container">
+                <div class="scroll-decoration left"></div>
+                <div class="scroll-decoration right"></div>
+                <div class="scroll-inner">
+                    <div class="city-title">
+                        <span class="arabic">مصر</span>
+                        <span class="english">Egypt</span>
+                    </div>
+                    <p class="description">
+                        Welcome to the land of Pharaohs, where ancient mysteries meet timeless wonders. 
+                        Explore the magnificent pyramids, cruise along the mighty Nile, and discover 
+                        the secrets of a civilization that shaped human history.
+                    </p>
+                </div>
+                <div class="seal-mark"></div>
+            </div>
+        </section>
+
+        <!-- 景点部分 -->
+        <section class="landmarks-section">
+            <div class="section-title">
+                <h2>Ancient Wonders</h2>
+                <p>Discover the Treasures of Egypt</p>
+            </div>
+            
+            <div class="landmarks-grid">
+                <!-- 金字塔 -->
+                <div class="landmark-card">
+                    <div class="landmark-image">
+                        <img src="images/pyramids-detail.jpg" alt="The Great Pyramids">
+                    </div>
+                    <div class="landmark-content">
+                        <h3>The Great Pyramids</h3>
+                        <span class="arabic-name">الأهرامات</span>
+                        <p>The only surviving wonder of the ancient world, these magnificent structures have stood for over 4,500 years.</p>
+                        <div class="landmark-info">
+                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> Giza</span>
+                            <span class="info-item"><i class="fas fa-clock"></i> 2560 BC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 狮身人面像 -->
+                <div class="landmark-card">
+                    <div class="landmark-image">
+                        <img src="images/sphinx.jpg" alt="The Great Sphinx">
+                    </div>
+                    <div class="landmark-content">
+                        <h3>The Great Sphinx</h3>
+                        <span class="arabic-name">أبو الهول</span>
+                        <p>A mythical creature with the head of a human and the body of a lion, standing guard over the pyramids for millennia.</p>
+                        <div class="landmark-info">
+                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> Giza</span>
+                            <span class="info-item"><i class="fas fa-clock"></i> 2500 BC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卢克索神庙 -->
+                <div class="landmark-card">
+                    <div class="landmark-image">
+                        <img src="images/luxor-temple.jpg" alt="Luxor Temple">
+                    </div>
+                    <div class="landmark-content">
+                        <h3>Luxor Temple</h3>
+                        <span class="arabic-name">معبد الأقصر</span>
+                        <p>An ancient sanctuary dedicated to the Theban Triad, showcasing some of the finest Egyptian architecture.</p>
+                        <div class="landmark-info">
+                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> Luxor</span>
+                            <span class="info-item"><i class="fas fa-clock"></i> 1400 BC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 历史时间线 -->
+        <section class="timeline-section">
+            <div class="section-title">
+                <h2>Journey Through Time</h2>
+                <p>The Story of Ancient Egypt</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">3100 BC</div>
+                        <h3 class="timeline-title">Unification of Egypt</h3>
+                        <p class="timeline-text">King Menes unifies Upper and Lower Egypt, establishing the First Dynasty.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2560 BC</div>
+                        <h3 class="timeline-title">Great Pyramid Construction</h3>
+                        <p class="timeline-text">Completion of the Great Pyramid of Giza, built for Pharaoh Khufu.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1332 BC</div>
+                        <h3 class="timeline-title">Tutankhamun's Reign</h3>
+                        <p class="timeline-text">The boy king ascends to the throne, leading to one of Egypt's most famous archaeological discoveries.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 添加滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 卷轴动画
+            const scrollContainer = document.querySelector('.scroll-container');
+            scrollContainer.style.opacity = '0';
+            scrollContainer.style.transform = 'translateY(-50px)';
+            
+            setTimeout(() => {
+                scrollContainer.style.transition = 'all 1.5s ease-out';
+                scrollContainer.style.opacity = '1';
+                scrollContainer.style.transform = 'translateY(0)';
+            }, 500);
+
+            // 景点卡片动画
+            const cards = document.querySelectorAll('.landmark-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.8s ease-out';
+                observer.observe(card);
+            });
+
+            // 时间线动画
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            });
+
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = item.classList.contains('timeline-left') ? 'translateX(-50px)' : 'translateX(50px)';
+                item.style.transition = 'all 0.8s ease-out';
+                timelineObserver.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

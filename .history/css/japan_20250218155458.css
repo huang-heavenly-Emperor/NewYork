@@ -1,0 +1,318 @@
+/* 日本传统色彩
+ * 樱花粉 #FFB7C5
+ * 深蓝 #1B315E
+ * 朱红 #D05A6E
+ * 抹茶绿 #88B04B
+ * 纯白 #FFFFFF
+ */
+
+/* 基础样式 */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+}
+
+/* 主要内容区域 */
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(
+        135deg,
+        rgba(27, 49, 94, 0.85) 0%,    /* 深蓝 */
+        rgba(208, 90, 110, 0.85) 50%,  /* 朱红 */
+        rgba(27, 49, 94, 0.85) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+    padding: 4rem;
+    border-radius: 12px;
+    max-width: 1000px;
+    border: 3px solid rgba(255, 183, 197, 0.6); /* 樱花粉 */
+    box-shadow: 0 0 40px rgba(27, 49, 94, 0.3),
+                0 0 80px rgba(208, 90, 110, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+.banner-text::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(255, 183, 197, 0.5);
+    border-radius: 4px;
+    pointer-events: none;
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* 标题样式 */
+.banner-text h1 {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.banner-text h1 .japanese {
+    display: block;
+    font-size: 7rem;
+    margin-bottom: 1rem;
+    font-family: "Noto Sans JP", sans-serif;
+    background: linear-gradient(
+        120deg,
+        #FFB7C5 0%,     /* 樱花粉 */
+        #FFFFFF 50%,    /* 纯白 */
+        #FFB7C5 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 6s linear infinite;
+    text-shadow: 0 0 20px rgba(255, 183, 197, 0.6);
+    letter-spacing: 16px;
+}
+
+.banner-text h1 .english {
+    display: block;
+    font-size: 3.5rem;
+    font-family: "Playfair Display", serif;
+    background: linear-gradient(
+        120deg,
+        #FFFFFF 0%,
+        #FFB7C5 50%,    /* 樱花粉 */
+        #FFFFFF 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 8s linear infinite;
+    letter-spacing: 8px;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.banner-text p {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 景点部分 */
+.landmark-section {
+    padding: 6rem 4rem;
+    background-color: #FFFFFF;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.section-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    font-size: 3rem;
+    color: #1B315E;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+}
+
+.section-subtitle {
+    font-size: 1.6rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.landmark-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.landmark-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.landmark-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.landmark-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.landmark-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.landmark-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.landmark-card:hover .landmark-image img {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(27, 49, 94, 0.2),
+        rgba(27, 49, 94, 0.6)
+    );
+}
+
+.tag-list {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1B315E;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.landmark-content {
+    padding: 2rem;
+}
+
+.location-tag {
+    display: inline-block;
+    color: #D05A6E;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.landmark-content h2 {
+    color: #1B315E;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+}
+
+.description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* 动画关键帧 */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 183, 197, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 183, 197, 0.5);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .banner-text {
+        width: 90%;
+        padding: 3rem;
+    }
+
+    .banner-text h1 .japanese {
+        font-size: 5rem;
+        letter-spacing: 12px;
+    }
+
+    .banner-text h1 .english {
+        font-size: 2.8rem;
+        letter-spacing: 6px;
+    }
+
+    .banner-text p {
+        font-size: 1.4rem;
+    }
+
+    .landmark-section {
+        padding: 4rem 2rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .landmark-grid {
+        grid-template-columns: 1fr;
+    }
+} 

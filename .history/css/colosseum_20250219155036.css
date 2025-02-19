@@ -1,0 +1,385 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: #000000;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Banner section */
+.banner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7) sepia(0.2);
+    animation: zoomIn 1.5s ease-out forwards;
+    z-index: 1;
+}
+
+.banner-text {
+    position: relative;
+    max-width: 1000px;
+    width: 95%;
+    padding: 3rem 4rem;
+    z-index: 2;
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out 1.5s forwards;
+    background: linear-gradient(
+        135deg,
+        rgba(139, 69, 19, 0.65) 0%,     /* 古铜色 */
+        rgba(184, 115, 51, 0.65) 25%,    /* 赭石色 */
+        rgba(205, 127, 50, 0.65) 50%,    /* 秘鲁色 */
+        rgba(184, 115, 51, 0.65) 75%,
+        rgba(139, 69, 19, 0.65) 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(205, 127, 50, 0.3);
+    box-shadow: 
+        0 0 40px rgba(139, 69, 19, 0.3),
+        0 0 80px rgba(0, 0, 0, 0.2);
+}
+
+.banner h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.banner h1 .italian {
+    display: block;
+    font-size: 5.5rem;
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    background: linear-gradient(
+        120deg,
+        #CD853F 0%,        /* 秘鲁色 */
+        #FFD700 50%,       /* 金色 */
+        #CD853F 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    text-shadow: 
+        0 0 20px rgba(205, 133, 63, 0.6),
+        0 0 40px rgba(255, 215, 0, 0.4);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    opacity: 0;
+    animation: titleReveal 1.2s ease-out forwards 0.8s;
+}
+
+.banner h1 .english {
+    display: block;
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(
+        120deg,
+        #DEB887 0%,      /* 实木色 */
+        #F5DEB3 50%,     /* 小麦色 */
+        #DEB887 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-shadow: 0 0 15px rgba(222, 184, 135, 0.4);
+    opacity: 0;
+    animation: titleReveal 1.2s ease-out forwards 1s;
+}
+
+.banner-text p {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 开场动画 */
+.page-entrance {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.entrance-content {
+    text-align: center;
+    opacity: 0;
+    animation: entranceFadeIn 1s ease forwards 0.5s;
+}
+
+.entrance-title {
+    margin-bottom: 2rem;
+}
+
+.entrance-title .italian {
+    display: block;
+    font-size: 5rem;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(45deg,
+        #CD853F 0%,
+        #FFD700 50%,
+        #CD853F 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(205, 133, 63, 0.6);
+    opacity: 0;
+    animation: titleGlow 2s ease forwards;
+}
+
+.entrance-title .english {
+    display: block;
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(45deg,
+        #DEB887 0%,
+        #F5DEB3 50%,
+        #DEB887 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: titleReveal 1.5s ease forwards 0.5s;
+    text-shadow: 0 0 15px rgba(222, 184, 135, 0.6);
+}
+
+.entrance-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #CD853F, transparent);
+    margin: 2rem auto;
+    animation: lineExpand 1s ease-out forwards 1s;
+}
+
+.entrance-subtitle {
+    font-size: 1.5rem;
+    background: linear-gradient(45deg,
+        #DEB887 0%,
+        #F5DEB3 50%,
+        #DEB887 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: subtitleFade 1s ease forwards 1.5s;
+    text-shadow: 0 0 10px rgba(222, 184, 135, 0.4);
+}
+
+/* 返回按钮 */
+.back-button {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    padding: 15px 30px;
+    font-size: 24px;
+    color: #ffffff;
+    background: linear-gradient(
+        270deg,
+        #CD853F,
+        #FFD700,
+        #CD853F,
+        #FFD700,
+        #CD853F
+    );
+    background-size: 300% 100%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(205, 133, 63, 0.4);
+    animation: gradientMove 4s linear infinite;
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(205, 133, 63, 0.6),
+                0 0 50px rgba(255, 215, 0, 0.4);
+    animation: gradientMove 2s linear infinite;
+}
+
+.back-button i {
+    font-size: 24px;
+}
+
+/* 动画关键帧 */
+@keyframes zoomIn {
+    0% {
+        transform: scale(1.2);
+        filter: brightness(0);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(0.7) sepia(0.2);
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+@keyframes entranceFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 30px rgba(205, 133, 63, 0.8);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 0 0 50px rgba(205, 133, 63, 1);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(205, 133, 63, 0.6);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+    }
+    to {
+        width: 200px;
+    }
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .banner-text {
+        width: 92%;
+        padding: 2.5rem 2rem;
+    }
+
+    .banner h1 .italian {
+        font-size: 4rem;
+    }
+
+    .banner h1 .english {
+        font-size: 2.2rem;
+    }
+
+    .banner-text p {
+        font-size: 1.4rem;
+    }
+
+    .back-button {
+        padding: 12px 25px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-text {
+        width: 90%;
+        padding: 2rem 1.5rem;
+    }
+
+    .banner h1 .italian {
+        font-size: 3rem;
+    }
+
+    .banner h1 .english {
+        font-size: 1.8rem;
+    }
+
+    .banner-text p {
+        font-size: 1.2rem;
+    }
+
+    .back-button {
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+} 

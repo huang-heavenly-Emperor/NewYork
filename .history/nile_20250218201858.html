@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Nile River - Egypt</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nile.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <h1 class="entrance-title">
+        <span class="arabic">نهر النيل</span>
+        <span class="english">The Nile River</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">Lifeblood of Ancient Egypt</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="egypt.html" class="active">
+                Africa
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li>
+                  <a href="pyramids.html">
+                    <span>The Great Pyramids</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="sphinx.html">
+                    <span>The Great Sphinx</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="nile.html" class="active">
+                    <span>The Nile River</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/nile-river.jpg" alt="The Nile River">
+      <div class="banner-text">
+        <h1>
+          <span class="arabic">نهر النيل</span>
+          <span class="english">The Nile River</span>
+        </h1>
+        <p>
+          The Nile River, the world's longest river, has been the lifeline of Egyptian civilization for millennia, bringing fertile soil and sustaining life along its banks, while shaping the culture and history of this ancient land.
+        </p>
+      </div>
+    </div>
+
+    <a href="egypt.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>返回</span>
+    </a>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // 页面入场动画
+        const pageEntrance = document.querySelector('.page-entrance');
+        const contentDelay = document.querySelector('.content-delay');
+        
+        setTimeout(() => {
+          pageEntrance.style.opacity = '0';
+          pageEntrance.style.visibility = 'hidden';
+          contentDelay.style.opacity = '1';
+        }, 2000);
+
+        // 内容区域动画
+        const sections = document.querySelectorAll('.content-section');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </div>
+</body>
+</html> 

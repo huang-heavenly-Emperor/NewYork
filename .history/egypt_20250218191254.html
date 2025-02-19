@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt - Ancient Civilization</title>
+    <link rel="stylesheet" href="css/Egypt.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <div class="hero-banner">
+            <div class="overlay"></div>
+            <div class="egyptian-pattern top"></div>
+            <div class="egyptian-pattern bottom"></div>
+            
+            <div class="banner-content">
+                <div class="scroll-container">
+                    <div class="scroll-decoration left"></div>
+                    <div class="scroll-decoration right"></div>
+                    
+                    <div class="scroll-inner">
+                        <div class="city-title">
+                            <span class="arabic">مصر</span>
+                            <span class="english">Egypt</span>
+                        </div>
+                        
+                        <div class="typing-container">
+                            <div class="typing-text"></div>
+                        </div>
+                        
+                        <div class="seal-mark"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = `Welcome to Egypt, a land where ancient mysteries and modern wonders intertwine. Here, the mighty Nile River has nurtured civilization for millennia, while the eternal pyramids stand as testament to human ingenuity and ambition. From the bustling streets of Cairo to the serene temples of Luxor, every corner of this timeless land tells a story of pharaohs, gods, and the birth of human civilization.
+
+Let us embark on a journey through time, exploring the magnificent monuments, sacred temples, and hidden treasures that have captivated explorers and scholars for generations. Egypt's rich cultural heritage, spanning over 5000 years, continues to inspire and amaze visitors from around the world.
+
+As you discover Egypt's wonders, you'll understand why this extraordinary civilization has left an indelible mark on human history. Welcome to the land of the pharaohs, where every grain of sand holds a story waiting to be told.`;
+
+            const typingText = document.querySelector('.typing-text');
+            let words = text.split(/(\s+|[.,!?]|\b)/g).filter(word => word.length > 0);
+            let currentIndex = 0;
+
+            function typeWord() {
+                if (currentIndex < words.length) {
+                    const word = words[currentIndex];
+                    const span = document.createElement('span');
+                    
+                    if (/^\s+$/.test(word)) {
+                        span.textContent = ' ';
+                        span.className = 'space';
+                    } else if (/^[.,!?]$/.test(word)) {
+                        span.textContent = word;
+                        span.className = 'punctuation';
+                    } else {
+                        span.textContent = word;
+                    }
+                    
+                    typingText.appendChild(span);
+                    currentIndex++;
+                    
+                    setTimeout(typeWord, 80);
+                } else {
+                    const cursor = document.createElement('span');
+                    cursor.className = 'typing-cursor';
+                    typingText.appendChild(cursor);
+                    
+                    setTimeout(() => {
+                        cursor.style.display = 'none';
+                    }, 3000);
+                }
+            }
+
+            setTimeout(typeWord, 1000);
+        });
+    </script>
+</body>
+</html> 

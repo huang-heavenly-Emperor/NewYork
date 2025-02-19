@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Sphinx - Ancient Egypt</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sphinx.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+<body>
+    <!-- 开场动画 -->
+    <div class="page-entrance">
+        <div class="entrance-content">
+            <h1 class="entrance-title">
+                <span class="arabic">أبو الهول</span>
+                <span class="english">The Great Sphinx</span>
+            </h1>
+            <div class="entrance-line"></div>
+            <p class="entrance-subtitle">Guardian of Ancient Mysteries</p>
+        </div>
+    </div>
+
+    <!-- 页面主要内容 -->
+    <div class="content-delay">
+        <!-- 导航栏 -->
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="tour.html">
+                        <i class="fas fa-globe-americas"></i>
+                        Tour
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="egypt.html" class="active">
+                                Egypt
+                            </a>
+                        </li>
+                        <li>
+                            <a href="japan.html">
+                                Japan
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="camera.html">
+                        <i class="fas fa-camera"></i>
+                        Camera
+                    </a>
+                </li>
+                <li>
+                    <a href="print.html">
+                        <i class="fas fa-print"></i>
+                        Print
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 主横幅 -->
+        <div class="banner">
+            <img src="images/sphinx-detail.jpg" alt="The Great Sphinx">
+            <div class="banner-text">
+                <h1>
+                    <span class="arabic">أبو الهول</span>
+                    <span class="english">The Great Sphinx</span>
+                </h1>
+                <p>
+                    The Great Sphinx of Giza, an ancient marvel carved from a single limestone ridge, has stood guard over the Giza plateau for over 4,500 years, embodying the wisdom and mystery of ancient Egyptian civilization.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- 返回按钮 -->
+        <a href="egypt.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面入场动画
+            const pageEntrance = document.querySelector('.page-entrance');
+            const contentDelay = document.querySelector('.content-delay');
+            
+            setTimeout(() => {
+                pageEntrance.style.opacity = '0';
+                pageEntrance.style.visibility = 'hidden';
+                contentDelay.style.opacity = '1';
+            }, 2000);
+
+            // 滚动动画
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            // 观察需要动画的元素
+            document.querySelectorAll('.history-section, .feature-card, .panorama-container').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html> 

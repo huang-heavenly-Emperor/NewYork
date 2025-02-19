@@ -1,0 +1,388 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: #000000;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Banner section */
+.banner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(1.05);
+    animation: zoomIn 1.5s ease-out forwards;
+    z-index: 1;
+}
+
+/* 开场动画 */
+.page-entrance {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.entrance-content {
+    text-align: center;
+    opacity: 0;
+    animation: entranceFadeIn 1s ease forwards 0.5s;
+}
+
+.entrance-title {
+    margin-bottom: 2rem;
+}
+
+.entrance-title .italian {
+    display: block;
+    font-size: 5rem;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(45deg,
+        #FFD700 0%,    /* 金色 */
+        #FFF8DC 50%,   /* 玉米丝色 */
+        #DAA520 100%   /* 金黄色 */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    opacity: 0;
+    animation: titleGlow 2s ease forwards;
+}
+
+.entrance-title .english {
+    display: block;
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(45deg,
+        #FFFFFF 0%,    /* 纯白 */
+        #FFF8DC 50%,   /* 玉米丝色 */
+        #F0F8FF 100%   /* 爱丽丝蓝 */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: titleReveal 1.5s ease forwards 0.5s;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.entrance-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(255, 215, 0, 0.6), transparent);
+    margin: 2rem auto;
+    animation: lineExpand 1s ease-out forwards 1s;
+}
+
+.entrance-subtitle {
+    font-size: 1.5rem;
+    background: linear-gradient(45deg,
+        rgba(255, 248, 220, 0.9) 0%,    /* 玉米丝色 */
+        rgba(255, 255, 255, 0.9) 50%,   /* 纯白 */
+        rgba(255, 248, 220, 0.9) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: subtitleFade 1s ease forwards 1.5s;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Banner text */
+.banner-text {
+    position: relative;
+    max-width: 1000px;
+    width: 90%;
+    padding: 3rem;
+    z-index: 2;
+    background: linear-gradient(
+        135deg,
+        rgba(128, 0, 0, 0.45) 0%,    /* 暗红色 - 更透明 */
+        rgba(139, 0, 0, 0.45) 50%,    /* 深红色 - 更透明 */
+        rgba(128, 0, 0, 0.45) 100%
+    );
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.1),
+        0 0 60px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out 1.5s forwards;
+}
+
+.banner-text h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.banner-text .italian {
+    display: block;
+    font-size: 4.5rem;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg,
+        #FFD700 0%,    /* 金色 */
+        #FFF8DC 50%,   /* 玉米丝色 */
+        #DAA520 100%   /* 金黄色 */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.banner-text .english {
+    display: block;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(45deg,
+        #FFFFFF 0%,    /* 纯白 */
+        #FFF8DC 50%,   /* 玉米丝色 */
+        #FFFFFF 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.banner-text p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-top: 2rem;
+}
+
+/* Back button */
+.back-button {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: rgba(255, 215, 0, 0.9);
+    background: linear-gradient(
+        270deg,
+        rgba(128, 0, 0, 0.6),
+        rgba(139, 0, 0, 0.6),
+        rgba(128, 0, 0, 0.6)
+    );
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 215, 0, 0.2);
+    background: linear-gradient(
+        270deg,
+        rgba(139, 0, 0, 0.7),
+        rgba(165, 42, 42, 0.7),
+        rgba(139, 0, 0, 0.7)
+    );
+    color: rgba(255, 215, 0, 1);
+    border-color: rgba(255, 215, 0, 0.2);
+}
+
+.back-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+    transform: translateX(-3px);
+}
+
+/* Animations */
+@keyframes zoomIn {
+    0% {
+        transform: scale(1.2);
+        filter: brightness(0);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(0.8) saturate(1.1);
+    }
+}
+
+@keyframes entranceFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 0 rgba(255, 215, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.3),
+            0 0 40px rgba(255, 215, 0, 0.2);
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 200px;
+    }
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .entrance-title .italian {
+        font-size: 4rem;
+    }
+    
+    .entrance-title .english {
+        font-size: 2.5rem;
+    }
+    
+    .banner-text {
+        width: 95%;
+        padding: 2rem;
+    }
+    
+    .banner-text .italian {
+        font-size: 3.5rem;
+    }
+    
+    .banner-text .english {
+        font-size: 2rem;
+    }
+    
+    .banner-text p {
+        font-size: 1.2rem;
+    }
+    
+    .back-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .entrance-title .italian {
+        font-size: 3rem;
+    }
+    
+    .entrance-title .english {
+        font-size: 2rem;
+    }
+    
+    .banner-text {
+        width: 92%;
+        padding: 1.5rem;
+    }
+    
+    .banner-text .italian {
+        font-size: 2.8rem;
+    }
+    
+    .banner-text .english {
+        font-size: 1.6rem;
+    }
+    
+    .banner-text p {
+        font-size: 1.1rem;
+    }
+    
+    .back-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        left: 20px;
+        bottom: 20px;
+    }
+} 

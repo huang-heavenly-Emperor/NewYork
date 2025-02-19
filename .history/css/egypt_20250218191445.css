@@ -1,0 +1,226 @@
+:root {
+    /* 埃及主题颜色 */
+    --desert-sand: #E5B995;
+    --nile-blue: #1B4B5A;
+    --pharaoh-gold: #C4A661;
+    --pyramid-stone: #B5A642;
+    --hieroglyph: #2C1810;
+    --papyrus: #F4E6CC;
+    --red-sea: #D4512F;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--papyrus);
+    color: var(--hieroglyph);
+    font-family: 'Playfair Display', serif;
+}
+
+/* 开场动画样式 */
+.page-entrance {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--nile-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+
+.entrance-content {
+    text-align: center;
+    color: var(--pharaoh-gold);
+}
+
+.entrance-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.entrance-title .arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.entrance-line {
+    width: 100px;
+    height: 2px;
+    background-color: var(--pharaoh-gold);
+    margin: 1rem auto;
+}
+
+.entrance-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--desert-sand);
+}
+
+/* 主要内容样式 */
+.content-delay {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.hero-banner {
+    position: relative;
+    height: 100vh;
+    background-image: url('../images/egypt-banner2.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.egyptian-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-image: url('../images/egyptian-pattern.png');
+    background-repeat: repeat-x;
+    opacity: 0.3;
+}
+
+.egyptian-pattern.top {
+    top: 0;
+}
+
+.egyptian-pattern.bottom {
+    bottom: 0;
+    transform: rotate(180deg);
+}
+
+.scroll-container {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    background-color: rgba(244, 230, 204, 0.95);
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-decoration {
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    top: 0;
+    background-image: url('../images/egyptian-seal.png');
+    background-size: contain;
+    background-repeat: repeat-y;
+    opacity: 0.2;
+}
+
+.scroll-decoration.left {
+    left: 0;
+}
+
+.scroll-decoration.right {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+.city-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.city-title .arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 4rem;
+    color: var(--red-sea);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.city-title .english {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: var(--nile-blue);
+}
+
+.seal-mark {
+    width: 100px;
+    height: 100px;
+    background-image: url('../images/egyptian-seal.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 2rem auto;
+    opacity: 0.6;
+}
+
+.typing-container {
+    position: relative;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--hieroglyph);
+    text-align: justify;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: var(--hieroglyph);
+    margin-left: 2px;
+    animation: cursorBlink 1s infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .scroll-container {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .city-title .arabic {
+        font-size: 3rem;
+    }
+
+    .city-title .english {
+        font-size: 2rem;
+    }
+
+    .typing-container {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-container {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .city-title .arabic {
+        font-size: 2.5rem;
+    }
+
+    .city-title .english {
+        font-size: 1.8rem;
+    }
+
+    .scroll-decoration {
+        display: none;
+    }
+} 

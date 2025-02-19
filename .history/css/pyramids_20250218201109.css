@@ -1,0 +1,406 @@
+/* 金字塔页面专用样式 */
+:root {
+    --pyramid-gold: #FFD700;
+    --desert-sand: #EDC9AF;
+    --stone-gray: #8B8589;
+    --night-blue: #191970;
+    --shadow-dark: rgba(0, 0, 0, 0.7);
+}
+
+/* 入场动画 */
+.page-entrance {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--night-blue), #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.entrance-content {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: pyramidEntrance 1.5s ease forwards;
+}
+
+.entrance-title {
+    margin-bottom: 2rem;
+}
+
+.entrance-title .arabic {
+    display: block;
+    font-size: 5rem;
+    color: var(--pyramid-gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    opacity: 0;
+    animation: titleGlow 2s ease forwards;
+}
+
+.entrance-title .english {
+    display: block;
+    font-size: 3rem;
+    color: var(--desert-sand);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: titleReveal 1.5s ease forwards 0.5s;
+}
+
+.entrance-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--pyramid-gold), transparent);
+    margin: 2rem auto;
+    animation: lineExpand 1s ease-out forwards 1s;
+}
+
+.entrance-subtitle {
+    font-size: 1.5rem;
+    color: var(--stone-gray);
+    opacity: 0;
+    animation: subtitleFade 1s ease forwards 1.5s;
+}
+
+/* 主横幅 */
+.banner {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    animation: bannerZoom 20s ease-out forwards;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    width: 80%;
+    max-width: 1200px;
+    opacity: 0;
+    animation: textReveal 1.5s ease forwards 2s;
+}
+
+.banner-text h1 {
+    margin-bottom: 2rem;
+}
+
+.banner-text .arabic {
+    display: block;
+    font-size: 4.5rem;
+    color: var(--pyramid-gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.banner-text .english {
+    display: block;
+    font-size: 3.5rem;
+    color: var(--desert-sand);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.banner-text p {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.6) 50%,
+        rgba(0, 0, 0, 0.8));
+    z-index: 1;
+}
+
+/* 返回按钮 */
+.back-button {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(25, 25, 25, 0.8) 25%,
+        rgba(var(--pyramid-gold), 0.2) 50%,
+        rgba(25, 25, 25, 0.8) 75%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    background-size: 300% 300%;
+    animation: gradientMove 8s ease infinite;
+    color: var(--pyramid-gold);
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        135deg,
+        var(--pyramid-gold) 0%,
+        rgba(255, 215, 0, 0.5) 50%,
+        var(--pyramid-gold) 100%
+    );
+    border-radius: 32px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+.back-button:hover {
+    background-size: 150% 150%;
+    transform: translateX(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(255, 215, 0, 0.2);
+}
+
+.back-button:hover::before {
+    opacity: 1;
+}
+
+.back-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: var(--pyramid-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.back-button:hover i {
+    transform: translateX(-3px);
+}
+
+.back-button span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    background: linear-gradient(
+        to right,
+        var(--pyramid-gold),
+        #FDB931
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* 动画关键帧 */
+@keyframes pyramidEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 0 rgba(255, 215, 0, 0);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 200px;
+    }
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bannerZoom {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        filter: blur(3px);
+        opacity: 0.1;
+    }
+    50% {
+        filter: blur(2px);
+        opacity: 0.2;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .banner-text .arabic {
+        font-size: 4rem;
+    }
+    .banner-text .english {
+        font-size: 3rem;
+    }
+    .banner-text p {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-text .arabic {
+        font-size: 3rem;
+    }
+    .banner-text .english {
+        font-size: 2.2rem;
+    }
+    .banner-text p {
+        font-size: 1.4rem;
+    }
+    .back-button {
+        bottom: 30px;
+        left: 30px;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-text .arabic {
+        font-size: 2.5rem;
+    }
+    .banner-text .english {
+        font-size: 1.8rem;
+    }
+    .banner-text p {
+        font-size: 1.2rem;
+    }
+    .back-button {
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 20px;
+    }
+    
+    .back-button span {
+        font-size: 1rem;
+    }
+    
+    .back-button i {
+        font-size: 1.1rem;
+    }
+}
+
+/* 动画降级 */
+@media (prefers-reduced-motion: reduce) {
+    .entrance-content,
+    .entrance-title .arabic,
+    .entrance-title .english,
+    .entrance-line,
+    .entrance-subtitle,
+    .banner img,
+    .banner-text,
+    .back-button {
+        animation: none;
+        transition: none;
+    }
+    
+    .banner img {
+        transform: none;
+    }
+} 

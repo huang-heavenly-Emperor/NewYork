@@ -1,0 +1,377 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: #000000;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Banner section */
+.banner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7) sepia(0.2);
+    animation: zoomIn 1.5s ease-out forwards;
+    z-index: 1;
+}
+
+/* 开场动画 */
+.page-entrance {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.entrance-content {
+    text-align: center;
+    opacity: 0;
+    animation: entranceFadeIn 1s ease forwards 0.5s;
+}
+
+.entrance-title {
+    margin-bottom: 2rem;
+}
+
+.entrance-title .italian {
+    display: block;
+    font-size: 5rem;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(45deg,
+        #CD853F 0%,    /* 古铜色 */
+        #DEB887 50%,   /* 实木色 */
+        #CD853F 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(205, 133, 63, 0.6);
+    opacity: 0;
+    animation: titleGlow 2s ease forwards;
+}
+
+.entrance-title .english {
+    display: block;
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(45deg,
+        #F5DEB3 0%,    /* 小麦色 */
+        #FFDEAD 50%,   /* 纳瓦霍白 */
+        #F5DEB3 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: titleReveal 1.5s ease forwards 0.5s;
+    text-shadow: 0 0 15px rgba(245, 222, 179, 0.6);
+}
+
+.entrance-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #CD853F, transparent);
+    margin: 2rem auto;
+    animation: lineExpand 1s ease-out forwards 1s;
+}
+
+.entrance-subtitle {
+    font-size: 1.5rem;
+    background: linear-gradient(45deg,
+        #DEB887 0%,    /* 实木色 */
+        #F5DEB3 50%,   /* 小麦色 */
+        #DEB887 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: subtitleFade 1s ease forwards 1.5s;
+    text-shadow: 0 0 10px rgba(222, 184, 135, 0.4);
+}
+
+/* Banner text */
+.banner-text {
+    position: relative;
+    max-width: 1000px;
+    width: 90%;
+    padding: 3rem;
+    z-index: 2;
+    background: linear-gradient(
+        135deg,
+        rgba(139, 69, 19, 0.75) 0%,    /* 马鞍棕色 */
+        rgba(160, 82, 45, 0.75) 50%,    /* 赭色 */
+        rgba(139, 69, 19, 0.75) 100%
+    );
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(205, 133, 63, 0.3);
+    box-shadow: 
+        0 0 30px rgba(139, 69, 19, 0.3),
+        0 0 60px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out 1.5s forwards;
+}
+
+.banner-text h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.banner-text .italian {
+    display: block;
+    font-size: 4.5rem;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg,
+        #CD853F 0%,    /* 古铜色 */
+        #DEB887 50%,   /* 实木色 */
+        #CD853F 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(205, 133, 63, 0.6);
+}
+
+.banner-text .english {
+    display: block;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    color: #F5DEB3;    /* 小麦色 */
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 15px rgba(245, 222, 179, 0.4);
+}
+
+.banner-text p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-top: 2rem;
+}
+
+/* Back button */
+.back-button {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #F5DEB3;
+    background: linear-gradient(
+        270deg,
+        rgba(139, 69, 19, 0.9),
+        rgba(160, 82, 45, 0.9),
+        rgba(139, 69, 19, 0.9)
+    );
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(205, 133, 63, 0.4);
+    background: linear-gradient(
+        270deg,
+        rgba(160, 82, 45, 0.9),
+        rgba(205, 133, 63, 0.9),
+        rgba(160, 82, 45, 0.9)
+    );
+}
+
+.back-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+    transform: translateX(-3px);
+}
+
+/* Animations */
+@keyframes zoomIn {
+    0% {
+        transform: scale(1.2);
+        filter: brightness(0);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(0.7) sepia(0.2);
+    }
+}
+
+@keyframes entranceFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 0 rgba(205, 133, 63, 0);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 
+            0 0 20px rgba(205, 133, 63, 0.6),
+            0 0 40px rgba(205, 133, 63, 0.4);
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 200px;
+    }
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .entrance-title .italian {
+        font-size: 4rem;
+    }
+    
+    .entrance-title .english {
+        font-size: 2.5rem;
+    }
+    
+    .banner-text {
+        width: 95%;
+        padding: 2rem;
+    }
+    
+    .banner-text .italian {
+        font-size: 3.5rem;
+    }
+    
+    .banner-text .english {
+        font-size: 2rem;
+    }
+    
+    .banner-text p {
+        font-size: 1.2rem;
+    }
+    
+    .back-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .entrance-title .italian {
+        font-size: 3rem;
+    }
+    
+    .entrance-title .english {
+        font-size: 2rem;
+    }
+    
+    .banner-text {
+        width: 92%;
+        padding: 1.5rem;
+    }
+    
+    .banner-text .italian {
+        font-size: 2.8rem;
+    }
+    
+    .banner-text .english {
+        font-size: 1.6rem;
+    }
+    
+    .banner-text p {
+        font-size: 1.1rem;
+    }
+    
+    .back-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        left: 20px;
+        bottom: 20px;
+    }
+} 

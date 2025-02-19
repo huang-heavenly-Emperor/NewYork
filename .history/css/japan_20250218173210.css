@@ -1,0 +1,926 @@
+/* 日本传统色彩变量 */
+:root {
+  --indigo: #223a70;       /* 藏蓝 */
+  --sakura-pink: #ffa7b6;      /* 樱花粉 */
+  --sakura-light: #ffe4e1;     /* 浅樱 */
+  --sakura-deep: #de8a98;      /* 深樱 */
+  --sakura-white: #fff9fc;     /* 樱花白 */
+  --sakura-shadow: #4a4145;    /* 樱影 */
+  --vermilion: #d4333c;    /* 朱红 */
+  --matcha: #69821b;       /* 抹茶绿 */
+  --washi: #f7f6f2;        /* 和纸白 */
+  --ink: #1a1a1a;          /* 墨黑 */
+  --gold: #b8a432;         /* 金箔 */
+  --navy: #1b315e;         /* 瑠璃色 */
+  --plum: #8e354a;         /* 梅子色 */
+}
+
+/* 基础样式 */
+body {
+  /* background-color: var(--washi); */
+  background-image: url('../images/japan-banner2.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--ink);
+  font-family: "Noto Sans JP", sans-serif;
+  text-decoration: none;
+}
+
+/* 英文字体 */
+.english {
+  font-family: "Playfair Display", serif;
+}
+
+/* 日文字体 */
+.japanese {
+  font-family: "Noto Serif JP", serif;
+}
+
+/* 主要内容区域 */
+.main-content {
+  position: relative;
+  min-height: 100vh;
+
+  overflow: hidden;
+  padding-top: 80px; /* 为导航栏预留空间 */
+}
+
+/* 英雄横幅区域 */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px); /* 减去导航栏高度 */
+  /* background: linear-gradient(135deg, 
+    var(--sakura-light) 0%,
+    var(--sakura-white) 50%,
+    var(--sakura-light) 100%
+  ); */
+  background: url('../images/japan-banner.webp') no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 167, 182, 0.1),
+    rgba(255, 167, 182, 0.05)
+  );
+  z-index: 1;
+}
+
+/* 日式图案装饰 */
+.japanese-pattern {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  background-image: url('../images/japanese-pattern.png');
+  background-size: 100px;
+  opacity: 0.08;
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+.japanese-pattern.top {
+  top: 0;
+  transform: rotate(180deg);
+}
+
+.japanese-pattern.bottom {
+  bottom: 0;
+}
+
+/* 横幅内容 */
+.banner-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 卷轴容器 */
+.scroll-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  /* background: rgba(255, 255, 255, 0.25); */
+  border-radius: 16px;
+  box-shadow: 
+    0 0 40px rgba(255, 167, 182, 0.15),
+    0 0 100px rgba(255, 167, 182, 0.1);
+  transform: translateY(0);
+  opacity: 0;
+  animation: scrollReveal 1.5s ease forwards;
+  border: 1px solid rgba(255, 167, 182, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+/* 卷轴装饰 */
+.scroll-decoration {
+  position: absolute;
+  width: 60px;
+  height: calc(100% + 40px);
+  top: -20px;
+  background: linear-gradient(
+    to right,
+    var(--sakura-pink) 0%,
+    var(--sakura-deep) 50%,
+    var(--sakura-pink) 100%
+  );
+  opacity: 0.9;
+  box-shadow: 
+    0 0 20px rgba(74, 65, 69, 0.3),
+    inset 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  transform-origin: center center;
+  animation: scrollDecoration 1s ease forwards;
+}
+
+.scroll-decoration.left {
+  left: -10px;
+  transform: rotate(-2deg);
+  border-right: 3px solid rgba(74, 65, 69, 0.3);
+}
+
+.scroll-decoration.right {
+  right: -10px;
+  transform: rotate(2deg);
+  border-left: 3px solid rgba(74, 65, 69, 0.3);
+}
+
+.scroll-decoration::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.1) 2px,
+    rgba(255, 255, 255, 0.1) 4px
+  );
+  border-radius: 30px;
+  opacity: 0.3;
+}
+
+.scroll-inner {
+  position: relative;
+  padding: 0 3rem;
+}
+
+/* 标题样式 */
+.city-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.city-title .japanese {
+  display: block;
+  font-size: 8rem;
+  background: linear-gradient(135deg, #2e8fff 0%, #2e8fff 50%, #2e8fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.35em;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleReveal 0.8s ease forwards 0.5s;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.1),
+    -1px -1px 0 rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+.city-title .english {
+  display: block;
+  font-size: 3.8rem;
+  background: linear-gradient(
+    135deg,
+    var(--sakura-pink) 0%,
+    var(--sakura-deep) 50%,
+    var(--sakura-pink) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.3em;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleReveal 0.8s ease forwards 1s;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* 印章标记 */
+.seal-mark {
+  width: 150px;
+  height: 150px;
+  margin: 4rem auto;
+  background-image: url('../images/japanese-seal.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transform: scale(0.8) rotate(-15deg);
+  animation: sealAppear 1s ease forwards 1.5s;
+  filter: contrast(1.2) brightness(0.95);
+}
+
+/* 打字容器样式 */
+.typing-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: rgba(34, 58, 112, 0.2); /* 使用藏蓝色作为背景 */
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 8px 32px rgba(31, 38, 135, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 打字文本样式 */
+.typing-text {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #ffffff;
+  text-align: justify;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  opacity: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 文字span样式 */
+.typing-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* 可见文字样式 */
+.typing-text span.visible {
+  opacity: 1;
+  transform: translateY(0);
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 打字光标样式 */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.5em;
+  background-color: #ffffff;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: cursorBlink 0.8s infinite;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* 光标动画 */
+@keyframes cursorBlink {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% { 
+    opacity: 0;
+    box-shadow: none;
+  }
+}
+
+/* 景点部分 */
+.continent-section {
+  padding: 02rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  box-shadow: 0 -50px 50px -20px rgba(255, 167, 182, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 6rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.section-title {
+  font-size: 3.6rem;
+  color: var(--navy);
+  font-family: "Noto Serif JP", "Playfair Display", serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+/* 删除下划线装饰 */
+.section-title::after {
+  display: none;
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  color: var(--plum);
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* 景点卡片网格 */
+.landmark-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 3rem;
+  padding: 0 2rem;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+/* 景点卡片 */
+.landmark-card {
+  background: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+ /* height: 1200px; */  /* 固定卡片高度 */
+ /* height: 1800px; */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.landmark-image {
+  position: relative;
+  width: 100%;
+  height: 400px; /* 固定图片高度 */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.landmark-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.landmark-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.12),
+    0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.landmark-card:hover .landmark-image img {
+  transform: scale(1.08);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.6)
+  );
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.landmark-card:hover .image-overlay {
+  opacity: 0.85;
+}
+
+/* 标签列表 */
+.tag-list {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--navy);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--sakura-white);
+  color: var(--vermilion);
+}
+
+/* 景点内容 */
+.landmark-content {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  /* height: 400px; */ /* 固定内容区域高度 */
+  height: 745px;
+  overflow-y: auto; /* 内容超出时可滚动 */
+  flex-grow: 1;
+}
+
+.content-inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-tag {
+  display: inline-block;
+  color: var(--vermilion);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.landmark-content h2 {
+  font-size: 2.4rem;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  font-family: "Noto Serif JP", serif;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 10px 0;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.quick-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--plum);
+}
+
+.quick-info span {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  color: var(--plum);
+  /* margin-right: 1.5rem; */
+}
+
+.quick-info span:hover {
+  color: var(--vermilion);
+  transform: translateX(3px);
+}
+
+.description {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: var(--navy);
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.highlights {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 1.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 167, 182, 0.2);
+  margin-top: auto;
+}
+
+.highlights h3 {
+  color: var(--vermilion);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.highlights h3 i {
+  color: var(--gold);
+}
+
+.highlights ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.highlights li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: var(--plum);
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  font-size: 1.3rem;
+}
+
+.highlights li:last-child {
+  margin-bottom: 0;
+}
+
+.highlights li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--sakura-deep);
+  font-size: 1.5rem;
+  line-height: 1;
+  top: 0.1rem;
+  transition: all 0.3s ease;
+}
+
+.highlights li:hover {
+  color: var(--vermilion);
+  transform: translateX(5px);
+}
+
+.highlights li:hover::before {
+  color: var(--vermilion);
+}
+
+/* 自定义滚动条样式 */
+.landmark-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.landmark-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.landmark-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 167, 182, 0.3);
+  border-radius: 3px;
+}
+
+.landmark-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 167, 182, 0.5);
+}
+
+/* 动画关键帧 */
+@keyframes scrollReveal {
+  0% {
+    transform: translateY(30px) scale(0.98);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes titleReveal {
+  0% {
+    transform: translateY(30px) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes sealAppear {
+  0% {
+    transform: scale(0.8) rotate(-15deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 1400px) {
+  .scroll-container {
+    max-width: 1000px;
+    padding: 4rem 3rem;
+  }
+
+  .city-title .japanese {
+    font-size: 7rem;
+  }
+  
+  .city-title .english {
+    font-size: 3.5rem;
+  }
+
+  .intro-quote {
+    font-size: 1.4rem;
+  }
+
+  .main-content {
+    padding-top: 70px;
+  }
+  
+  .hero-banner {
+    height: calc(100vh - 70px);
+  }
+  
+  .typing-container {
+    max-width: 700px;
+  }
+
+  .landmark-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .scroll-container {
+    max-width: 900px;
+    padding: 4rem 3rem;
+  }
+
+  .city-title .japanese {
+    font-size: 6rem;
+    letter-spacing: 0.3em;
+  }
+  
+  .city-title .english {
+    font-size: 3rem;
+    letter-spacing: 0.25em;
+  }
+
+  .intro-quote {
+    font-size: 1.3rem;
+    max-width: 800px;
+  }
+
+  .landmark-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-container {
+    padding: 3rem 2rem;
+    margin: 1rem;
+  }
+
+  .scroll-decoration {
+    width: 40px;
+  }
+
+  .scroll-inner {
+    padding: 0 2rem;
+  }
+
+  .city-title {
+    margin-bottom: 3rem;
+  }
+
+  .city-title .japanese {
+    font-size: 4.5rem;
+    letter-spacing: 0.25em;
+  }
+
+  .city-title .english {
+    font-size: 2.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .intro-quote {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-top: 2rem;
+  }
+
+  .seal-mark {
+    width: 120px;
+    height: 120px;
+    margin: 2.5rem auto;
+  }
+
+  .main-content {
+    padding-top: 60px;
+  }
+  
+  .hero-banner {
+    height: calc(100vh - 60px);
+  }
+  
+  .typing-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .continent-section {
+    padding: 6rem 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.6rem;
+  }
+  
+  .landmark-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .landmark-card {
+    height: auto;
+    min-height: 700px;
+  }
+
+  .landmark-image {
+    height: 300px;
+  }
+
+  .landmark-content {
+    height: auto;
+    min-height: 400px;
+  }
+
+  .landmark-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .description {
+    font-size: 1.4rem;
+  }
+
+  .quick-info span {
+    font-size: 1.2rem;
+  }
+
+  .highlights h3 {
+    font-size: 1.6rem;
+  }
+
+  .highlights li {
+    font-size: 1.3rem;
+  }
+
+  .tag {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-container {
+    padding: 2.5rem 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .scroll-decoration {
+    width: 30px;
+  }
+
+  .scroll-inner {
+    padding: 0 1.5rem;
+  }
+
+  .city-title .japanese {
+    font-size: 3.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .city-title .english {
+    font-size: 2rem;
+    letter-spacing: 0.15em;
+  }
+
+  .intro-quote {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-top: 1.5rem;
+  }
+
+  .seal-mark {
+    width: 100px;
+    height: 100px;
+    margin: 2rem auto;
+  }
+
+  .continent-section {
+    padding: 4rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 2.4rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .landmark-content {
+    padding: 2rem;
+  }
+  
+  .landmark-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* 可见性类 */
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 添加卷轴动画 */
+@keyframes scrollDecoration {
+  0% {
+    transform: rotate(0deg) scaleY(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scaleY(1);
+    opacity: 0.9;
+  }
+} 

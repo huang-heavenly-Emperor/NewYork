@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Great Sphinx - Egypt</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sphinx.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <h1 class="entrance-title">
+        <span class="arabic">أبو الهول</span>
+        <span class="english">The Great Sphinx</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">Guardian of Ancient Mysteries</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="egypt.html" class="active">
+                Africa
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li>
+                  <a href="pyramids.html">
+                    <span>The Great Pyramids</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="sphinx.html" class="active">
+                    <span>The Great Sphinx</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="nile.html">
+                    <span>The Nile River</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/sphinx-detail.jpg" alt="The Great Sphinx">
+      <div class="banner-text">
+        <h1>
+          <span class="arabic">أبو الهول</span>
+          <span class="english">The Great Sphinx</span>
+        </h1>
+        <p>
+          The Great Sphinx of Giza, an ancient marvel carved from a single limestone ridge, stands as an eternal guardian of the pyramids, embodying the mysterious wisdom of ancient Egyptian civilization.
+        </p>
+      </div>
+    </div>
+
+    <a href="egypt.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>返回</span>
+    </a>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // 页面入场动画
+        const pageEntrance = document.querySelector('.page-entrance');
+        const contentDelay = document.querySelector('.content-delay');
+        
+        setTimeout(() => {
+          pageEntrance.style.opacity = '0';
+          pageEntrance.style.visibility = 'hidden';
+          contentDelay.style.opacity = '1';
+        }, 2000);
+
+        // 内容区域动画
+        const sections = document.querySelectorAll('.content-section');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </div>
+</body>
+</html> 

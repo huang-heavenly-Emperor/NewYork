@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt - Ancient Civilization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Egypt.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="lib/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@400;600&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 开场动画 -->
+    <div class="page-entrance">
+        <div class="entrance-content">
+            <h1 class="entrance-title">
+                <span class="arabic">مصر</span>
+                <span class="english">Egypt</span>
+            </h1>
+            <div class="entrance-line"></div>
+            <p class="entrance-subtitle">Land of Pharaohs and Pyramids</p>
+        </div>
+    </div>
+
+    <!-- 页面主要内容 -->
+    <div class="content-delay">
+        <div class="hero-banner">
+            <div class="overlay"></div>
+            <div class="egyptian-pattern top"></div>
+            <div class="egyptian-pattern bottom"></div>
+            
+            <div class="scroll-container">
+                <div class="scroll-decoration left"></div>
+                <div class="scroll-decoration right"></div>
+                
+                <div class="scroll-inner">
+                    <div class="city-title">
+                        <span class="arabic">مصر</span>
+                        <span class="english">Egypt</span>
+                    </div>
+
+                    <div class="seal-mark"></div>
+
+                    <div class="typing-container">
+                        <div class="typing-text">
+                            Egypt, located in North Africa, is renowned for its ancient civilization and iconic landmarks like the Pyramids of Giza, the Sphinx, and the Nile River. As one of the world's oldest cultures, it has a rich history of pharaohs, hieroglyphics, and monumental architecture. Modern Egypt blends its historic heritage with vibrant cities like Cairo, known for its bustling markets and Islamic architecture. The country is also a gateway to the Sahara Desert and the Red Sea, offering diverse landscapes and cultural experiences. Egyptian cuisine, featuring dishes like koshari and falafel, reflects its unique cultural blend.
+                        </div>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 打字机效果
+            const text = document.querySelector('.typing-text').textContent.trim();
+            const typingText = document.querySelector('.typing-text');
+            typingText.textContent = '';
+            
+            let charIndex = 0;
+            function typeText() {
+                if (charIndex < text.length) {
+                    typingText.textContent += text[charIndex];
+                    charIndex++;
+                    setTimeout(typeText, 50);
+                } else {
+                    document.querySelector('.typing-cursor').style.display = 'none';
+                }
+            }
+            
+            setTimeout(typeText, 1000);
+
+            // 页面进入动画
+            setTimeout(() => {
+                document.querySelector('.page-entrance').style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.page-entrance').style.display = 'none';
+                    document.querySelector('.content-delay').style.opacity = '1';
+                }, 500);
+            }, 2000);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,150 @@
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background: rgba(139, 0, 0, 0.7);
+    padding: 3rem;
+    border-radius: 8px;
+    max-width: 800px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.banner-text::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.banner-text h1 {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.banner-text h1 .chinese {
+    display: block;
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+    font-family: "STKaiti", "楷体", serif;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                 0 0 20px rgba(255, 0, 0, 0.3);
+    letter-spacing: 12px;
+    animation: glowText 2s ease-in-out infinite;
+}
+
+.banner-text h1 .english {
+    display: block;
+    font-size: 2.5rem;
+    font-family: "Playfair Display", serif;
+    color: #fff;
+    letter-spacing: 6px;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.back-button {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #FFD700;
+    text-decoration: none;
+    background: rgba(139, 0, 0, 0.85);
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(255, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.back-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(139, 0, 0, 0.95);
+    transform: translateX(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 0, 0, 0.2);
+}
+
+.back-button:hover i {
+    transform: translateX(-3px);
+}
+
+@keyframes glowText {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                     0 0 20px rgba(255, 0, 0, 0.3);
+    }
+    50% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                     0 0 30px rgba(255, 0, 0, 0.5),
+                     0 0 40px rgba(255, 215, 0, 0.3);
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-text {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .banner-text h1 .chinese {
+        font-size: 3.5rem;
+        letter-spacing: 8px;
+    }
+
+    .banner-text h1 .english {
+        font-size: 2rem;
+        letter-spacing: 4px;
+    }
+
+    .banner-text p {
+        font-size: 1rem;
+    }
+
+    .back-button {
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 20px;
+    }
+} 

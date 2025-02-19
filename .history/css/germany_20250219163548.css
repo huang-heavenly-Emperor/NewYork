@@ -1,0 +1,412 @@
+/* 基础变量 */
+:root {
+    --german-black: #000000;     /* 德国国旗黑色 */
+    --german-red: #DD0000;       /* 德国国旗红色 */
+    --german-gold: #FFCE00;      /* 德国国旗金色 */
+    --prussian-blue: #004165;    /* 普鲁士蓝 */
+    --bavarian-blue: #0066B3;    /* 巴伐利亚蓝 */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: var(--german-black);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 主要内容区 */
+.main-content {
+    min-height: 100vh;
+    background: var(--german-black);
+    position: relative;
+}
+
+/* 英雄横幅 */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('../images/germany-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 65, 101, 0.6)
+    );
+    z-index: 1;
+}
+
+/* 德国风格装饰图案 */
+.german-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(
+        45deg,
+        var(--german-black) 25%,
+        var(--german-red) 25%,
+        var(--german-red) 50%,
+        var(--german-gold) 50%,
+        var(--german-gold) 75%,
+        var(--german-black) 75%
+    );
+    background-size: 100px 100px;
+    opacity: 0.1;
+    z-index: 2;
+}
+
+.german-pattern.top {
+    top: 0;
+    transform: translateY(-50%);
+}
+
+.german-pattern.bottom {
+    bottom: 0;
+    transform: translateY(50%);
+}
+
+/* 卷轴容器 */
+.scroll-container {
+    position: relative;
+    max-width: 1200px;
+    width: 90%;
+    padding: 3rem;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0, 102, 179, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 206, 0, 0.1);
+}
+
+.scroll-decoration {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    top: 0;
+    background: linear-gradient(
+        to right,
+        var(--german-gold),
+        transparent
+    );
+    opacity: 0.1;
+}
+
+.scroll-decoration.left {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.scroll-decoration.right {
+    right: 0;
+    transform: translateX(50%);
+    background: linear-gradient(
+        to left,
+        var(--german-gold),
+        transparent
+    );
+}
+
+.scroll-inner {
+    position: relative;
+    text-align: center;
+}
+
+/* 标题样式 */
+.city-title {
+    margin-bottom: 2rem;
+}
+
+.city-title .english-title {
+    display: block;
+    font-size: 5rem;
+    font-family: 'Cinzel', serif;
+    color: var(--german-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 206, 0, 0.3);
+    animation: titleReveal 1.5s ease forwards;
+}
+
+.city-title .subtitle {
+    display: block;
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+}
+
+/* 引言文字 */
+.intro-quote {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 2rem auto;
+    max-width: 800px;
+    position: relative;
+    padding: 2rem;
+    border-left: 3px solid var(--german-gold);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0 10px 10px 0;
+}
+
+/* 地标部分 */
+.continent-section {
+    padding: 5rem 2rem;
+    background: var(--german-black);
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--german-gold);
+    font-family: 'Cinzel', serif;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Playfair Display', serif;
+}
+
+/* 地标卡片网格 */
+.landmark-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.landmark-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 206, 0, 0.1);
+}
+
+.landmark-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 102, 179, 0.3);
+    border-color: rgba(255, 206, 0, 0.3);
+}
+
+.landmark-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.landmark-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.landmark-card:hover .landmark-image img {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 0, 0, 0.7)
+    );
+}
+
+.landmark-content {
+    padding: 2rem;
+}
+
+.location-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--prussian-blue);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.landmark-content h2 {
+    font-size: 2rem;
+    color: var(--german-gold);
+    margin-bottom: 1rem;
+    font-family: 'Cinzel', serif;
+}
+
+.quick-info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.quick-info span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 102, 179, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+}
+
+.description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.highlights {
+    background: rgba(0, 102, 179, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.highlights h3 {
+    color: var(--german-gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.highlights ul {
+    list-style: none;
+    padding: 0;
+}
+
+.highlights li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.highlights li::before {
+    content: '•';
+    color: var(--german-gold);
+    position: absolute;
+    left: 0;
+}
+
+/* 动画 */
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .scroll-container {
+        width: 95%;
+        padding: 2rem;
+    }
+
+    .city-title .english-title {
+        font-size: 4rem;
+    }
+
+    .intro-quote {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-container {
+        padding: 1.5rem;
+    }
+
+    .city-title .english-title {
+        font-size: 3rem;
+    }
+
+    .intro-quote {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .landmark-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-container {
+        padding: 1rem;
+    }
+
+    .city-title .english-title {
+        font-size: 2.5rem;
+    }
+
+    .intro-quote {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .landmark-content {
+        padding: 1.5rem;
+    }
+
+    .landmark-content h2 {
+        font-size: 1.8rem;
+    }
+} 

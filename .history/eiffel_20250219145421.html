@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eiffel Tower - Paris</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/eiffel.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <h1 class="entrance-title">
+        <span class="french">Tour Eiffel</span>
+        <span class="english">Eiffel Tower</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">Symbol of Paris</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="#" class="active">
+                Europe
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li class="nested-dropdown">
+                  <a href="france.html" class="active">
+                    France
+                  </a>
+                  <ul class="nested-dropdown-menu">
+                    <li>
+                      <a href="eiffel.html" class="active">
+                        <span>Eiffel Tower</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="louvre.html">
+                        <span>Louvre Museum</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/eiffel.jpg" alt="Eiffel Tower">
+      <div class="banner-text">
+        <h1>
+          <span class="french">Tour Eiffel</span>
+          <span class="english">Eiffel Tower</span>
+        </h1>
+        <p>
+          The Eiffel Tower, an engineering marvel and symbol of Paris, has captivated visitors with its elegant iron lattice design since 1889. Standing at 324 meters, it offers breathtaking views of the City of Light.
+        </p>
+      </div>
+    </div>
+
+    <!-- 详细信息部分 -->
+    <section class="tower-details">
+      <div class="info-grid">
+        <div class="info-card history">
+          <i class="fas fa-history"></i>
+          <h3>History</h3>
+          <p>Built in 1889 for the World's Fair, the Eiffel Tower was designed by Gustave Eiffel and his team of engineers. Initially meant to be temporary, it became a permanent icon of Paris.</p>
+        </div>
+        
+        <div class="info-card architecture">
+          <i class="fas fa-landmark"></i>
+          <h3>Architecture</h3>
+          <p>The tower's unique iron lattice design combines both engineering precision and artistic beauty, using 18,000 iron parts held together by 2.5 million rivets.</p>
+        </div>
+        
+        <div class="info-card statistics">
+          <i class="fas fa-chart-bar"></i>
+          <h3>Statistics</h3>
+          <ul>
+            <li>Height: 324 meters</li>
+            <li>Weight: 10,100 tons</li>
+            <li>Steps to top: 1,665</li>
+            <li>Annual visitors: 7 million+</li>
+          </ul>
+        </div>
+        
+        <div class="info-card experience">
+          <i class="fas fa-star"></i>
+          <h3>Experience</h3>
+          <ul>
+            <li>Panoramic views of Paris</li>
+            <li>Gourmet restaurants</li>
+            <li>Evening light shows</li>
+            <li>Champagne bar at the top</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 时间轴部分 -->
+    <section class="timeline-section">
+      <h2>Tower Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">1887</div>
+          <div class="content">
+            <h3>Construction Begins</h3>
+            <p>Work begins on the foundations of the Eiffel Tower</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="date">1889</div>
+          <div class="content">
+            <h3>Grand Opening</h3>
+            <p>The tower is completed and opens for the World's Fair</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="date">1909</div>
+          <div class="content">
+            <h3>Permanent Status</h3>
+            <p>The tower's utility for radio transmission saves it from demolition</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="date">2000</div>
+          <div class="content">
+            <h3>Millennial Celebration</h3>
+            <p>New sparkling light show installed</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <a href="france.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>Retour</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 页面入场动画
+      const pageEntrance = document.querySelector('.page-entrance');
+      const contentDelay = document.querySelector('.content-delay');
+      
+      setTimeout(() => {
+        pageEntrance.style.opacity = '0';
+        pageEntrance.style.visibility = 'hidden';
+        contentDelay.style.opacity = '1';
+      }, 2000);
+
+      // 滚动动画
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      // 观察信息卡片
+      document.querySelectorAll('.info-card').forEach(card => {
+        observer.observe(card);
+      });
+
+      // 观察时间轴项目
+      document.querySelectorAll('.timeline-item').forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+
+</html> 

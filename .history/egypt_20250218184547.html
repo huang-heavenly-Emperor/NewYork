@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt - Land of Pharaohs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/egypt.css">
+    <link rel="stylesheet" href="lib/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <!-- 导航栏 -->
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="tour.html" class="active"><i class="fas fa-globe"></i> Tour</a></li>
+                <li><a href="gallery.html"><i class="fas fa-camera"></i> Gallery</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </nav>
+
+        <!-- 英雄横幅 -->
+        <section class="hero-banner">
+            <div class="overlay"></div>
+            <div class="egyptian-pattern top"></div>
+            <div class="egyptian-pattern bottom"></div>
+            
+            <!-- 卷轴容器 -->
+            <div class="scroll-container">
+                <div class="scroll-decoration left"></div>
+                <div class="scroll-decoration right"></div>
+                <div class="scroll-inner">
+                    <div class="city-title">
+                        <span class="arabic">مصر</span>
+                        <span class="english">Egypt</span>
+                    </div>
+                    <p class="description">
+                        Welcome to the land of Pharaohs, where ancient mysteries meet timeless wonders. 
+                        Explore the magnificent pyramids, cruise along the mighty Nile, and discover 
+                        the secrets of a civilization that shaped human history.
+                    </p>
+                </div>
+                <div class="seal-mark"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 添加滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollContainer = document.querySelector('.scroll-container');
+            scrollContainer.style.opacity = '0';
+            scrollContainer.style.transform = 'translateY(-50%) scale(0.9)';
+            
+            setTimeout(() => {
+                scrollContainer.style.transition = 'all 1.5s ease-out';
+                scrollContainer.style.opacity = '1';
+                scrollContainer.style.transform = 'translateY(-50%) scale(1)';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

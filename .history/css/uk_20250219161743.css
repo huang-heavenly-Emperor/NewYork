@@ -1,0 +1,369 @@
+/* 基础变量 */
+:root {
+    --british-red: #C8102E;     /* 英国国旗红 */
+    --british-blue: #012169;    /* 英国国旗蓝 */
+    --royal-gold: #FAD5A5;      /* 皇家金色 */
+    --navy-blue: #000080;       /* 海军蓝 */
+    --cream-white: #F5F5F5;     /* 奶油白 */
+}
+a
+/* 主要内容区 */
+.main-content {
+    min-height: 100vh;
+    background: #000;
+    position: relative;
+}
+
+/* 英雄横幅 */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('../images/uk-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+.british-pattern {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+
+    opacity: 0.1;
+    z-index: 2;
+}
+
+.british-pattern.top {
+    top: 0;
+    transform: rotate(180deg);
+}
+
+.british-pattern.bottom {
+    bottom: 0;
+}
+
+/* 卷轴容器 */
+.scroll-container {
+    position: relative;
+    max-width: 1200px;
+    width: 90%;
+    padding: 4rem;
+    margin: 2rem auto;
+    background: rgba(1, 33, 105, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(250, 213, 165, 0.2);
+    z-index: 3;
+}
+
+.scroll-decoration {
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    top: 0;
+    background: linear-gradient(
+        to bottom,
+        var(--british-red),
+        var(--british-blue)
+    );
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.scroll-decoration.left {
+    left: -30px;
+    transform: skew(-10deg);
+}
+
+.scroll-decoration.right {
+    right: -30px;
+    transform: skew(10deg);
+}
+
+.scroll-inner {
+    text-align: center;
+}
+
+/* 标题样式 */
+.city-title {
+    margin-bottom: 3rem;
+}
+
+.city-title .english-title {
+    display: block;
+    font-size: 5rem;
+    font-family: 'Cinzel', serif;
+    color: var(--cream-white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 
+        0 0 20px rgba(1, 33, 105, 0.8),
+        0 0 40px rgba(200, 16, 46, 0.4);
+    background: linear-gradient(
+        45deg,
+        var(--cream-white),
+        var(--royal-gold)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.city-title .subtitle {
+    display: block;
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--royal-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    opacity: 0.9;
+}
+
+.intro-quote {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    color: var(--cream-white);
+    margin: 2rem 0;
+    opacity: 0.9;
+}
+
+/* 地标部分 */
+.continent-section {
+    padding: 6rem 2rem;
+    background: url('../images/uk-bg2.jpg') center/cover fixed;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    color: var(--cream-white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-family: 'Cinzel', serif;
+}
+
+.section-subtitle {
+    font-size: 1.8rem;
+    color: var(--royal-gold);
+    font-family: 'Playfair Display', serif;
+}
+
+/* 地标卡片网格 */
+.landmark-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.landmark-card {
+    background: rgba(1, 33, 105, 0.4);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(250, 213, 165, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.landmark-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(1, 33, 105, 0.3);
+    border-color: rgba(250, 213, 165, 0.3);
+}
+
+.landmark-image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.landmark-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.landmark-card:hover .landmark-image img {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(1, 33, 105, 0.8)
+    );
+    opacity: 0.7;
+}
+
+.landmark-content {
+    padding: 2rem;
+}
+
+.location-tag {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background: var(--british-red);
+    color: var(--cream-white);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.landmark-content h2 {
+    font-size: 2.2rem;
+    color: var(--cream-white);
+    margin-bottom: 1rem;
+    font-family: 'Cinzel', serif;
+}
+
+.quick-info {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.quick-info span {
+    background: rgba(1, 33, 105, 0.6);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: var(--royal-gold);
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--cream-white);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.highlights {
+    background: rgba(1, 33, 105, 0.3);
+    padding: 1.5rem;
+    border-radius: 15px;
+}
+
+.highlights h3 {
+    color: var(--royal-gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.highlights ul {
+    list-style: none;
+    padding: 0;
+}
+
+.highlights li {
+    color: var(--cream-white);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.highlights li::before {
+    content: '•';
+    color: var(--british-red);
+    position: absolute;
+    left: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .city-title .english-title {
+        font-size: 4rem;
+    }
+    
+    .city-title .subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .intro-quote {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-container {
+        padding: 2rem;
+    }
+    
+    .city-title .english-title {
+        font-size: 3rem;
+    }
+    
+    .city-title .subtitle {
+        font-size: 1.4rem;
+        letter-spacing: 0.3em;
+    }
+    
+    .intro-quote {
+        font-size: 1.4rem;
+    }
+    
+    .landmark-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-container {
+        padding: 1.5rem;
+    }
+    
+    .city-title .english-title {
+        font-size: 2.5rem;
+    }
+    
+    .city-title .subtitle {
+        font-size: 1.2rem;
+        letter-spacing: 0.2em;
+    }
+    
+    .intro-quote {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.4rem;
+    }
+} 

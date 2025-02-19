@@ -1,0 +1,534 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: #000000;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 开场动画 */
+.page-entrance {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.entrance-content {
+    text-align: center;
+    opacity: 0;
+    animation: entranceFadeIn 1s ease forwards 0.5s;
+}
+
+/* 门柱动画 */
+.gate-animation {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto 2rem;
+}
+
+.gate-structure {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 基座 */
+.base {
+    width: 380px;
+    height: 20px;
+    background: linear-gradient(to bottom,
+        #E3DAC9,
+        #D3C9B9
+    );
+    border-radius: 4px;
+    margin-top: auto;
+}
+
+/* 柱子组 */
+.columns-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 0;
+    height: 240px;
+}
+
+.column {
+    width: 35px;
+    height: 100%;
+    background: linear-gradient(to right,
+        #E3DAC9,
+        #F5F5DC,
+        #E3DAC9
+    );
+    position: relative;
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: linear-gradient(to bottom,
+        #F5F5DC,
+        #E3DAC9
+    );
+    border-radius: 4px 4px 0 0;
+}
+
+/* 山形墙 */
+.pediment {
+    width: 360px;
+    height: 90px;
+    position: relative;
+    margin-bottom: -1px;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pediment::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+        #E3DAC9,
+        #F5F5DC
+    );
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+
+.pediment-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    background: rgba(227, 218, 201, 0.3);
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+
+/* 四马二轮战车 */
+.quadriga {
+    width: 180px;
+    height: 120px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.chariot {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 60px;
+    background: linear-gradient(45deg,
+        #DAA520,
+        #FFD700,
+        #DAA520
+    );
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+}
+
+.horses {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 70px;
+    background: linear-gradient(45deg,
+        #DAA520,
+        #FFD700,
+        #DAA520
+    );
+    clip-path: polygon(
+        0% 100%,
+        20% 30%,
+        40% 100%,
+        60% 30%,
+        80% 100%,
+        100% 30%,
+        100% 100%
+    );
+    box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+}
+
+/* 动画状态类 */
+.gate-structure.animate .column {
+    transform: translateY(0);
+}
+
+.gate-structure.animate .pediment {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.gate-structure.animate .quadriga {
+    opacity: 1;
+}
+
+.entrance-title {
+    margin-bottom: 2rem;
+}
+
+.entrance-title .german {
+    display: block;
+    font-size: 4rem;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(45deg,
+        #FFCE00 0%,    /* 德国金色 */
+        #DD0000 50%,   /* 德国红色 */
+        #FFCE00 100%   /* 德国金色 */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: titleReveal 1.5s ease forwards 2s;
+    text-shadow: 0 0 20px rgba(255, 206, 0, 0.4);
+}
+
+.entrance-title .english {
+    display: block;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: titleReveal 1.5s ease forwards 2.5s;
+}
+
+.entrance-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #DD0000, transparent);
+    margin: 2rem auto;
+    animation: lineExpand 1s ease-out forwards 2.5s;
+}
+
+.entrance-subtitle {
+    font-size: 1.5rem;
+    color: #FFCE00;
+    opacity: 0;
+    animation: subtitleFade 1s ease forwards 3s;
+}
+
+/* Banner section */
+.banner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7) saturate(1.1);
+    animation: zoomIn 1.5s ease-out forwards;
+    z-index: 1;
+}
+
+.banner-text {
+    position: relative;
+    max-width: 1000px;
+    width: 90%;
+    padding: 3rem;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(221, 0, 0, 0.3)
+    );
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 206, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+}
+
+.banner-text h1 {
+    margin-bottom: 2rem;
+}
+
+.banner-text .german {
+    display: block;
+    font-size: 3.5rem;
+    font-family: 'Cinzel', serif;
+    color: #FFCE00;
+    margin-bottom: 0.5rem;
+}
+
+.banner-text .english {
+    display: block;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+}
+
+/* 和平统一状态显示 */
+.gate-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
+}
+
+.unity-symbol {
+    width: 30px;
+    height: 30px;
+    background: #FFCE00;
+    border-radius: 50%;
+    position: relative;
+}
+
+.unity-symbol::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: #DD0000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.unity-symbol.pulse {
+    animation: symbolPulse 2s ease-in-out;
+}
+
+.banner-text p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Back button */
+.back-button {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #FFCE00;
+    background: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0.8),
+        rgba(221, 0, 0, 0.5)
+    );
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(255, 206, 0, 0.3);
+}
+
+.back-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+    transform: translateX(-3px);
+}
+
+/* Animations */
+@keyframes entranceFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+        letter-spacing: 0.5em;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.2em;
+    }
+}
+
+@keyframes lineExpand {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 200px;
+    }
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(1.2);
+        filter: brightness(0);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(0.7) saturate(1.1);
+    }
+}
+
+@keyframes symbolPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 206, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(255, 206, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 206, 0, 0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .gate-animation {
+        width: 300px;
+        height: 240px;
+    }
+    
+    .entrance-title .german {
+        font-size: 3rem;
+    }
+    
+    .entrance-title .english {
+        font-size: 2rem;
+    }
+    
+    .banner-text {
+        width: 95%;
+        padding: 2rem;
+    }
+    
+    .banner-text .german {
+        font-size: 2.8rem;
+    }
+    
+    .banner-text .english {
+        font-size: 2rem;
+    }
+    
+    .banner-text p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gate-animation {
+        width: 240px;
+        height: 200px;
+    }
+    
+    .entrance-title .german {
+        font-size: 2.5rem;
+    }
+    
+    .entrance-title .english {
+        font-size: 1.8rem;
+    }
+    
+    .banner-text {
+        width: 92%;
+        padding: 1.5rem;
+    }
+    
+    .banner-text .german {
+        font-size: 2.2rem;
+    }
+    
+    .banner-text .english {
+        font-size: 1.6rem;
+    }
+    
+    .banner-text p {
+        font-size: 1.1rem;
+    }
+    
+    .back-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        left: 20px;
+        bottom: 20px;
+    }
+} 

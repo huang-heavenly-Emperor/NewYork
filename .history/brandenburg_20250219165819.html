@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brandenburg Gate - Berlin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/brandenburg.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <div class="gate-animation">
+        <div class="columns-container">
+          <div class="column left"></div>
+          <div class="column center-left"></div>
+          <div class="column center"></div>
+          <div class="column center"></div>
+          <div class="column center-right"></div>
+          <div class="column right"></div>
+        </div>
+        <div class="pediment"></div>
+        <div class="quadriga">
+          <div class="chariot"></div>
+          <div class="horses"></div>
+        </div>
+      </div>
+      <h1 class="entrance-title">
+        <span class="german">Brandenburger Tor</span>
+        <span class="english">Brandenburg Gate</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">Symbol of German Unity</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="#" class="active">
+                Europe
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li class="nested-dropdown">
+                  <a href="germany.html" class="active">
+                    Germany
+                  </a>
+                  <ul class="nested-dropdown-menu">
+                    <li>
+                      <a href="brandenburg.html" class="active">
+                        <span>Brandenburg Gate</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="neuschwanstein.html">
+                        <span>Neuschwanstein</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/brandenburg.jpg" alt="Brandenburg Gate">
+      <div class="banner-text">
+        <h1>
+          <span class="german">Brandenburger Tor</span>
+          <span class="english">Brandenburg Gate</span>
+        </h1>
+        <div class="gate-status">
+          <span class="status-text">Peace & Unity</span>
+          <div class="unity-symbol"></div>
+        </div>
+        <p>
+          The Brandenburg Gate, completed in 1791, stands as Berlin's most iconic landmark. This neoclassical monument has witnessed Germany's pivotal moments, from Napoleon's conquest to the fall of the Berlin Wall. Today, it symbolizes German unity and European peace, its majestic columns and Quadriga sculpture drawing millions of visitors to experience its timeless grandeur.
+        </p>
+      </div>
+    </div>
+
+    <a href="germany.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 页面入场动画
+      const pageEntrance = document.querySelector('.page-entrance');
+      const contentDelay = document.querySelector('.content-delay');
+      
+      // 入场动画：柱子升起效果
+      const columns = document.querySelectorAll('.column');
+      const quadriga = document.querySelector('.quadriga');
+      const pediment = document.querySelector('.pediment');
+      
+      // 依次显示柱子
+      columns.forEach((column, index) => {
+        setTimeout(() => {
+          column.style.transform = 'translateY(0)';
+        }, 500 + index * 200);
+      });
+      
+      // 显示山形墙
+      setTimeout(() => {
+        pediment.style.transform = 'translateY(0)';
+      }, 1500);
+      
+      // 显示四马二轮战车
+      setTimeout(() => {
+        quadriga.style.opacity = '1';
+        quadriga.style.transform = 'translateY(0)';
+      }, 2000);
+      
+      // 完成入场动画
+      setTimeout(() => {
+        pageEntrance.style.opacity = '0';
+        pageEntrance.style.visibility = 'hidden';
+        contentDelay.style.opacity = '1';
+      }, 4000);
+
+      // 和平统一符号动画
+      const unitySymbol = document.querySelector('.unity-symbol');
+      function pulseUnity() {
+        unitySymbol.classList.add('pulse');
+        setTimeout(() => {
+          unitySymbol.classList.remove('pulse');
+        }, 2000);
+      }
+      
+      // 初始动画
+      pulseUnity();
+      // 每3秒重复一次
+      setInterval(pulseUnity, 3000);
+    });
+  </script>
+</body>
+
+</html> 

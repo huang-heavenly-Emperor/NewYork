@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>France - Tour</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/france.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <nav class="main-nav">
+    <ul class="nav-links">
+      <li>
+        <a href="index.html">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+      </li>
+      <li class="dropdown">
+        <a href="tour.html" class="active">
+          <i class="fas fa-globe-americas"></i>
+          Tour
+        </a>
+        <ul class="dropdown-menu">
+          <li class="nested-dropdown">
+            <a href="france.html" class="active">
+              Europe
+            </a>
+            <ul class="nested-dropdown-menu">
+              <li class="nested-dropdown">
+                <a href="france.html" class="active">
+                  France
+                </a>
+                <ul class="nested-dropdown-menu">
+                  <li>
+                    <a href="eiffel.html">
+                      <span>Eiffel Tower</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="louvre.html">
+                      <span>Louvre Museum</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="camera.html">
+          <i class="fas fa-camera"></i>
+          Camera
+        </a>
+      </li>
+      <li>
+        <a href="print.html">
+          <i class="fas fa-print"></i>
+          Print
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 主要内容区 -->
+  <main class="main-content">
+    <!-- 英雄横幅 -->
+    <div class="hero-banner">
+      <div class="overlay"></div>
+      <div class="french-pattern top"></div>
+      <div class="french-pattern bottom"></div>
+
+      <!-- 卷轴容器 -->
+      <div class="scroll-container">
+        <div class="scroll-decoration left"></div>
+        <div class="scroll-decoration right"></div>
+        <div class="scroll-inner">
+          <h1 class="city-title">
+            <span class="french">La France</span>
+            <span class="english">France</span>
+          </h1>
+          <div class="intro-quote">
+            "La vie est belle - Life is beautiful"
+          </div>
+        </div>
+      </div>
+
+      <!-- 打字机效果文本 -->
+      <div class="typing-container">
+        <div class="typing-text">
+          Discover the enchanting beauty of France, where art, culture, and romance intertwine...
+        </div>
+      </div>
+    </div>
+
+    <!-- 地标部分 -->
+    <section class="continent-section">
+      <div class="section-header">
+        <h2 class="section-title">Famous Landmarks</h2>
+        <p class="section-subtitle">Explore the iconic symbols of French culture and history</p>
+      </div>
+
+      <!-- 地标卡片网格 -->
+      <div class="landmark-grid">
+        <!-- 埃菲尔铁塔卡片 -->
+        <a href="eiffel.html" class="landmark-link">
+          <div class="landmark-card">
+            <div class="landmark-image">
+              <img src="images/eiffel.jpg" alt="Eiffel Tower">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="landmark-content">
+              <div class="content-inner">
+                <span class="location-tag">Paris</span>
+                <h2>Eiffel Tower</h2>
+                <div class="quick-info">
+                  <span>324m Height</span>
+                  <span>1889</span>
+                  <span>7M+ Visitors/Year</span>
+                </div>
+                <p class="description">
+                  The iconic symbol of Paris and France, this iron lattice tower is one of the most visited monuments in the world.
+                </p>
+                <div class="highlights">
+                  <h3><i class="fas fa-star"></i> Highlights</h3>
+                  <ul>
+                    <li>Panoramic views of Paris</li>
+                    <li>Evening light shows</li>
+                    <li>Gourmet restaurants</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 卢浮宫卡片 -->
+        <a href="louvre.html" class="landmark-link">
+          <div class="landmark-card">
+            <div class="landmark-image">
+              <img src="images/louvre.jpg" alt="Louvre Museum">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="landmark-content">
+              <div class="content-inner">
+                <span class="location-tag">Paris</span>
+                <h2>Louvre Museum</h2>
+                <div class="quick-info">
+                  <span>72,735m² Area</span>
+                  <span>1793</span>
+                  <span>10M+ Visitors/Year</span>
+                </div>
+                <p class="description">
+                  The world's largest art museum and a historic monument, home to thousands of works of art including the Mona Lisa.
+                </p>
+                <div class="highlights">
+                  <h3><i class="fas fa-star"></i> Highlights</h3>
+                  <ul>
+                    <li>Mona Lisa</li>
+                    <li>Venus de Milo</li>
+                    <li>Glass Pyramid</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html> 

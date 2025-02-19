@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japan Tour</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/japan.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="lib/font-awesome.css">
+</head>
+
+<body>
+  <!-- 开场动画 -->
+  <div class="page-entrance">
+    <div class="entrance-content">
+      <h1 class="entrance-title">
+        <span class="japanese">日本</span>
+        <span class="english">Japan</span>
+      </h1>
+      <div class="entrance-line"></div>
+      <p class="entrance-subtitle">Land of the Rising Sun</p>
+    </div>
+  </div>
+
+  <!-- 页面主要内容 -->
+  <div class="content-delay">
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="tour.html" class="active">
+            <i class="fas fa-globe-americas"></i>
+            Tour
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nested-dropdown">
+              <a href="China.html" class="active">
+                Asia
+              </a>
+              <ul class="nested-dropdown-menu">
+                <li class="nested-dropdown">
+                  <a href="china.html">
+                    China
+                  </a>
+                  <ul class="nested-dropdown-menu">
+                    <li>
+                      <a href="great-wall.html">
+                        <span>Great Wall</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="forbidden-city.html">
+                        <span>Forbidden City</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="yellow-mountain.html">
+                        <span>Yellow Mountain</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="terracotta-army.html">
+                        <span>Terracotta Army</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nested-dropdown">
+                  <a href="japan.html" class="active">
+                    Japan
+                  </a>
+                  <ul class="nested-dropdown-menu">
+                    <li>
+                      <a href="mount-fuji.html">
+                        <span>Mount Fuji</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="kyoto.html">
+                        <span>Kyoto Temples</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="tokyo.html">
+                        <span>Tokyo Tower</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <!-- 其他导航项保持不变 -->
+          </ul>
+        </li>
+        <li>
+          <a href="camera.html">
+            <i class="fas fa-camera"></i>
+            Camera
+          </a>
+        </li>
+        <li>
+          <a href="print.html">
+            <i class="fas fa-print"></i>
+            Print
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="banner">
+      <img src="images/japan-banner.jpg" alt="Japan">
+      <div class="banner-text">
+        <h1>
+          <span class="japanese">日本</span>
+          <span class="english">Japan</span>
+        </h1>
+        <p>
+          Japan, where ancient traditions harmoniously blend with modern innovations, creating a unique cultural tapestry that captivates visitors from around the world.
+        </p>
+      </div>
+    </div>
+
+    <!-- 景点网格 -->
+    <section id="japan" class="landmark-section">
+      <div class="section-header">
+        <h2 class="section-title">Discover Japan's Beauty</h2>
+        <p class="section-subtitle">Experience the perfect harmony of tradition and innovation across Japan's most iconic destinations.</p>
+      </div>
+      
+      <div class="landmark-grid">
+        <!-- 富士山 -->
+        <a href="mount-fuji.html" class="landmark-card">
+          <div class="landmark-image">
+            <img src="images/mount-fuji.jpg" alt="Mount Fuji" loading="lazy">
+            <div class="image-overlay"></div>
+            <div class="tag-list">
+              <span class="tag">Sacred Mountain</span>
+              <span class="tag">Natural Wonder</span>
+              <span class="tag">UNESCO Site</span>
+            </div>
+          </div>
+          <div class="landmark-content">
+            <span class="location-tag">Honshu, Japan</span>
+            <h2>Mount Fuji</h2>
+            <p class="description">
+              Japan's highest mountain and most iconic natural symbol, Mount Fuji's perfectly symmetrical cone has inspired artists and poets for centuries.
+            </p>
+          </div>
+        </a>
+
+        <!-- 京都寺庙 -->
+        <a href="kyoto.html" class="landmark-card">
+          <div class="landmark-image">
+            <img src="images/kyoto.jpg" alt="Kyoto Temples" loading="lazy">
+            <div class="image-overlay"></div>
+            <div class="tag-list">
+              <span class="tag">Cultural Heritage</span>
+              <span class="tag">Temples</span>
+              <span class="tag">Gardens</span>
+            </div>
+          </div>
+          <div class="landmark-content">
+            <span class="location-tag">Kyoto, Japan</span>
+            <h2>Kyoto Temples</h2>
+            <p class="description">
+              Former imperial capital Kyoto showcases Japan's rich cultural heritage through its numerous temples, shrines, and traditional gardens.
+            </p>
+          </div>
+        </a>
+
+        <!-- 东京塔 -->
+        <a href="tokyo.html" class="landmark-card">
+          <div class="landmark-image">
+            <img src="images/tokyo-tower.jpg" alt="Tokyo Tower" loading="lazy">
+            <div class="image-overlay"></div>
+            <div class="tag-list">
+              <span class="tag">Modern Icon</span>
+              <span class="tag">City Views</span>
+              <span class="tag">Night Lights</span>
+            </div>
+          </div>
+          <div class="landmark-content">
+            <span class="location-tag">Tokyo, Japan</span>
+            <h2>Tokyo Tower</h2>
+            <p class="description">
+              A symbol of Japan's post-war rebirth, Tokyo Tower stands as an iconic landmark in the heart of the world's largest metropolis.
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 添加滚动动画
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      // 观察所有需要动画的元素
+      document.querySelectorAll('.landmark-card, .section-header').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html> 

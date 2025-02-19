@@ -1,0 +1,82 @@
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 800px;
+}
+
+.banner-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.back-button {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.back-button i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.back-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateX(-5px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .banner-text {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .banner-text h1 {
+        font-size: 2rem;
+    }
+    
+    .banner-text p {
+        font-size: 1rem;
+    }
+
+    .back-button {
+        bottom: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1rem;
+    }
+} 
