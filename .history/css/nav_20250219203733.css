@@ -1,0 +1,300 @@
+/* Navigation bar */
+.main-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    z-index: 10000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: var(--glow-primary);
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0 4rem;
+    height: 80px;
+}
+
+.nav-links > li {
+    position: relative;
+    margin: 0 1.5rem;
+}
+
+/* Base link styles */
+.nav-links a {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    height: 100%;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Hover effects */
+.nav-links > li > a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--gradient-nav);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+    border-radius: 8px;
+}
+
+.nav-links > li:hover > a::before {
+    height: 85%;
+    top: 8%;
+    opacity: 1;
+}
+
+.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    transform: translateX(-50%);
+    transition: var(--transition);
+    box-shadow: var(--glow-primary);
+}
+
+.nav-links > li:hover > a::after {
+    width: 100%;
+}
+
+/* Icon animations */
+.nav-links i {
+    margin-right: 12px;
+    font-size: 1.4rem;
+    transition: var(--transition);
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(255, 30, 108, 0.5));
+}
+
+.nav-links a:hover i {
+    transform: translateY(-3px) scale(1.2);
+    background: var(--gradient-4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
+}
+
+/* Dropdown menus */
+.dropdown-menu,
+.nested-dropdown-menu,
+.usa-dropdown-menu {
+    position: absolute;
+    background: rgba(28, 28, 58, 0.9);
+    backdrop-filter: blur(20px);
+    min-width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition);
+    border-radius: 16px;
+    padding: 1rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-lg), var(--glow-secondary);
+}
+
+.dropdown-menu {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    margin-top: 0.5rem;
+}
+
+.nested-dropdown-menu {
+    top: 0;
+    left: 100%;
+    transform: translateX(20px);
+    margin-top: -1rem;
+}
+
+.usa-dropdown-menu {
+    top: 0;
+    left: calc(100% + 0.5rem);
+    transform: translateX(20px);
+}
+
+/* Dropdown display animations */
+.dropdown:hover > .dropdown-menu,
+.dropdown-menu > li:hover > .nested-dropdown-menu,
+.nested-dropdown:hover > .nested-dropdown-menu,
+.usa-dropdown:hover > .usa-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.dropdown:hover > .dropdown-menu {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Hover area for nested dropdowns */
+.nested-dropdown,
+.usa-dropdown {
+    position: relative;
+    padding-right: 1.5rem;
+}
+
+.nested-dropdown > a::after,
+.usa-dropdown > a::after {
+    content: '▸';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    transition: var(--transition);
+}
+
+.nested-dropdown:hover > a::after,
+.usa-dropdown:hover > a::after {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* Dropdown menu item styles */
+.dropdown-menu a,
+.nested-dropdown-menu a,
+.usa-dropdown-menu a {
+    padding: 1.2rem 2rem;
+    color: var(--text-dim);
+    font-size: 22px;
+    border-left: 3px solid transparent;
+    background: linear-gradient(90deg, transparent, transparent);
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover,
+.nested-dropdown-menu a:hover,
+.usa-dropdown-menu a:hover {
+    color: var(--text-light);
+    background: var(--gradient-nav);
+    border-left: 3px solid var(--primary);
+    transform: translateX(5px);
+    box-shadow: var(--glow-primary);
+}
+
+/* Dropdown indicators */
+.dropdown > a::after {
+    content: '▾';
+    margin-left: 10px;
+    font-size: 1.4em;
+    transition: var(--transition);
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(255, 30, 108, 0.5));
+}
+
+.nested-dropdown > a::after {
+    content: '▸';
+}
+
+.dropdown:hover > a::after {
+    transform: rotate(180deg);
+    background: var(--gradient-4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
+}
+
+.nested-dropdown:hover > a::after {
+    transform: rotate(90deg);
+}
+
+/* Active state */
+.nav-links a.active {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    filter: drop-shadow(0 0 8px rgba(255, 30, 108, 0.5));
+}
+
+.nav-links a.active::before {
+    opacity: 0.2;
+    height: 100%;
+    top: 0;
+}
+
+/* Scroll effects */
+.main-nav.scrolled {
+    background: var(--nav-bg);
+    box-shadow: var(--shadow-md), var(--glow-primary);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .nav-links {
+        padding: 0 2rem;
+    }
+
+    .nav-links a {
+        font-size: 22px;
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-links {
+        padding: 0 1rem;
+    }
+
+    .nav-links a {
+        font-size: 20px;
+        padding: 0 1rem;
+    }
+
+    .nav-links i {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        height: 60px;
+    }
+
+    .nav-links a {
+        font-size: 18px;
+    }
+
+    .dropdown-menu,
+    .nested-dropdown-menu,
+    .usa-dropdown-menu {
+        min-width: 240px;
+    }
+
+    .dropdown-menu a,
+    .nested-dropdown-menu a,
+    .usa-dropdown-menu a {
+        font-size: 18px;
+        padding: 1rem 1.5rem;
+    }
+} 

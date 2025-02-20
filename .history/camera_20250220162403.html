@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Gallery - Camera View</title>
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="lib/font-awesome.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/text.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .gallery-container {
+            padding: 20px;
+            column-count: 4;
+            column-gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 20px;
+            color: white;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .title {
+            font-size: 1.2em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .gallery-item .description {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .camera-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .camera-controls:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-container {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .gallery-container {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery-container {
+                column-count: 1;
+            }
+        }
+
+        .filter-controls {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main navigation -->
+    <nav class="main-nav">
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="tour.html"><i class="fas fa-globe-americas"></i> Tour</a></li>
+            <li><a href="camera.html" class="active"><i class="fas fa-camera"></i> Camera</a></li>
+        </ul>
+    </nav>
+
+    <div class="filter-controls">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="asia">Asia</button>
+        <button class="filter-btn" data-filter="europe">Europe</button>
+        <button class="filter-btn" data-filter="america">America</button>
+        <button class="filter-btn" data-filter="africa">Africa</button>
+    </div>
+
+    <div class="gallery-container">
+        <!-- Asia -->
+        <div class="gallery-item" data-category="asia">
+            <a href="great-wall.html">
+                <img src="images/great-wall.jpg" alt="Great Wall of China">
+                <div class="overlay">
+                    <h3 class="title">Great Wall of China</h3>
+                    <p class="description">One of the most impressive architectural feats in human history</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="gallery-item" data-category="asia">
+            <a href="mount-fuji.html">
+                <img src="images/mount-fuji.jpg" alt="Mount Fuji">
+                <div class="overlay">
+                    <h3 class="title">Mount Fuji</h3>
+                    <p class="description">Japan's iconic mountain and cultural symbol</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Europe -->
+        <div class="gallery-item" data-category="europe">
+            <a href="eiffel.html">
+                <img src="images/eiffel.jpg" alt="Eiffel Tower">
+                <div class="overlay">
+                    <h3 class="title">Eiffel Tower</h3>
+                    <p class="description">The symbol of Paris and French engineering</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="gallery-item" data-category="europe">
+            <a href="colosseum.html">
+                <img src="images/colosseum.jpg" alt="Colosseum">
+                <div class="overlay">
+                    <h3 class="title">Colosseum</h3>
+                    <p class="description">Ancient Rome's greatest amphitheater</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- America -->
+        <div class="gallery-item" data-category="america">
+            <a href="times-square.html">
+                <img src="images/times-square.jpg" alt="Times Square">
+                <div class="overlay">
+                    <h3 class="title">Times Square</h3>
+                    <p class="description">The heart of New York City</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Africa -->
+        <div class="gallery-item" data-category="africa">
+            <a href="pyramids.html">
+                <img src="images/pyramids.jpg" alt="Pyramids">
+                <div class="overlay">
+                    <h3 class="title">The Great Pyramids</h3>
+                    <p class="description">Ancient Egypt's most remarkable monuments</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="camera-controls">
+        <i class="fas fa-camera fa-2x"></i>
+    </div>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Camera button effect
+        const cameraBtn = document.querySelector('.camera-controls');
+        cameraBtn.addEventListener('click', () => {
+            // Add flash effect
+            const flash = document.createElement('div');
+            flash.style.position = 'fixed';
+            flash.style.top = '0';
+            flash.style.left = '0';
+            flash.style.right = '0';
+            flash.style.bottom = '0';
+            flash.style.backgroundColor = 'white';
+            flash.style.opacity = '0';
+            flash.style.transition = 'opacity 0.5s ease';
+            flash.style.pointerEvents = 'none';
+            flash.style.zIndex = '9999';
+            
+            document.body.appendChild(flash);
+            
+            // Trigger flash effect
+            requestAnimationFrame(() => {
+                flash.style.opacity = '1';
+                setTimeout(() => {
+                    flash.style.opacity = '0';
+                    setTimeout(() => {
+                        flash.remove();
+                    }, 500);
+                }, 50);
+            });
+        });
+
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.gallery-item img');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src; // This will trigger the actual image load
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        });
+    </script>
+</body>
+</html> 

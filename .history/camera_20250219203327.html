@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Gallery</title>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="lib/font-awesome.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/text.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/camera.css">
+</head>
+
+<body>
+  <!-- Main navigation -->
+  <nav class="main-nav">
+    <!-- 复用index.html的导航代码 -->
+  </nav>
+
+  <main class="gallery-container">
+    <h1 class="gallery-title">
+      <span class="title-line">World Through</span>
+      <span class="title-line">The Lens</span>
+    </h1>
+
+    <div class="continent-section" id="asia">
+      <h2 class="continent-title">
+        <span class="native-text">亚洲</span>
+        <span class="english-text">Asia</span>
+      </h2>
+      <div class="photo-grid">
+        <div class="photo-card" data-href="great-wall.html">
+          <img src="images/great-wall.jpg" alt="Great Wall">
+          <div class="photo-info">
+            <h3>
+              <span class="native-text">长城</span>
+              <span class="english-text">Great Wall</span>
+            </h3>
+          </div>
+        </div>
+        <div class="photo-card" data-href="mount-fuji.html">
+          <img src="images/mount-fuji.jpg" alt="Mount Fuji">
+          <div class="photo-info">
+            <h3>
+              <span class="native-text">富士山</span>
+              <span class="english-text">Mount Fuji</span>
+            </h3>
+          </div>
+        </div>
+        <!-- 更多亚洲景点照片 -->
+      </div>
+    </div>
+
+    <div class="continent-section" id="europe">
+      <h2 class="continent-title">
+        <span class="native-text">Europe</span>
+        <span class="english-text">Europe</span>
+      </h2>
+      <div class="photo-grid">
+        <div class="photo-card" data-href="eiffel.html">
+          <img src="images/eiffel.jpg" alt="Eiffel Tower">
+          <div class="photo-info">
+            <h3>
+              <span class="native-text">Tour Eiffel</span>
+              <span class="english-text">Eiffel Tower</span>
+            </h3>
+          </div>
+        </div>
+        <!-- 更多欧洲景点照片 -->
+      </div>
+    </div>
+
+    <!-- 其他大洲部分类似 -->
+  </main>
+
+  <script>
+    // 点击照片卡片跳转
+    document.querySelectorAll('.photo-card').forEach(card => {
+      card.addEventListener('click', () => {
+        window.location.href = card.dataset.href;
+      });
+    });
+
+    // 滚动动画
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.continent-section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html> 

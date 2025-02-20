@@ -1,0 +1,326 @@
+/* 基础设置 */
+:root {
+    --bg: #030303;
+    --text: #ffffff;
+    --accent: #0066ff;
+    --ease: cubic-bezier(0.7, 0, 0.2, 1);
+    --shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* 导航栏 */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 2rem 3rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    background: linear-gradient(180deg, 
+        rgba(0,0,0,0.9) 0%,
+        rgba(0,0,0,0.6) 50%,
+        rgba(0,0,0,0) 100%
+    );
+    backdrop-filter: blur(20px);
+}
+
+.search {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    height: 3.5rem;
+    padding: 0 2rem;
+    color: var(--text);
+    font-size: 1.1rem;
+    border-radius: 1.75rem;
+    transition: 0.5s var(--ease);
+}
+
+.search:focus {
+    outline: none;
+    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 1px var(--accent),
+                0 0 30px rgba(0,102,255,0.2);
+}
+
+.filter {
+    height: 3.5rem;
+    padding: 0 2rem;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: 0.4s var(--ease);
+    opacity: 0.5;
+}
+
+.filter:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.filter.active {
+    opacity: 1;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(0,102,255,0.4);
+}
+
+/* 图片网格 */
+.grid {
+    margin-top: 8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--bg);
+}
+
+.item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
+    transform: translateY(0);
+    transition: 0.6s var(--ease);
+}
+
+.item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    z-index: 1;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    filter: brightness(0.9);
+    transition: 1.2s var(--ease);
+}
+
+.item:hover img {
+    transform: scale(1);
+    filter: brightness(1);
+}
+
+.info {
+    position: absolute;
+    inset: 0;
+    padding: 2.5rem;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0,0,0,0.4) 50%,
+        rgba(0,0,0,0.9) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0;
+    transform: translateY(10%);
+    transition: 0.8s var(--ease);
+}
+
+.item:hover .info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    transform: translateY(30px);
+    transition: 0.8s var(--ease);
+}
+
+.info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    transform: translateY(30px);
+    transition: 0.8s var(--ease) 0.1s;
+}
+
+.item:hover .info h3,
+.item:hover .info p {
+    transform: translateY(0);
+}
+
+/* 图片查看器 */
+.viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.6s var(--ease);
+    backdrop-filter: blur(30px);
+}
+
+.viewer.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.viewer-content {
+    position: fixed;
+    inset: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewer-image {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: 0.8s var(--ease);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.viewer.active .viewer-image {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.viewer-close {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: var(--text);
+    font-size: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s var(--ease);
+    backdrop-filter: blur(10px);
+}
+
+.viewer-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: rotate(90deg);
+}
+
+/* 无结果提示 */
+.empty {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.5rem 3rem;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(30px);
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s var(--ease);
+    box-shadow: var(--shadow);
+}
+
+.empty.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .nav {
+        padding: 1.5rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .info h3 {
+        font-size: 1.5rem;
+    }
+
+    .info p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem;
+        flex-direction: column;
+        background: rgba(0,0,0,0.95);
+    }
+
+    .search, .filter {
+        width: 100%;
+        height: 3rem;
+    }
+
+    .grid {
+        margin-top: 9rem;
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding: 0.25rem;
+    }
+
+    .info {
+        padding: 1.5rem;
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(0,0,0,0.6) 50%,
+            rgba(0,0,0,0.95) 100%
+        );
+    }
+
+    .info h3 {
+        font-size: 1.3rem;
+        transform: translateY(0);
+    }
+
+    .info p {
+        font-size: 0.9rem;
+        transform: translateY(0);
+    }
+
+    .viewer-content {
+        inset: 1rem;
+    }
+
+    .viewer-close {
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+    }
+} 

@@ -1,0 +1,282 @@
+/* 基础样式 */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --accent-color: #3498db;
+    --text-light: #ecf0f1;
+    --text-dark: #2c3e50;
+    --transition-speed: 0.3s;
+    --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+    color: var(--text-light);
+    font-family: 'Playfair Display', serif;
+    overflow-x: hidden;
+}
+
+/* 主容器样式 */
+.gallery-container {
+    padding: 80px 20px 40px;
+    min-height: 100vh;
+}
+
+/* 大洲部分样式 */
+.continent-section {
+    margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: sectionFadeIn 0.8s ease forwards;
+}
+
+.continent-section:last-child {
+    margin-bottom: 0;
+}
+
+/* 大洲标题样式 */
+.continent-title {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.continent-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        var(--accent-color) 50%,
+        transparent 100%
+    );
+}
+
+.continent-title .native-text {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: titleFadeIn 0.8s ease forwards 0.3s;
+}
+
+.continent-title .english-text {
+    display: block;
+    font-size: 3.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: titleFadeIn 0.8s ease forwards 0.5s;
+}
+
+/* 照片网格样式 */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 照片卡片样式 */
+.photo-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--card-shadow);
+    text-decoration: none;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    aspect-ratio: 3/4;
+    animation: cardFadeIn 0.8s ease forwards;
+    animation-delay: var(--delay);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.6) 50%,
+        transparent 100%
+    );
+    transform: translateY(100%);
+    transition: transform var(--transition-speed) ease;
+}
+
+.card-content h3 {
+    margin: 0;
+    color: var(--text-light);
+}
+
+.card-content .native-text {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-speed) ease 0.1s;
+}
+
+.card-content .english-text {
+    display: block;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-speed) ease 0.2s;
+}
+
+/* 卡片悬停效果 */
+.photo-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: var(--hover-shadow);
+}
+
+.photo-card:hover img {
+    transform: scale(1.1);
+}
+
+.photo-card:hover .card-content {
+    transform: translateY(0);
+}
+
+.photo-card:hover .card-content .native-text,
+.photo-card:hover .card-content .english-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 动画关键帧 */
+@keyframes sectionFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .continent-title .native-text {
+        font-size: 2rem;
+    }
+
+    .continent-title .english-text {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        padding: 60px 15px 30px;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .continent-title .native-text {
+        font-size: 1.8rem;
+    }
+
+    .continent-title .english-text {
+        font-size: 2.5rem;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card-content .native-text {
+        font-size: 1.3rem;
+    }
+
+    .card-content .english-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-container {
+        padding: 50px 10px 20px;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .continent-title .native-text {
+        font-size: 1.5rem;
+    }
+
+    .continent-title .english-text {
+        font-size: 2rem;
+    }
+}
+
+/* 可见性类 */
+.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+} 

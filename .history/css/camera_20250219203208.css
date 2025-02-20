@@ -1,0 +1,135 @@
+:root {
+  --photo-grid-gap: 2rem;
+  --card-border-radius: 1rem;
+  --transition-duration: 0.4s;
+}
+
+.gallery-container {
+  padding: 80px 2rem 2rem;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  min-height: 100vh;
+}
+
+.gallery-title {
+  text-align: center;
+  color: #fff;
+  font-size: 4rem;
+  margin-bottom: 4rem;
+  font-family: "Playfair Display", serif;
+  line-height: 1.2;
+}
+
+.title-line {
+  display: block;
+}
+
+.continent-section {
+  margin-bottom: 6rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.continent-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.continent-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}
+
+.continent-title span {
+  display: block;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--photo-grid-gap);
+  padding: 0 2rem;
+}
+
+.photo-card {
+  position: relative;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-duration) ease;
+  aspect-ratio: 3/4;
+}
+
+.photo-card:hover {
+  transform: translateY(-10px);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-duration) ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.1);
+}
+
+.photo-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: #fff;
+}
+
+.photo-info h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.photo-info h3 span {
+  display: block;
+}
+
+/* 语言特定样式 */
+.chinese {
+  font-family: "Noto Serif SC", serif;
+}
+
+.japanese {
+  font-family: "Noto Serif JP", serif;
+}
+
+.french {
+  font-family: "Playfair Display", serif;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: 3rem;
+  }
+  
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-title {
+    font-size: 2.5rem;
+  }
+  
+  .continent-title {
+    font-size: 2rem;
+  }
+  
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+} 

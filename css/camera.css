@@ -1,0 +1,381 @@
+/* 整体页面背景 */
+body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* 主要内容区域样式 */
+.camera-content {
+    padding: 2rem 4vw;
+    max-width: 1800px;
+    margin: 0 auto;
+    width: 92vw;
+}
+
+/* 区域部分样式 */
+.region-section {
+    margin-bottom: 6rem;
+    position: relative;
+    width: 100%;
+    animation: sectionFadeIn 1s ease-out backwards;
+    animation-delay: calc(var(--section-index, 0) * 0.3s);
+}
+
+.region-section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -50vw;
+    right: -50vw;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.region-section h2 {
+    color: #d4af37;
+    font-size: 3.5rem;
+    margin: 3rem 0;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    border-bottom: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+                 0 4px 8px rgba(212, 175, 55, 0.3);
+    animation: titleSlideIn 1.2s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes titleSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 国家容器样式 */
+.country-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 4rem;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* 特殊处理欧洲区域的布局 */
+#europe .country-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+#europe .country {
+    margin-bottom: 4rem;
+}
+
+/* 其他区域保持原样 */
+#asia .country-container,
+#africa .country-container,
+#america .country-container {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.country {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(212, 175, 55, 0.15);
+    padding: 3rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: cardFadeIn 0.8s ease-out backwards;
+    animation-delay: calc(var(--card-index, 0) * 0.2s);
+}
+
+.country:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.3);
+    background: linear-gradient(145deg, #2d2d2d, #1d1d1d);
+}
+
+.country h3 {
+    color: #d4af37;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+    animation: slideInFromLeft 0.8s ease-out backwards;
+    animation-delay: calc(var(--card-index, 0) * 0.3s + 0.2s);
+}
+
+.country h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 图片画廊样式 */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    aspect-ratio: 16/10;
+    animation: itemScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+    animation-delay: calc(var(--item-index, 0) * 0.15s + 0.4s);
+}
+
+.gallery-item:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: #d4af37;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.4);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 13px;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.9);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.15) rotate(1deg);
+    filter: brightness(1.1);
+}
+
+.gallery-item span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.95) 0%,
+                rgba(0, 0, 0, 0.8) 50%,
+                rgba(0, 0, 0, 0) 100%);
+    color: #fff;
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(100%);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item:hover span {
+    transform: translateY(0);
+    border-top: 2px solid rgba(212, 175, 55, 0.4);
+    padding-top: 2.5rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1600px) {
+    .country-container {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+    
+    #europe .country-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 1200px) {
+    .country-container,
+    #europe .country-container {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+    }
+
+    .region-section h2 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .camera-content {
+        padding: 1rem;
+        width: 98vw;
+    }
+
+    .country-container,
+    #europe .country-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .country {
+        padding: 2rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .region-section h2 {
+        font-size: 2.5rem;
+        margin: 2rem 0;
+    }
+
+    .country h3 {
+        font-size: 2rem;
+    }
+}
+
+/* 动画效果 */
+.gallery-item {
+    animation: fadeInUp 1s ease-out backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 添加高光效果 */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(212, 175, 55, 0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.6s;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.gallery-item:hover::before {
+    animation: shine 1.5s infinite;
+    opacity: 1;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-200%) rotate(45deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(200%) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* 添加脉冲动画效果 */
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    transition: 0.5s;
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+.gallery-item:hover::after {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    opacity: 1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* 添加页面载入动画序列 */
+@keyframes sectionFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计中保持动画效果 */
+@media (prefers-reduced-motion: reduce) {
+    .region-section,
+    .country,
+    .gallery-item,
+    .region-section h2,
+    .country h3 {
+        animation: none;
+        transition: none;
+    }
+    
+    .gallery-item:hover::before,
+    .gallery-item:hover::after {
+        animation: none;
+    }
+} 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界景点相册</title>
+    <link rel="stylesheet" href="camera.css">
+</head>
+<body>
+    <header class="header">
+        <h1>世界景点相册</h1>
+        <p>探索世界各地的美丽风景</p>
+    </header>
+
+    <nav class="region-nav">
+        <button class="region-btn active" data-region="all">全部</button>
+        <button class="region-btn" data-region="asia">亚洲</button>
+        <button class="region-btn" data-region="europe">欧洲</button>
+        <button class="region-btn" data-region="africa">非洲</button>
+        <button class="region-btn" data-region="america">美洲</button>
+    </nav>
+
+    <main class="gallery">
+        <!-- 亚洲景点 -->
+        <section class="region-section" data-region="asia">
+            <h2>亚洲</h2>
+            <div class="image-grid">
+                <a href="china.html" class="image-card">
+                    <img src="images/great-wall.jpg" alt="长城">
+                    <div class="image-overlay">
+                        <h3>中国长城</h3>
+                        <p>世界文化遗产</p>
+                    </div>
+                </a>
+                <a href="china.html" class="image-card">
+                    <img src="images/forbidden-city.jpg" alt="故宫">
+                    <div class="image-overlay">
+                        <h3>故宫</h3>
+                        <p>中国皇家宫殿</p>
+                    </div>
+                </a>
+                <a href="china.html" class="image-card">
+                    <img src="images/terracotta-army.jpg" alt="兵马俑">
+                    <div class="image-overlay">
+                        <h3>兵马俑</h3>
+                        <p>秦始皇陵兵马俑</p>
+                    </div>
+                </a>
+                <a href="china.html" class="image-card">
+                    <img src="images/yellow-mountain.webp" alt="黄山">
+                    <div class="image-overlay">
+                        <h3>黄山</h3>
+                        <p>云海奇松</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

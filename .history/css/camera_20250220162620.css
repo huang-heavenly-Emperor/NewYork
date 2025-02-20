@@ -1,0 +1,149 @@
+/* Camera Gallery Styles */
+.camera-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.gallery-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+/* Masonry Grid Layout */
+.masonry-grid {
+    column-count: 4;
+    column-gap: 1.5rem;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .masonry-grid {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 900px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .masonry-grid {
+        column-count: 1;
+    }
+}
+
+.grid-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* Photo Card Styles */
+.photo-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay Styles */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 1.5rem;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.view-more {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.view-more:hover {
+    background: white;
+    color: #333;
+}
+
+/* Hover Effects */
+.grid-item.hover {
+    transform: translateY(-5px);
+}
+
+/* Animation Keyframes */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Region-specific color accents */
+.grid-item.china .overlay { background: linear-gradient(to top, rgba(220, 20, 60, 0.8), transparent); }
+.grid-item.japan .overlay { background: linear-gradient(to top, rgba(188, 0, 45, 0.8), transparent); }
+.grid-item.france .overlay { background: linear-gradient(to top, rgba(0, 85, 164, 0.8), transparent); }
+.grid-item.italy .overlay { background: linear-gradient(to top, rgba(0, 146, 70, 0.8), transparent); }
+.grid-item.egypt .overlay { background: linear-gradient(to top, rgba(206, 17, 38, 0.8), transparent); }
+.grid-item.usa .overlay { background: linear-gradient(to top, rgba(60, 59, 110, 0.8), transparent); }
+
+/* Hover animation for cards */
+.photo-card {
+    animation: cardAppear 0.5s ease-out;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+} 

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界景点图片展</title>
+    <link rel="stylesheet" href="css/camera.css">
+</head>
+<body>
+    <div class="search-area">
+        <input type="text" class="search-box" placeholder="搜索景点..." id="searchInput">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="asia">亚洲</button>
+        <button class="filter-btn" data-filter="europe">欧洲</button>
+        <button class="filter-btn" data-filter="america">美洲</button>
+        <button class="filter-btn" data-filter="africa">非洲</button>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item" data-category="europe">
+            <img src="images/eiffel.jpg" alt="埃菲尔铁塔">
+            <div class="item-info">
+                <h3>埃菲尔铁塔</h3>
+                <p>法国巴黎的标志性建筑，见证浪漫之都的璀璨历史</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="europe">
+            <img src="images/colosseum.jpg" alt="罗马斗兽场">
+            <div class="item-info">
+                <h3>罗马斗兽场</h3>
+                <p>意大利古罗马文明的瑰宝，讲述着辉煌的帝国往事</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="asia">
+            <img src="images/great-wall.jpg" alt="长城">
+            <div class="item-info">
+                <h3>万里长城</h3>
+                <p>中华文明的象征，世界文化遗产的杰出代表</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="asia">
+            <img src="images/forbidden-city.jpg" alt="故宫">
+            <div class="item-info">
+                <h3>故宫</h3>
+                <p>中国明清两代的皇家宫殿，东方建筑艺术的巅峰</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="america">
+            <img src="images/times-square.jpg" alt="时代广场">
+            <div class="item-info">
+                <h3>时代广场</h3>
+                <p>纽约的心脏，世界娱乐之都的象征</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="africa">
+            <img src="images/pyramids.jpg" alt="金字塔">
+            <div class="item-info">
+                <h3>埃及金字塔</h3>
+                <p>古埃及文明的丰碑，世界七大奇迹之一</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="no-results">没有找到匹配的景点</div>
+
+    <div class="viewer">
+        <div class="viewer-content">
+            <img src="" alt="" class="viewer-image">
+            <button class="viewer-close">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const noResults = document.querySelector('.no-results');
+            const viewer = document.querySelector('.viewer');
+            const viewerImage = viewer.querySelector('.viewer-image');
+            const viewerClose = viewer.querySelector('.viewer-close');
+
+            function filterItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                let hasResults = false;
+
+                galleryItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    const category = item.dataset.category;
+                    
+                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesFilter = activeFilter === 'all' || category === activeFilter;
+                    
+                    if (matchesSearch && matchesFilter) {
+                        item.style.display = '';
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                noResults.classList.toggle('show', !hasResults);
+            }
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterItems();
+                });
+            });
+
+            searchInput.addEventListener('input', filterItems);
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    viewerImage.src = img.src;
+                    viewerImage.alt = img.alt;
+                    viewer.classList.add('active');
+                });
+            });
+
+            [viewerClose, viewer].forEach(el => {
+                el.addEventListener('click', (e) => {
+                    if (e.target === viewer || e.target === viewerClose) {
+                        viewer.classList.remove('active');
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && viewer.classList.contains('active')) {
+                    viewer.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Camera Gallery</title>
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="lib/font-awesome.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/text.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+</head>
+<body>
+    <!-- Main navigation -->
+    <nav class="main-nav">
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="tour.html"><i class="fas fa-globe-americas"></i>Tour</a></li>
+            <li><a href="camera.html" class="active"><i class="fas fa-camera"></i>Camera</a></li>
+        </ul>
+    </nav>
+
+    <div class="camera-container">
+        <h1 class="gallery-title">World Landmarks Gallery</h1>
+        
+        <div class="masonry-grid">
+            <!-- Asia Section -->
+            <div class="grid-item china">
+                <div class="photo-card">
+                    <img src="images/great-wall.jpg" alt="Great Wall">
+                    <div class="overlay">
+                        <h3>Great Wall of China</h3>
+                        <a href="great-wall.html" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item japan">
+                <div class="photo-card">
+                    <img src="images/mount-fuji.jpg" alt="Mount Fuji">
+                    <div class="overlay">
+                        <h3>Mount Fuji</h3>
+                        <a href="mount-fuji.html" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Europe Section -->
+            <div class="grid-item france">
+                <div class="photo-card">
+                    <img src="images/eiffel.jpg" alt="Eiffel Tower">
+                    <div class="overlay">
+                        <h3>Eiffel Tower</h3>
+                        <a href="eiffel.html" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item italy">
+                <div class="photo-card">
+                    <img src="images/colosseum.jpg" alt="Colosseum">
+                    <div class="overlay">
+                        <h3>Colosseum</h3>
+                        <a href="colosseum.html" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Africa Section -->
+            <div class="grid-item egypt">
+                <div class="photo-card">
+                    <img src="images/pyramids.jpg" alt="Pyramids">
+                    <div class="overlay">
+                        <h3>The Great Pyramids</h3>
+                        <a href="pyramids.html" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- America Section -->
+            <div class="grid-item usa">
+                <div class="photo-card">
+                    <img src="images/times-square.jpg" alt="Times Square">
+                    <div class="overlay">
+                        <h3>Times Square</h3>
+                        <a href="times-square.html" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more grid items for other landmarks -->
+        </div>
+    </div>
+
+    <script>
+        // Masonry layout initialization
+        window.addEventListener('load', () => {
+            const grid = document.querySelector('.masonry-grid');
+            const items = document.querySelectorAll('.grid-item');
+            
+            items.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.classList.add('hover');
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.classList.remove('hover');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

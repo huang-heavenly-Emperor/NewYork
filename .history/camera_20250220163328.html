@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界景点图片展 - 创意瀑布流画廊</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 创意背景 */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #000, #1a1a1a);
+            z-index: -1;
+        }
+
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        /* 页面标题样式 */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26,42,108,0.8), rgba(178,31,31,0.8), rgba(253,187,45,0.8));
+            z-index: -1;
+            animation: headerGradient 10s infinite linear;
+        }
+
+        @keyframes headerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            transform: perspective(1000px) rotateX(10deg);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 筛选器 */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .filter-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 瀑布流容器 */
+        .masonry-container {
+            column-count: 4;
+            column-gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* 瀑布流项目 */
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transform: perspective(1000px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .masonry-item:hover {
+            transform: perspective(1000px) rotateY(5deg) translateZ(20px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        /* 图片样式 */
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.9);
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        /* 图片标题覆盖层 */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 30px;
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .masonry-item:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .overlay h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .overlay p {
+            font-size: 1em;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1400px) {
+            .masonry-container {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .masonry-container {
+                column-count: 2;
+            }
+            .header h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry-container {
+                column-count: 1;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+
+        /* 加载动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .masonry-item {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        /* 为每个项目设置不同的动画延迟 */
+        .masonry-item:nth-child(1) { animation-delay: 0.1s; }
+        .masonry-item:nth-child(2) { animation-delay: 0.2s; }
+        .masonry-item:nth-child(3) { animation-delay: 0.3s; }
+        .masonry-item:nth-child(4) { animation-delay: 0.4s; }
+        /* ... 依此类推 */
+
+        /* 添加图片加载状态样式 */
+        .masonry-item {
+            position: relative;
+            background: rgba(255,255,255,0.1);
+            min-height: 200px;
+        }
+
+        .masonry-item.loading::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            margin: -15px 0 0 -15px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .masonry-item img.error {
+            filter: grayscale(1);
+            opacity: 0.5;
+        }
+
+        .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+            font-size: 0.9em;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <header class="header">
+        <h1>世界景点图片展</h1>
+        <p>探索世界各地的标志性景点，感受不同文化的独特魅力</p>
+    </header>
+
+    <div class="filters">
+        <button class="filter-btn" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="asia">亚洲</button>
+        <button class="filter-btn" data-filter="europe">欧洲</button>
+        <button class="filter-btn" data-filter="america">美洲</button>
+        <button class="filter-btn" data-filter="africa">非洲</button>
+    </div>
+
+    <div class="masonry-container">
+        <!-- 欧洲景点 -->
+        <div class="masonry-item loading" data-category="europe">
+            <a href="eiffel.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/eiffel.jpg" 
+                     alt="埃菲尔铁塔">
+                <div class="overlay">
+                    <h3>埃菲尔铁塔</h3>
+                    <p>法国巴黎的标志性建筑，见证浪漫之都的璀璨历史</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="europe">
+            <a href="colosseum.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/colosseum.jpg" 
+                     alt="罗马斗兽场">
+                <div class="overlay">
+                    <h3>罗马斗兽场</h3>
+                    <p>意大利古罗马文明的瑰宝，讲述着辉煌的帝国往事</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="europe">
+            <a href="brandenburg.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/brandenburg.jpg" 
+                     alt="勃兰登堡门">
+                <div class="overlay">
+                    <h3>勃兰登堡门</h3>
+                    <p>德国柏林的象征，见证欧洲历史的变迁</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="europe">
+            <a href="tower-bridge.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/tower-bridge.jpg" 
+                     alt="伦敦塔桥">
+                <div class="overlay">
+                    <h3>伦敦塔桥</h3>
+                    <p>英国伦敦泰晤士河上的标志性建筑</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="europe">
+            <a href="vatican.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/vatican.jpg" 
+                     alt="梵蒂冈">
+                <div class="overlay">
+                    <h3>梵蒂冈</h3>
+                    <p>天主教会的圣地，艺术与信仰的殿堂</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="europe">
+            <a href="louvre.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/louvre.jpg" 
+                     alt="卢浮宫">
+                <div class="overlay">
+                    <h3>卢浮宫</h3>
+                    <p>世界最大的艺术博物馆，珍藏人类文明的瑰宝</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="europe">
+            <a href="neuschwanstein.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/neuschwanstein.jpg" 
+                     alt="新天鹅堡">
+                <div class="overlay">
+                    <h3>新天鹅堡</h3>
+                    <p>德国浪漫主义建筑的代表作，童话城堡的原型</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 亚洲景点 -->
+        <div class="masonry-item loading" data-category="asia">
+            <a href="great-wall.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/great-wall.jpg" 
+                     alt="长城">
+                <div class="overlay">
+                    <h3>万里长城</h3>
+                    <p>中华文明的象征，世界文化遗产的杰出代表</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="asia">
+            <a href="forbidden-city.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/forbidden-city.jpg" 
+                     alt="故宫">
+                <div class="overlay">
+                    <h3>故宫</h3>
+                    <p>中国明清两代的皇家宫殿，东方建筑艺术的巅峰</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="asia">
+            <a href="mount-fuji.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/mount-fuji.jpg" 
+                     alt="富士山">
+                <div class="overlay">
+                    <h3>富士山</h3>
+                    <p>日本的圣山，自然与文化的完美融合</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="asia">
+            <a href="terracotta-army.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/terracotta-army.jpg" 
+                     alt="兵马俑">
+                <div class="overlay">
+                    <h3>兵马俑</h3>
+                    <p>秦始皇陵的地下军团，古代军事艺术的见证</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="asia">
+            <a href="yellow-mountain.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/yellow-mountain.webp" 
+                     alt="黄山">
+                <div class="overlay">
+                    <h3>黄山</h3>
+                    <p>中国最美的山水，云海松涛的仙境</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="asia">
+            <a href="kyoto.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/kyoto.jpg" 
+                     alt="京都">
+                <div class="overlay">
+                    <h3>京都</h3>
+                    <p>日本传统文化的发源地，千年古都的优雅</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 美洲景点 -->
+        <div class="masonry-item loading" data-category="america">
+            <a href="times-square.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/newyork-skyline.jpg" 
+                     alt="时代广场">
+                <div class="overlay">
+                    <h3>时代广场</h3>
+                    <p>纽约的心脏，世界娱乐之都的象征</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="america">
+            <a href="broadway.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/america.jpg" 
+                     alt="百老汇">
+                <div class="overlay">
+                    <h3>百老汇</h3>
+                    <p>世界戏剧的殿堂，艺术表演的圣地</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="america">
+            <a href="central-park.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/1.jpg" 
+                     alt="中央公园">
+                <div class="overlay">
+                    <h3>中央公园</h3>
+                    <p>纽约的绿色心脏，城市中的自然天堂</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 非洲景点 -->
+        <div class="masonry-item loading" data-category="africa">
+            <a href="pyramids.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/pyramids-detail.jpg" 
+                     alt="金字塔">
+                <div class="overlay">
+                    <h3>埃及金字塔</h3>
+                    <p>古埃及文明的丰碑，世界七大奇迹之一</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="africa">
+            <a href="sphinx.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/sphinx.webp" 
+                     alt="狮身人面像">
+                <div class="overlay">
+                    <h3>狮身人面像</h3>
+                    <p>守护金字塔的神秘守护者</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="masonry-item loading" data-category="africa">
+            <a href="nile.html">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="images/nile-river.jpg" 
+                     alt="尼罗河">
+                <div class="overlay">
+                    <h3>尼罗河</h3>
+                    <p>埃及的生命之河，孕育了古代文明</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 图片加载处理
+            function handleImageLoad(img) {
+                const item = img.closest('.masonry-item');
+                item.classList.remove('loading');
+                img.style.opacity = '1';
+            }
+
+            function handleImageError(img) {
+                const item = img.closest('.masonry-item');
+                item.classList.remove('loading');
+                img.classList.add('error');
+                
+                // 添加错误提示
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'error-message';
+                errorMsg.textContent = '图片加载失败';
+                item.appendChild(errorMsg);
+            }
+
+            // 优化的懒加载实现
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        
+                        if (src) {
+                            img.src = src;
+                            img.removeAttribute('data-src');
+                            
+                            img.onload = () => handleImageLoad(img);
+                            img.onerror = () => handleImageError(img);
+                        }
+                        
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            });
+
+            // 观察所有图片
+            document.querySelectorAll('.masonry-item img').forEach(img => {
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+                imageObserver.observe(img);
+            });
+
+            // 筛选功能
+            const filters = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.masonry-item');
+
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const category = this.getAttribute('data-filter');
+                    
+                    items.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 500);
+                        }
+                    });
+
+                    filters.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // 预加载下一屏图片
+            function preloadNextImages() {
+                const visibleItems = Array.from(document.querySelectorAll('.masonry-item:not(.loading)'));
+                const lastVisible = visibleItems[visibleItems.length - 1];
+                
+                if (lastVisible) {
+                    const nextItems = Array.from(lastVisible.parentNode.children)
+                        .slice(Array.from(lastVisible.parentNode.children).indexOf(lastVisible) + 1)
+                        .slice(0, 4);
+                    
+                    nextItems.forEach(item => {
+                        const img = item.querySelector('img');
+                        if (img && img.getAttribute('data-src')) {
+                            const preloadImg = new Image();
+                            preloadImg.src = img.getAttribute('data-src');
+                        }
+                    });
+                }
+            }
+
+            // 监听滚动以触发预加载
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(preloadNextImages, 100);
+            });
+        });
+    </script>
+</body>
+</html> 

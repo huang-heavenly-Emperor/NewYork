@@ -1,0 +1,140 @@
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #e74c3c;
+  --text-light: #ecf0f1;
+  --text-dark: #2c3e50;
+  --transition: all 0.3s ease;
+}
+
+.gallery-container {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 2rem 0 4rem;
+  line-height: 1.2;
+}
+
+.title-line {
+  display: block;
+  background: linear-gradient(45deg, var(--accent-color), #f39c12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.continent-section {
+  padding: 4rem 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.continent-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.continent-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.native-text {
+  display: block;
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.english-text {
+  display: block;
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  font-weight: 400;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.photo-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: var(--transition);
+}
+
+.photo-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.photo-card:hover img {
+  transform: scale(1.1);
+}
+
+.photo-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: var(--text-light);
+}
+
+.photo-info h3 {
+  margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: 3rem;
+  }
+  
+  .native-text {
+    font-size: 2rem;
+  }
+  
+  .english-text {
+    font-size: 1.5rem;
+  }
+  
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-title {
+    font-size: 2.5rem;
+  }
+  
+  .continent-section {
+    padding: 3rem 1rem;
+  }
+  
+  .photo-card img {
+    height: 300px;
+  }
+} 

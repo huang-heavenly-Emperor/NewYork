@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Through Lens | Global Photography</title>
+    <link rel="stylesheet" href="css/camera.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">World Explorer</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="tour.html">Tour</a>
+            <a href="camera.html" class="active">Camera</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="main-title">
+                <span class="subtitle">Through The Lens</span>
+                <span class="title">World in Focus</span>
+            </h1>
+        </section>
+
+        <!-- Photo Grid -->
+        <section class="photo-grid">
+            <!-- Japan -->
+            <article class="photo-card japan" onclick="location.href='Japan.html'">
+                <div class="image-container">
+                    <img src="images/mount-fuji.jpg" alt="Mount Fuji">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <span class="native-text">日本</span>
+                        <span class="english-text">Japan</span>
+                    </h2>
+                </div>
+            </article>
+
+            <!-- China -->
+            <article class="photo-card china" onclick="location.href='China.html'">
+                <div class="image-container">
+                    <img src="images/great-wall.jpg" alt="Great Wall">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <span class="native-text">中国</span>
+                        <span class="english-text">China</span>
+                    </h2>
+                </div>
+            </article>
+
+            <!-- UK -->
+            <article class="photo-card uk" onclick="location.href='uk.html'">
+                <div class="image-container">
+                    <img src="images/tower-bridge.jpg" alt="Tower Bridge">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <span class="native-text">United Kingdom</span>
+                        <span class="english-text">UK</span>
+                    </h2>
+                </div>
+            </article>
+
+            <!-- France -->
+            <article class="photo-card france" onclick="location.href='France.html'">
+                <div class="image-container">
+                    <img src="images/eiffel.jpg" alt="Eiffel Tower">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <span class="native-text">France</span>
+                        <span class="english-text">France</span>
+                    </h2>
+                </div>
+            </article>
+
+            <!-- Italy -->
+            <article class="photo-card italy" onclick="location.href='Italy.html'">
+                <div class="image-container">
+                    <img src="images/colosseum.jpg" alt="Colosseum">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <span class="native-text">Italia</span>
+                        <span class="english-text">Italy</span>
+                    </h2>
+                </div>
+            </article>
+
+            <!-- Egypt -->
+            <article class="photo-card egypt" onclick="location.href='Egypt.html'">
+                <div class="image-container">
+                    <img src="images/sphinx.webp" alt="Sphinx">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <span class="native-text">مصر</span>
+                        <span class="english-text">Egypt</span>
+                    </h2>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        // Intersection Observer for animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all photo cards
+        document.querySelectorAll('.photo-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html> 

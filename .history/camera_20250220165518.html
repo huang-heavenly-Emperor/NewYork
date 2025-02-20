@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Wonders | 探索奇迹</title>
+    <link rel="stylesheet" href="css/camera.css">
+</head>
+<body>
+    <!-- 3D视差背景 -->
+    <div class="parallax-bg">
+        <div class="bg-layer" data-speed="0.2"></div>
+        <div class="bg-layer" data-speed="0.4"></div>
+        <div class="bg-layer" data-speed="0.6"></div>
+    </div>
+
+    <!-- 动态加载动画 -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">
+                <div class="text-line">EXPLORING</div>
+                <div class="text-line">WONDERS</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 悬浮导航 -->
+    <nav class="floating-nav">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24">
+                    <path d="M12 2L1 12h3v9h6v-6h4v6h6v-9h3L12 2z"/>
+                </svg>
+                <span class="logo-text">Wonders</span>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input type="text" class="search-input" placeholder="探索世界奇迹..." id="search">
+                    <div class="search-suggestions"></div>
+                </div>
+            </div>
+
+            <div class="filter-container">
+                <button class="filter-toggle">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/>
+                    </svg>
+                </button>
+                <div class="filter-panel">
+                    <button class="filter active" data-filter="all">全部</button>
+                    <button class="filter" data-filter="asia">亚洲</button>
+                    <button class="filter" data-filter="europe">欧洲</button>
+                    <button class="filter" data-filter="america">美洲</button>
+                    <button class="filter" data-filter="africa">非洲</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="wonder-gallery">
+        <div class="gallery-container">
+            <article class="wonder-card" data-category="europe">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-image">
+                            <img src="images/eiffel.jpg" alt="埃菲尔铁塔">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-quick-info">
+                            <h3>埃菲尔铁塔</h3>
+                            <span class="location-badge">法国·巴黎</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-content">
+                            <h3>埃菲尔铁塔</h3>
+                            <p>法国巴黎的标志性建筑，见证浪漫之都的璀璨历史</p>
+                            <div class="card-stats">
+                                <div class="stat">
+                                    <span class="stat-label">建成年份</span>
+                                    <span class="stat-value">1889</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">高度</span>
+                                    <span class="stat-value">324米</span>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="tag">地标建筑</span>
+                                <span class="tag">文化遗产</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="wonder-card" data-category="asia">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-image">
+                            <img src="images/great-wall.jpg" alt="长城">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-quick-info">
+                            <h3>万里长城</h3>
+                            <span class="location-badge">中国·北京</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-content">
+                            <h3>万里长城</h3>
+                            <p>中华文明的象征，世界文化遗产的杰出代表</p>
+                            <div class="card-stats">
+                                <div class="stat">
+                                    <span class="stat-label">始建年份</span>
+                                    <span class="stat-value">前7世纪</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">总长度</span>
+                                    <span class="stat-value">21196千米</span>
+                                </div>
+                            </div>
+                            <div class="card-tags">
+                                <span class="tag">世界遗产</span>
+                                <span class="tag">古代建筑</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 更多卡片以相同结构添加 -->
+        </div>
+    </main>
+
+    <!-- 3D查看器 -->
+    <div class="viewer-3d">
+        <div class="viewer-container">
+            <div class="viewer-stage">
+                <img class="viewer-image" src="" alt="">
+                <div class="viewer-controls">
+                    <button class="control-btn control-rotate">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+                        </svg>
+                    </button>
+                    <button class="control-btn control-zoom">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="viewer-info">
+                <h2 class="info-title"></h2>
+                <p class="info-description"></p>
+                <div class="info-details"></div>
+            </div>
+            <button class="viewer-close">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- 自定义光标 -->
+    <div class="custom-cursor"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 加载动画
+        const loader = document.querySelector('.loader');
+        setTimeout(() => {
+            loader.classList.add('loader-hidden');
+            document.body.classList.add('loaded');
+        }, 2000);
+
+        // 视差效果
+        const parallaxLayers = document.querySelectorAll('.bg-layer');
+        document.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            parallaxLayers.forEach(layer => {
+                const speed = layer.getAttribute('data-speed');
+                const x = (centerX - clientX) * speed;
+                const y = (centerY - clientY) * speed;
+                layer.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // 自定义光标
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // 卡片翻转
+        const cards = document.querySelectorAll('.wonder-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('is-flipped');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('is-flipped');
+            });
+        });
+
+        // 搜索建议
+        const search = document.querySelector('.search-input');
+        const suggestions = document.querySelector('.search-suggestions');
+        
+        search.addEventListener('input', (e) => {
+            const value = e.target.value.toLowerCase();
+            if (value.length > 0) {
+                // 这里可以添加实际的搜索建议逻辑
+                suggestions.innerHTML = `
+                    <div class="suggestion-item">建议 1</div>
+                    <div class="suggestion-item">建议 2</div>
+                `;
+                suggestions.classList.add('active');
+            } else {
+                suggestions.classList.remove('active');
+            }
+        });
+
+        // 3D查看器
+        const viewer = document.querySelector('.viewer-3d');
+        const viewerImage = viewer.querySelector('.viewer-image');
+        const viewerTitle = viewer.querySelector('.info-title');
+        const viewerDesc = viewer.querySelector('.info-description');
+        const viewerClose = viewer.querySelector('.viewer-close');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img');
+                const title = card.querySelector('h3').textContent;
+                const desc = card.querySelector('p').textContent;
+                
+                viewerImage.src = img.src;
+                viewerTitle.textContent = title;
+                viewerDesc.textContent = desc;
+                viewer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        viewerClose.addEventListener('click', () => {
+            viewer.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // 3D控制
+        const rotateBtn = viewer.querySelector('.control-rotate');
+        let rotation = 0;
+        rotateBtn.addEventListener('click', () => {
+            rotation += 90;
+            viewerImage.style.transform = `rotate(${rotation}deg)`;
+        });
+
+        // 过滤功能
+        const filters = document.querySelectorAll('.filter');
+        filters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filters.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+    </script>
+</body>
+</html> 

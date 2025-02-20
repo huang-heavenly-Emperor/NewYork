@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界之镜 - 全球风光摄影</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">环球旅行</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="tour.html">旅游</a>
+            <a href="camera.html" class="active">摄影</a>
+            <a href="about.html">关于</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="camera-main">
+        <!-- 相册标题区域 -->
+        <div class="gallery-header">
+            <h1 class="gallery-title">世界之镜</h1>
+            <p class="gallery-subtitle">通过镜头捕捉世界各地的精彩瞬间</p>
+        </div>
+
+        <!-- 相册过滤器 -->
+        <div class="gallery-filter">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="asia">亚洲</button>
+            <button class="filter-btn" data-filter="europe">欧洲</button>
+            <button class="filter-btn" data-filter="america">美洲</button>
+            <button class="filter-btn" data-filter="africa">非洲</button>
+        </div>
+
+        <!-- 相册网格 -->
+        <div class="gallery-grid">
+            <!-- 亚洲照片 -->
+            <div class="gallery-item asia" data-location="中国长城">
+                <img src="images/great-wall.jpg" alt="中国长城">
+                <div class="item-overlay">
+                    <h3>中国长城</h3>
+                    <p>世界文化遗产，人类历史上最伟大的建筑工程之一</p>
+                    <a href="great-wall.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+
+            <div class="gallery-item asia" data-location="日本富士山">
+                <img src="images/mount-fuji.jpg" alt="富士山">
+                <div class="item-overlay">
+                    <h3>富士山</h3>
+                    <p>日本的象征，常年积雪的圣山</p>
+                    <a href="japan.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+
+            <div class="gallery-item asia" data-location="故宫">
+                <img src="images/forbidden-city.jpg" alt="故宫">
+                <div class="item-overlay">
+                    <h3>故宫</h3>
+                    <p>中国最大的古代宫殿建筑群</p>
+                    <a href="forbidden-city.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+
+            <!-- 欧洲照片 -->
+            <div class="gallery-item europe" data-location="艾菲尔铁塔">
+                <img src="images/eiffel.jpg" alt="艾菲尔铁塔">
+                <div class="item-overlay">
+                    <h3>艾菲尔铁塔</h3>
+                    <p>巴黎的地标，浪漫之都的象征</p>
+                    <a href="france.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+
+            <div class="gallery-item europe" data-location="大本钟">
+                <img src="images/big-ben.jpg" alt="大本钟">
+                <div class="item-overlay">
+                    <h3>大本钟</h3>
+                    <p>伦敦的标志性建筑</p>
+                    <a href="uk.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+
+            <div class="gallery-item europe" data-location="梵蒂冈">
+                <img src="images/vatican.jpg" alt="梵蒂冈">
+                <div class="item-overlay">
+                    <h3>梵蒂冈</h3>
+                    <p>天主教会的中心</p>
+                    <a href="vatican.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+
+            <!-- 美洲照片 -->
+            <div class="gallery-item america" data-location="纽约天际线">
+                <img src="images/newyork-skyline.jpg" alt="纽约天际线">
+                <div class="item-overlay">
+                    <h3>纽约天际线</h3>
+                    <p>世界金融中心的壮观景象</p>
+                    <a href="america.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+
+            <!-- 非洲照片 -->
+            <div class="gallery-item africa" data-location="狮身人面像">
+                <img src="images/sphinx.webp" alt="狮身人面像">
+                <div class="item-overlay">
+                    <h3>狮身人面像</h3>
+                    <p>古埃及文明的神秘守护者</p>
+                    <a href="egypt.html" class="view-more">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 过滤器功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // 给当前按钮添加active类
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.classList.contains(filter)) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 500);
+                        }
+                    });
+                });
+            });
+
+            // 添加悬停效果
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.classList.add('hover');
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    this.classList.remove('hover');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

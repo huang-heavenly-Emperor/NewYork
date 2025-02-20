@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界景点图片展 - 创意瀑布流画廊</title>
+    <style>
+        /* ... existing styles ... */
+
+        /* 瀑布流项目基础样式 */
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .masonry-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .masonry-item:hover {
+            transform: perspective(1000px) rotateY(5deg) translateZ(30px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        /* 图片容器样式 */
+        .masonry-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        /* 图片样式 */
+        .masonry-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.9);
+        }
+
+        .masonry-item:hover img {
+            filter: brightness(1.1);
+        }
+
+        /* 开屏动画 */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            transform-origin: bottom;
+            animation: pageReveal 1.5s ease-out forwards;
+        }
+
+        @keyframes pageReveal {
+            0% { transform: scaleY(1); }
+            100% { transform: scaleY(0); }
+        }
+
+        /* 标题动画 */
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            transform: perspective(1000px) rotateX(10deg);
+            opacity: 0;
+            animation: titleReveal 1s ease-out 1.5s forwards;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 2s forwards;
+        }
+
+        @keyframes titleReveal {
+            0% {
+                opacity: 0;
+                transform: perspective(1000px) rotateX(30deg) translateY(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(1000px) rotateX(10deg) translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* ... rest of the existing styles ... */
+    </style>
+</head>
+<body>
+    <div class="page-transition"></div>
+    <!-- ... rest of the existing body content ... -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 滚动动画处理
+            function handleScroll() {
+                const items = document.querySelectorAll('.masonry-item');
+                items.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const isVisible = (rect.top <= window.innerHeight * 0.8);
+                    
+                    if (isVisible) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+
+            // 初始检查
+            handleScroll();
+
+            // 使用 requestAnimationFrame 优化滚动监听
+            let rafId = null;
+            window.addEventListener('scroll', () => {
+                if (rafId) {
+                    window.cancelAnimationFrame(rafId);
+                }
+                rafId = window.requestAnimationFrame(handleScroll);
+            });
+
+            // 优化图片加载动画
+            function handleImageLoad(img) {
+                const item = img.closest('.masonry-item');
+                item.classList.remove('loading');
+                img.style.opacity = '1';
+                
+                // 添加加载完成的动画
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, 100);
+            }
+
+            // 图片懒加载处理
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        
+                        if (src) {
+                            img.src = src;
+                            img.removeAttribute('data-src');
+                            img.onload = () => handleImageLoad(img);
+                        }
+                        
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            });
+
+            // 观察所有图片
+            document.querySelectorAll('.masonry-item img').forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            // ... rest of the existing script ...
+        });
+    </script>
+</body>
+</html>

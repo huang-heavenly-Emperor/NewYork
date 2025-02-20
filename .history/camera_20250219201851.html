@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Through Lens - Photo Gallery</title>
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-content">
+        <!-- 相机标题部分 -->
+        <div class="camera-header">
+            <h1 class="camera-title">
+                <span class="english">World Through Lens</span>
+                <span class="subtitle">Capturing the Beauty of Our World</span>
+            </h1>
+        </div>
+
+        <!-- 照片网格 -->
+        <div class="photo-grid">
+            <!-- 中国部分 -->
+            <div class="photo-item china" onclick="window.location.href='China.html'">
+                <img src="images/great-wall.jpg" alt="Great Wall of China">
+                <div class="photo-overlay">
+                    <h3>China</h3>
+                    <p>长城 - Great Wall</p>
+                </div>
+            </div>
+            <div class="photo-item china" onclick="window.location.href='forbidden-city.html'">
+                <img src="images/forbidden-city.jpg" alt="Forbidden City">
+                <div class="photo-overlay">
+                    <h3>China</h3>
+                    <p>故宫 - Forbidden City</p>
+                </div>
+            </div>
+            <div class="photo-item china" onclick="window.location.href='yellow-mountain.html'">
+                <img src="images/yellow-mountain.webp" alt="Yellow Mountain">
+                <div class="photo-overlay">
+                    <h3>China</h3>
+                    <p>黄山 - Yellow Mountain</p>
+                </div>
+            </div>
+
+            <!-- 日本部分 -->
+            <div class="photo-item japan" onclick="window.location.href='tokyo.html'">
+                <img src="images/tokyo-tower.jpg" alt="Tokyo Tower">
+                <div class="photo-overlay">
+                    <h3>Japan</h3>
+                    <p>東京タワー - Tokyo Tower</p>
+                </div>
+            </div>
+            <div class="photo-item japan" onclick="window.location.href='mount-fuji.html'">
+                <img src="images/mount-fuji.jpg" alt="Mount Fuji">
+                <div class="photo-overlay">
+                    <h3>Japan</h3>
+                    <p>富士山 - Mount Fuji</p>
+                </div>
+            </div>
+            <div class="photo-item japan" onclick="window.location.href='kyoto.html'">
+                <img src="images/kyoto.jpg" alt="Kyoto">
+                <div class="photo-overlay">
+                    <h3>Japan</h3>
+                    <p>京都 - Kyoto</p>
+                </div>
+            </div>
+
+            <!-- 欧洲部分 -->
+            <div class="photo-item europe" onclick="window.location.href='eiffel.html'">
+                <img src="images/eiffel.jpg" alt="Eiffel Tower">
+                <div class="photo-overlay">
+                    <h3>France</h3>
+                    <p>Tour Eiffel</p>
+                </div>
+            </div>
+            <div class="photo-item europe" onclick="window.location.href='colosseum.html'">
+                <img src="images/colosseum.jpg" alt="Colosseum">
+                <div class="photo-overlay">
+                    <h3>Italy</h3>
+                    <p>Colosseum</p>
+                </div>
+            </div>
+            <div class="photo-item europe" onclick="window.location.href='neuschwanstein.html'">
+                <img src="images/neuschwanstein.jpg" alt="Neuschwanstein Castle">
+                <div class="photo-overlay">
+                    <h3>Germany</h3>
+                    <p>Neuschwanstein Castle</p>
+                </div>
+            </div>
+
+            <!-- 英国部分 -->
+            <div class="photo-item uk" onclick="window.location.href='tower-bridge.html'">
+                <img src="images/tower-bridge.jpg" alt="Tower Bridge">
+                <div class="photo-overlay">
+                    <h3>United Kingdom</h3>
+                    <p>Tower Bridge</p>
+                </div>
+            </div>
+            <div class="photo-item uk" onclick="window.location.href='big-ben.html'">
+                <img src="images/big-ben.jpg" alt="Big Ben">
+                <div class="photo-overlay">
+                    <h3>United Kingdom</h3>
+                    <p>Big Ben</p>
+                </div>
+            </div>
+
+            <!-- 美国部分 -->
+            <div class="photo-item usa" onclick="window.location.href='newyork.html'">
+                <img src="images/newyork-skyline.jpg" alt="New York Skyline">
+                <div class="photo-overlay">
+                    <h3>United States</h3>
+                    <p>New York Skyline</p>
+                </div>
+            </div>
+
+            <!-- 埃及部分 -->
+            <div class="photo-item egypt" onclick="window.location.href='pyramids.html'">
+                <img src="images/pyramids-detail.jpg" alt="Pyramids">
+                <div class="photo-overlay">
+                    <h3>Egypt</h3>
+                    <p>Pyramids of Giza</p>
+                </div>
+            </div>
+            <div class="photo-item egypt" onclick="window.location.href='sphinx.html'">
+                <img src="images/sphinx.webp" alt="Sphinx">
+                <div class="photo-overlay">
+                    <h3>Egypt</h3>
+                    <p>Great Sphinx</p>
+                </div>
+            </div>
+            <div class="photo-item egypt" onclick="window.location.href='nile.html'">
+                <img src="images/nile-river.jpg" alt="Nile River">
+                <div class="photo-overlay">
+                    <h3>Egypt</h3>
+                    <p>Nile River</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 相机控制按钮 -->
+        <div class="camera-controls">
+            <button class="filter-btn all active">All</button>
+            <button class="filter-btn" data-filter="china">China</button>
+            <button class="filter-btn" data-filter="japan">Japan</button>
+            <button class="filter-btn" data-filter="europe">Europe</button>
+            <button class="filter-btn" data-filter="uk">UK</button>
+            <button class="filter-btn" data-filter="usa">USA</button>
+            <button class="filter-btn" data-filter="egypt">Egypt</button>
+        </div>
+    </div>
+
+    <script>
+        // 过滤功能
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有按钮的active类
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // 添加当前按钮的active类
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                document.querySelectorAll('.photo-item').forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 添加动画效果
+        document.querySelectorAll('.photo-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('.photo-overlay').style.opacity = '1';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('.photo-overlay').style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html> 

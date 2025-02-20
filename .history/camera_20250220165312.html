@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索世界 | World Explorer</title>
+    <link rel="stylesheet" href="css/camera.css">
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div class="splash">
+        <div class="splash-content">
+            <div class="splash-title">EXPLORER</div>还是
+            <div class="splash-subtitle">发现世界的美</div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="nav">
+        <div class="nav-brand">Explorer</div>
+        <div class="nav-search">
+            <input type="text" class="search" placeholder="搜索你想去的地方..." id="search">
+            <div class="search-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.39zM11 18a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="nav-filters">
+            <button class="filter active" data-filter="all">全部</button>
+            <button class="filter" data-filter="asia">亚洲</button>
+            <button class="filter" data-filter="europe">欧洲</button>
+            <button class="filter" data-filter="america">美洲</button>
+            <button class="filter" data-filter="africa">非洲</button>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="gallery">
+        <div class="gallery-grid">
+            <article class="card" data-category="europe">
+                <div class="card-image">
+                    <img src="images/eiffel.jpg" alt="埃菲尔铁塔">
+                </div>
+                <div class="card-content">
+                    <h3>埃菲尔铁塔</h3>
+                    <p>法国巴黎的标志性建筑，见证浪漫之都的璀璨历史</p>
+                    <div class="card-meta">
+                        <span class="location">法国·巴黎</span>
+                        <span class="tag">地标建筑</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card" data-category="europe">
+                <div class="card-image">
+                    <img src="images/colosseum.jpg" alt="罗马斗兽场">
+                </div>
+                <div class="card-content">
+                    <h3>罗马斗兽场</h3>
+                    <p>意大利古罗马文明的瑰宝，讲述着辉煌的帝国往事</p>
+                    <div class="card-meta">
+                        <span class="location">意大利·罗马</span>
+                        <span class="tag">历史遗迹</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card" data-category="asia">
+                <div class="card-image">
+                    <img src="images/great-wall.jpg" alt="长城">
+                </div>
+                <div class="card-content">
+                    <h3>万里长城</h3>
+                    <p>中华文明的象征，世界文化遗产的杰出代表</p>
+                    <div class="card-meta">
+                        <span class="location">中国·北京</span>
+                        <span class="tag">文化遗产</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card" data-category="asia">
+                <div class="card-image">
+                    <img src="images/forbidden-city.jpg" alt="故宫">
+                </div>
+                <div class="card-content">
+                    <h3>故宫</h3>
+                    <p>中国明清两代的皇家宫殿，东方建筑艺术的巅峰</p>
+                    <div class="card-meta">
+                        <span class="location">中国·北京</span>
+                        <span class="tag">皇家建筑</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card" data-category="america">
+                <div class="card-image">
+                    <img src="images/times-square.jpg" alt="时代广场">
+                </div>
+                <div class="card-content">
+                    <h3>时代广场</h3>
+                    <p>纽约的心脏，世界娱乐之都的象征</p>
+                    <div class="card-meta">
+                        <span class="location">美国·纽约</span>
+                        <span class="tag">现代都市</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card" data-category="africa">
+                <div class="card-image">
+                    <img src="images/pyramids.jpg" alt="金字塔">
+                </div>
+                <div class="card-content">
+                    <h3>埃及金字塔</h3>
+                    <p>古埃及文明的丰碑，世界七大奇迹之一</p>
+                    <div class="card-meta">
+                        <span class="location">埃及·吉萨</span>
+                        <span class="tag">古代奇迹</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- 空状态提示 -->
+    <div class="empty">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-text">没有找到匹配的景点</div>
+        <div class="empty-hint">试试其他关键词？</div>
+    </div>
+
+    <!-- 图片查看器 -->
+    <div class="viewer">
+        <div class="viewer-content">
+            <img class="viewer-image" src="" alt="">
+            <button class="viewer-close">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <button class="viewer-prev">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="viewer-next">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 加载动画
+        const splash = document.querySelector('.splash');
+        setTimeout(() => {
+            splash.classList.add('fade-out');
+            document.body.classList.add('loaded');
+        }, 2000);
+
+        // 搜索和过滤功能
+        const search = document.getElementById('search');
+        const filters = document.querySelectorAll('.filter');
+        const cards = document.querySelectorAll('.card');
+        const empty = document.querySelector('.empty');
+        const viewer = document.querySelector('.viewer');
+        const viewerImage = viewer.querySelector('.viewer-image');
+        const viewerClose = viewer.querySelector('.viewer-close');
+        const viewerPrev = viewer.querySelector('.viewer-prev');
+        const viewerNext = viewer.querySelector('.viewer-next');
+
+        let currentIndex = 0;
+        const visibleCards = () => Array.from(cards).filter(card => 
+            getComputedStyle(card).display !== 'none'
+        );
+
+        function filterCards() {
+            const searchTerm = search.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter.active').dataset.filter;
+            let hasResults = false;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const category = card.dataset.category;
+                const location = card.querySelector('.location').textContent.toLowerCase();
+                
+                const matchesSearch = title.includes(searchTerm) || 
+                                    description.includes(searchTerm) || 
+                                    location.includes(searchTerm);
+                const matchesFilter = activeFilter === 'all' || category === activeFilter;
+                
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = '';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            empty.classList.toggle('show', !hasResults);
+        }
+
+        filters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filters.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterCards();
+            });
+        });
+
+        search.addEventListener('input', filterCards);
+
+        // 图片查看器功能
+        function showViewer(index) {
+            const visible = visibleCards();
+            currentIndex = index;
+            const card = visible[index];
+            const img = card.querySelector('img');
+            viewerImage.src = img.src;
+            viewerImage.alt = img.alt;
+            viewer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            const visible = visibleCards();
+            viewerPrev.style.display = currentIndex > 0 ? '' : 'none';
+            viewerNext.style.display = currentIndex < visible.length - 1 ? '' : 'none';
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const visible = visibleCards();
+                const index = visible.indexOf(card);
+                showViewer(index);
+            });
+        });
+
+        viewerPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex > 0) showViewer(currentIndex - 1);
+        });
+
+        viewerNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const visible = visibleCards();
+            if (currentIndex < visible.length - 1) showViewer(currentIndex + 1);
+        });
+
+        [viewerClose, viewer].forEach(el => {
+            el.addEventListener('click', (e) => {
+                if (e.target === viewer || e.target === viewerClose) {
+                    viewer.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!viewer.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    viewer.classList.remove('active');
+                    document.body.style.overflow = '';
+                    break;
+                case 'ArrowLeft':
+                    if (currentIndex > 0) showViewer(currentIndex - 1);
+                    break;
+                case 'ArrowRight':
+                    const visible = visibleCards();
+                    if (currentIndex < visible.length - 1) showViewer(currentIndex + 1);
+                    break;
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

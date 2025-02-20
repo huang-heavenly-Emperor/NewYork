@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Through Lens - Photo Gallery</title>
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="lib/font-awesome.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/text.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+</head>
+<body>
+    <!-- Main navigation -->
+    <nav class="main-nav">
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="tour.html">
+                    <i class="fas fa-globe-americas"></i>
+                    Tour
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="nested-dropdown">
+                        <a href="china.html">Asia</a>
+                        <ul class="nested-dropdown-menu">
+                            <li class="nested-dropdown">
+                                <a href="china.html">China</a>
+                                <ul class="nested-dropdown-menu">
+                                    <li><a href="great-wall.html">Great Wall</a></li>
+                                    <li><a href="forbidden-city.html">Forbidden City</a></li>
+                                    <li><a href="terracotta-army.html">Terracotta Army</a></li>
+                                    <li><a href="yellow-mountain.html">Yellow Mountain</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="japan.html">Japan</a>
+                                <ul class="nested-dropdown-menu">
+                                    <li><a href="mount-fuji.html">Mount Fuji</a></li>
+                                    <li><a href="tokyo.html">Tokyo Tower</a></li>
+                                    <li><a href="kyoto.html">Kyoto</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nested-dropdown">
+                        <a href="#">Europe</a>
+                        <ul class="nested-dropdown-menu">
+                            <li class="nested-dropdown">
+                                <a href="france.html">France</a>
+                                <ul class="nested-dropdown-menu">
+                                    <li><a href="eiffel.html">Eiffel Tower</a></li>
+                                    <li><a href="louvre.html">Louvre Museum</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="uk.html">United Kingdom</a>
+                                <ul class="nested-dropdown-menu">
+                                    <li><a href="tower-bridge.html">Tower Bridge</a></li>
+                                    <li><a href="big-ben.html">Big Ben</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nested-dropdown">
+                        <a href="egypt.html">Africa</a>
+                        <ul class="nested-dropdown-menu">
+                            <li><a href="pyramids.html">Pyramids</a></li>
+                            <li><a href="sphinx.html">Sphinx</a></li>
+                            <li><a href="nile.html">Nile River</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="camera.html" class="active">
+                    <i class="fas fa-camera"></i>
+                    Gallery
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <!-- 相机标题部分 -->
+        <div class="camera-header">
+            <h1 class="camera-title">
+                <span class="english">Through The Lens</span>
+                <span class="subtitle">A Journey Around the World</span>
+            </h1>
+        </div>
+
+        <!-- 照片网格 -->
+        <div class="photo-grid">
+            <!-- 特色大图部分 -->
+            <div class="photo-item featured china" onclick="window.location.href='great-wall.html'">
+                <img src="images/great-wall.jpg" alt="Great Wall of China">
+                <div class="photo-overlay">
+                    <h3>China</h3>
+                    <p>长城 - Great Wall</p>
+                    <span class="location">Beijing, China</span>
+                </div>
+            </div>
+
+            <!-- 美国部分 - 增加更多景点 -->
+            <div class="photo-item usa vertical" onclick="window.location.href='newyork.html'">
+                <img src="images/newyork-skyline.jpg" alt="New York Skyline">
+                <div class="photo-overlay">
+                    <h3>United States</h3>
+                    <p>New York Skyline</p>
+                    <span class="location">Manhattan, NY</span>
+                </div>
+            </div>
+            <div class="photo-item usa horizontal" onclick="window.location.href='times-square.html'">
+                <img src="images/1.jpg" alt="Times Square">
+                <div class="photo-overlay">
+                    <h3>United States</h3>
+                    <p>Times Square</p>
+                    <span class="location">New York City, NY</span>
+                </div>
+            </div>
+            <div class="photo-item usa" onclick="window.location.href='statue-liberty.html'">
+                <img src="images/2.jpg" alt="Statue of Liberty">
+                <div class="photo-overlay">
+                    <h3>United States</h3>
+                    <p>Statue of Liberty</p>
+                    <span class="location">New York Harbor, NY</span>
+                </div>
+            </div>
+
+            <!-- 日本部分 - 创意布局 -->
+            <div class="photo-item japan wide" onclick="window.location.href='mount-fuji.html'">
+                <img src="images/mount-fuji.jpg" alt="Mount Fuji">
+                <div class="photo-overlay">
+                    <h3>Japan</h3>
+                    <p>富士山 - Mount Fuji</p>
+                    <span class="location">Honshu, Japan</span>
+                </div>
+            </div>
+            <div class="photo-item japan tall" onclick="window.location.href='tokyo.html'">
+                <img src="images/tokyo-tower.jpg" alt="Tokyo Tower">
+                <div class="photo-overlay">
+                    <h3>Japan</h3>
+                    <p>東京タワー - Tokyo Tower</p>
+                    <span class="location">Tokyo, Japan</span>
+                </div>
+            </div>
+
+            <!-- 欧洲部分 - 动态布局 -->
+            <div class="photo-item europe panorama" onclick="window.location.href='eiffel.html'">
+                <img src="images/eiffel.jpg" alt="Eiffel Tower">
+                <div class="photo-overlay">
+                    <h3>France</h3>
+                    <p>Tour Eiffel</p>
+                    <span class="location">Paris, France</span>
+                </div>
+            </div>
+            <div class="photo-item europe square" onclick="window.location.href='colosseum.html'">
+                <img src="images/colosseum.jpg" alt="Colosseum">
+                <div class="photo-overlay">
+                    <h3>Italy</h3>
+                    <p>Colosseum</p>
+                    <span class="location">Rome, Italy</span>
+                </div>
+            </div>
+
+            <!-- 埃及部分 - 创意排列 -->
+            <div class="photo-item egypt wide" onclick="window.location.href='pyramids.html'">
+                <img src="images/pyramids-detail.jpg" alt="Pyramids">
+                <div class="photo-overlay">
+                    <h3>Egypt</h3>
+                    <p>Pyramids of Giza</p>
+                    <span class="location">Cairo, Egypt</span>
+                </div>
+            </div>
+            <div class="photo-item egypt vertical" onclick="window.location.href='sphinx.html'">
+                <img src="images/sphinx.webp" alt="Sphinx">
+                <div class="photo-overlay">
+                    <h3>Egypt</h3>
+                    <p>Great Sphinx</p>
+                    <span class="location">Giza, Egypt</span>
+                </div>
+            </div>
+
+            <!-- 更多景点可以继续添加... -->
+        </div>
+
+        <!-- 创意控制按钮 -->
+        <div class="camera-controls">
+            <button class="filter-btn all active">
+                <i class="fas fa-globe-americas"></i>
+                <span>All</span>
+            </button>
+            <button class="filter-btn" data-filter="china">
+                <i class="fas fa-landmark"></i>
+                <span>China</span>
+            </button>
+            <button class="filter-btn" data-filter="japan">
+                <i class="fas fa-torii-gate"></i>
+                <span>Japan</span>
+            </button>
+            <button class="filter-btn" data-filter="europe">
+                <i class="fas fa-church"></i>
+                <span>Europe</span>
+            </button>
+            <button class="filter-btn" data-filter="uk">
+                <i class="fas fa-crown"></i>
+                <span>UK</span>
+            </button>
+            <button class="filter-btn" data-filter="usa">
+                <i class="fas fa-flag-usa"></i>
+                <span>USA</span>
+            </button>
+            <button class="filter-btn" data-filter="egypt">
+                <i class="fas fa-pyramid"></i>
+                <span>Egypt</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 导航栏响应式
+        document.querySelector('.nav-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // 过滤功能
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                document.querySelectorAll('.photo-item').forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, 100);
+                    } else {
+                        item.classList.remove('visible');
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // 高级动画效果
+        document.querySelectorAll('.photo-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('.photo-overlay').style.opacity = '1';
+                item.querySelector('img').style.transform = 'scale(1.1)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('.photo-overlay').style.opacity = '0';
+                item.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.photo-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html> 
